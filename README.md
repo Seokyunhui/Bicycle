@@ -1,2 +1,2 @@
-# Bycycle
-Bycycle portfolio
+# Bicycle
+Bicycle portfolio
