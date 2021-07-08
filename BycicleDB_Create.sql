@@ -19,7 +19,7 @@ USE `BicycleDB` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BicycleDB`.`Member` (
   `Member_uid` INT NOT NULL AUTO_INCREMENT,
-  `Member_id` VARCHAR(10) NOT NULL,
+  `Member_id` VARCHAR(10) NOT NULL UNIQUE,
   `Member_pw` VARCHAR(20) NOT NULL,
   `Member_name` VARCHAR(10) NOT NULL,
   `Member_phone` INT NOT NULL DEFAULT 0,
