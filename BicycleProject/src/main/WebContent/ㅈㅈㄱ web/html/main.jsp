@@ -40,7 +40,11 @@
             <h3>공지사항</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque itaque sapiente alias eius quas,
                 officiis cum impedit blanditiis commodi, suscipit facere tempore sunt. Esse, totam saepe illo
+<<<<<<< HEAD
                 delectus aut enim! 내일10시집합</p>
+=======
+                delectus aut enim!</p>
+>>>>>>> refs/remotes/origin/BicycleProject
         </div>
         <div class="col-lg-1">
         </div>
