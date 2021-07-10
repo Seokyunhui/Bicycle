@@ -40,7 +40,7 @@
             <h3>공지사항</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque itaque sapiente alias eius quas,
                 officiis cum impedit blanditiis commodi, suscipit facere tempore sunt. Esse, totam saepe illo
-                delectus aut enim!  내일 10시 집합!</p>
+                delectus aut enim! test</p>
         </div>
         <div class="col-lg-1">
         </div>
