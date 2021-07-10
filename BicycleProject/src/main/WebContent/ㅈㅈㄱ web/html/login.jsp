@@ -12,7 +12,7 @@
 </head>
 <body>
 	<!--전체 구역-->  
-        <div class="wrap">
+        <div class="wrap" style="background-image: url('image/backimage.jpg');">
             <!--로그인 폼 구역-->  
             <div class="form-wrap">
                 <!--상단 로그인 텍스트-->
