@@ -25,8 +25,8 @@
                   <div class="col-lg-2">
                   </div>
                   <div class="col-lg-2 align-self-center">
-                      <a href="./login/login.jsp" class="btn btn-uni btn-sm mr-3">&nbsp;로그인&nbsp;</a>
-                      <a href="./register/회원가입.jsp" class="btn btn-uni btn-sm">회원가입</a>
+                      <a href="login.jsp" class="btn btn-uni btn-sm mr-3">&nbsp;로그인&nbsp;</a>
+                      <a href="signup.jsp" class="btn btn-uni btn-sm">회원가입</a>
                   </div>
               </div>
           </div>
