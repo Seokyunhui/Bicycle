@@ -5,7 +5,7 @@
         <div class="container text-center ">
             <h3 class="text-secondary">유니 넷조</h3>
             <p>
-                ㅈㅈㄱ Homepage is powered by <span class="text-primary">Uni4 Group project</span> / Designed by <span
+                자전거 Homepage is powered by <span class="text-primary">Uni4 Group project</span> / Designed by <span
                     class="text-primary">Uni4 Group project</span>
             </p>
         </div>
