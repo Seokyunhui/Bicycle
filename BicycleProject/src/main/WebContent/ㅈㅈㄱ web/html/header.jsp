@@ -40,7 +40,7 @@
 
               <div class="col-lg-4">
                   <ul class="nav nav-pills justify-content-around display-5">
-                      <li><a href="boardtest.jsp" class="navbar-link text-dark">지식정보</a></li>
+                      <li><a href="boardA.jsp" class="navbar-link text-dark">지식정보</a></li>
                       <li>|</li>
                       <li><a href="#" class="navbar-link text-dark">소통</a></li>
                       <li>|</li>
