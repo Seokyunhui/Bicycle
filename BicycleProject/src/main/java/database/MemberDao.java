@@ -37,8 +37,8 @@ public class MemberDao {
 				MemberDto mem = new MemberDto(m_id, m_pw, m_name, m_group);
 				dtos.add(mem);
 				name = m_name;
-				dbDriver.closeAll(rs, pstmt, conn);
 			}
+			dbDriver.closeAll(rs, pstmt, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,7 +52,6 @@ public class MemberDao {
 		}
 		for(int i = 0; i < dtos.size(); i++) {
 			if(dtos.get(i).getMember_pw().equals(pw)) {
-				System.out.println(dtos.get(i).getMember_pw());
 				return 1;	// 로그인 성공
 			}			
 		}

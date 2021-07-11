@@ -27,7 +27,7 @@ request.setCharacterEncoding("UTF-8");
 		session.setAttribute("userID", id);
 		String sessionID = (String) session.getAttribute("id");
 		script.println("<script>");
-		script.println("alert(sessionID);");
+		script.println("alert("+ sessionID +");");
 		script.println("</script>");
 
 	} else if (state == -1) {
