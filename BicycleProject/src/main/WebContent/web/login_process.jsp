@@ -7,7 +7,7 @@
 <html>
 <head>
 
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
 <%

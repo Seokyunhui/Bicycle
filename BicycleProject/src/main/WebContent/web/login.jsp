@@ -28,7 +28,7 @@
                     <img src="image/네이버로고.png" alt="Naver">
                     <img src="image/구글로고.png" alt="Google">
                 </div>
-
+                
                 <!--로그인-->
                 
                 <form id="login" action="login_process.jsp" class="input-group" method = "post">

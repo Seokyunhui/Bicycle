@@ -21,7 +21,6 @@ public class MemberDao {
 	}
 
 	public void loginAccept() {
-		
 		DBDriver dbDriver = new DBDriver();
 		Connection conn = dbDriver.connDB();
 		String strQuery =  "SELECT * FROM member WHERE Member_id = ?";
@@ -63,5 +62,4 @@ public class MemberDao {
 	public String getUserName() {
 		return name;
 	}
-	
 }

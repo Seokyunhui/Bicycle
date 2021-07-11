@@ -13,7 +13,7 @@ public class MemberDto {
 	private int Member_comcount;	// 댓글 등록 개수
 	private int Member_ch_dist;	// 챌린지 주행거리 
 	
-	//
+	
 	public MemberDto(String Member_id){
 		this.Member_id = Member_id;
 	}
