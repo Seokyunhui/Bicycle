@@ -1,4 +1,6 @@
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
+  <%@page import="database.MemberDto"%>
+<%@page import="database.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
   <head>
@@ -24,10 +26,28 @@
                   </div>
                   <div class="col-lg-2">
                   </div>
+                  
+                  <%
+                  
+                  if(session.getAttribute("userID") == null){
+                  %>
                   <div class="col-lg-2 align-self-center">
                       <a href="login.jsp" class="btn btn-uni btn-sm mr-3">&nbsp;로그인&nbsp;</a>
                       <a href="signup.jsp" class="btn btn-uni btn-sm">회원가입</a>
                   </div>
+                  <%
+                  }else if(session.getAttribute("userID") != null){ %>
+                		<div class="col-lg-2 align-self-center">
+                      <p>님 반갑습니다~
+                      <a href="logout.jsp" class="btn btn-uni btn-sm">로그아웃</a>
+                  </div>
+                	  
+                  <%
+                  }
+                  %>
+                  				
+                  
+           
               </div>
           </div>
 

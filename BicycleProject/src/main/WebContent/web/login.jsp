@@ -31,10 +31,10 @@
 
                 <!--로그인-->
                 
-                <form id="login" action="" class="input-group">
+                <form id="login" action="login_process.jsp" class="input-group" method = "post">
                     
-                    <input type="text" class="input-field" placeholder="아이디" required>
-                    <input type="password" class="input-field" placeholder="비밀번호" required>
+                    <input name = "userID" type="text" class="input-field" placeholder="아이디" required>
+                    <input name = "userPW" type="password" class="input-field" placeholder="비밀번호" required>
                     
                     <div class="submit-1">
                         <button class="submit"><span>로그인</span></button>
