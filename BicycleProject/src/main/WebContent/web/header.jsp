@@ -24,11 +24,11 @@
                   <div class="col-lg-4 text-center">
                       <a href="./main.jsp"><img src="./image/headerlogo/로고텍스트.gif" alt="ㅁㄴㅇ"></a>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-1">
                   </div>
                   
                   <%
-                  
+                  String userid = (String) session.getAttribute("userID");
                   if(session.getAttribute("userID") == null){
                   %>
                   <div class="col-lg-2 align-self-center">
@@ -37,8 +37,8 @@
                   </div>
                   <%
                   }else if(session.getAttribute("userID") != null){ %>
-                		<div class="col-lg-2 align-self-center">
-                      <p>님 반갑습니다~
+                		<div class="col-lg-3 col-sm-3 align-self-center">
+                      <p><%=userid %>님 반갑습니다~
                       <a href="logout.jsp" class="btn btn-uni btn-sm">로그아웃</a>
                   </div>
                 	  
