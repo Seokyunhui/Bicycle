@@ -71,11 +71,12 @@
 		<div class="col-lg-10">
 			<%
 			for (int i = 1; i <= 3; i++) {
-				arrayList = boardDao.getList();
+				
 			%>
 			<%
 			if (i == 1) {
-				arrayList.stream().filter(list -> list.getCategory_small() == "자전거 종류");
+				arrayList = boardDao.getList();
+				arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류") );
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -91,13 +92,14 @@
 			</div>
 			<hr>
 
-			<%
+			 <%
 			}
 			%>
-
+			<%--
 			<%
 			} else if (i == 2) {
-			arrayList.stream().filter(list -> list.getCategory_small() == "유의사항");
+				arrayList = boardDao.getList();
+			arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항"));
 			for (int k = 0; k < arrayList.size(); k++) {
 
 				boardDto = arrayList.get(k);
@@ -121,7 +123,8 @@
 
 			<%
 			} else if (i == 3) {
-			arrayList.stream().filter(list -> list.getCategory_small() == "대처사항");
+				arrayList = boardDao.getList();
+			arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항"));
 			for (int k = 0; k < arrayList.size(); k++) {
 				boardDto = arrayList.get(k);
 			%>
@@ -138,10 +141,10 @@
 			<hr>
 			<%
 			}
-			%>
+			%> --%>
 
 			<%
-			}
+			 } 
 
 			}
 			%>
