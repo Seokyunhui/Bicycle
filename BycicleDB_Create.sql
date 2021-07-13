@@ -180,5 +180,16 @@ grant all privileges on bicycledb.* to 'bicycleDBAdmin' with grant option;
 use bicycledb;
 select * from member;
 insert into member (Member_id, Member_pw, Member_name) values ('admin', 1234, '관리자');
+
+-------------------------------------------------------------
+-- Insert BoardA (지식정보게시판) 데이터 추가
+-------------------------------------------------------------
+select * from board;
+update member set Member_group = 5 where Member_uid = 1;
+insert into member (Member_id, Member_pw, Member_name) values ('admin', 1234, '관리자');
+insert into board (Category_big, Category_small, Board_title, Board_content, Board_writer, B_Member_id) values('지식정보','자전거 종류','로드 바이크','얇은 타이어와 밑쪽으로 구부러진 핸들이 특징인 로드 바이크. 스포츠 바이크 중에서도 특히 고속 주행 성능을 추구하여 설계. 자전거 레이스는 물론 출퇴근에 사용하는 분들도 많다. 바람과 일체가 되서 주행하는 질주감은 로드 바이크 최대의 매력이고 특징이다.','관리자','1');
+insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','자전거 종류','얇은 타이어와 밑쪽으로 구부러진 핸들이 특징인 로드 바이크. 스포츠 바이크 중에서도 특히 고속 주행 성능을 추구하여 설계. 자전거 레이스는 물론 출퇴근에 사용하는 분들도 많다. 바람과 일체가 되서 주행하는 질주감은 로드 바이크 최대의 매력이고 특징이다.','관리자','1');
+insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','유의사항','헬멧 써야함','관리자','1');
+insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','대처사항','자전거 체인 빠지면 넣어야함','관리자','1');
  
 
