@@ -32,12 +32,14 @@ public class BoardDao {
 				String categorySmall = rs.getString("Category_small");
 				String boardRegDate = rs.getString("Board_regdate");
 				String boardContent = rs.getString("Board_content");
+				String boardWriter = rs.getString("Board_writer");
 
 				BoardDto boardDto = new BoardDto();
 				boardDto.setCategory_big(categoryBig);
 				boardDto.setCategory_small(categorySmall);
 				boardDto.setBoard_regdate(boardRegDate);
 				boardDto.setBoard_content(boardContent);
+				boardDto.setBoard_writer(boardWriter);
 
 				arrayList.add(boardDto);
 			}

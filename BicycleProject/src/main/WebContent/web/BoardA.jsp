@@ -71,47 +71,56 @@
 		<div class="col-lg-10">
 			<%
 			for (int i = 1; i <= 3; i++) {
-				
 			%>
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				 arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류") ).toList();
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).toList();
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
-			<%if(k==0){ %>
+			<%
+			if (k == 0) {
+			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%} %>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+				<%
+				}
+				%>
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
-			</div>
-			<hr>
-
-			<%
+				
+				<%
 			}
 			%>
+			</div>
+			<hr>
+			
+
+			
 
 			<%
 			} else if (i == 2) {
-				arrayList = boardDao.getList();
+			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).toList();
 			for (int k = 0; k < arrayList.size(); k++) {
 
 				boardDto = arrayList.get(k);
 			%>
-			<%if(k==0){ %>
+			<%
+			if (k == 0) {
+			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%} %>
+				<%
+				}
+				%>
 				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
 				<br>
 				<p>
@@ -127,17 +136,21 @@
 
 			<%
 			} else if (i == 3) {
-				arrayList = boardDao.getList();
+			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).toList();
 			for (int k = 0; k < arrayList.size(); k++) {
 				boardDto = arrayList.get(k);
 			%>
-			<%if(k==0){ %>
+			<%
+			if (k == 0) {
+			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%} %>
+				<%
+				}
+				%>
 				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
 				<br>
 				<p>
@@ -150,7 +163,7 @@
 			%>
 
 			<%
-			 } 
+			}
 
 			}
 			%>
