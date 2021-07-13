@@ -163,9 +163,9 @@ DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
 CREATE  OR REPLACE VIEW `BoardC` AS Select a.Member_id, a.Member_phone,
 b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
-c.Market_name,c.Martket_price,Market_addr
+c.Market_name,c.Market_price,Market_addr
 From Member AS a, Board AS b, Market_Board AS c
-where b.Categort_big like '중고거래';
+where b.Category_big like '중고거래';
 
 
 
