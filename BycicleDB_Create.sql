@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Board` (
   `Board_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Board_editdate` DATETIME NULL,
   `B_Member_id` INT NOT NULL,
-  `Board_Title` VARCHAR(45) NOT NULL,
+  `Board_title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Board_id`),
   INDEX `Member_id_idx` (`B_Member_id` ASC) VISIBLE,
   CONSTRAINT `Member_id`
@@ -148,6 +148,25 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Challege` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+USE `BicycleDB` ;
+
+-- -----------------------------------------------------
+-- Placeholder table for view `BicycleDB`.`BoardC`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_regdate` INT, `Market_name` INT, `Martket_price` INT, `Market_addr` INT);
+
+-- -----------------------------------------------------
+-- View `BicycleDB`.`BoardC`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
+USE `BicycleDB`;
+CREATE  OR REPLACE VIEW `BoardC` AS Select a.Member_id, a.Member_phone,
+b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
+c.Market_name,c.Martket_price,Market_addr
+From Member AS a, Board AS b, Market_Board AS c
+where b.Categort_big like '중고거래';
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
