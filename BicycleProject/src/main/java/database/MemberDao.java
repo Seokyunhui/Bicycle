@@ -3,6 +3,7 @@ package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
@@ -60,5 +61,25 @@ public class MemberDao {
 	
 	public String getUserName() {
 		return name;
+	}
+	
+	public String getUserGroup(String id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery =  "SELECT Member_group FROM member WHERE Member_id = ?";
+		String group = null;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			group = rs.getString("Member_group");
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return group;
 	}
 }

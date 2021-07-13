@@ -87,21 +87,22 @@
 
 				<h1><%=boardDto.getCategory_small()%></h1>
 				<%
-				}
+				} 
 				%>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
-				
+
 				<%
-			}
-			%>
+				}
+				%>
 			</div>
 			<hr>
-			
 
-			
+
+
 
 			<%
 			} else if (i == 2) {
@@ -121,18 +122,17 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
-
-
-			<%
-			}
-			%>
 
 			<%
 			} else if (i == 3) {
@@ -151,17 +151,17 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
-			<%
-			}
-			%>
-
 			<%
 			}
 
