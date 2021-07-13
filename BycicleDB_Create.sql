@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Board` (
   `Board_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Board_editdate` DATETIME NULL,
   `B_Member_id` INT NOT NULL,
+  `Board_Title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Board_id`),
   INDEX `Member_id_idx` (`B_Member_id` ASC) VISIBLE,
   CONSTRAINT `Member_id`
