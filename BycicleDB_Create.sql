@@ -157,7 +157,7 @@ USE `BicycleDB` ;
 CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_regdate` INT, `Market_name` INT, `Martket_price` INT, `Market_addr` INT);
 
 -- -----------------------------------------------------
--- View `BicycleDB`.`BoardC`
+-- View `BicycleDB`.`BoardC`  중고거래 게시판 뷰
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
