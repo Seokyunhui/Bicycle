@@ -8,5 +8,7 @@
                 자전거 Homepage is powered by <span class="text-primary">Uni4 Group project</span> / Designed by <span
                     class="text-primary">Uni4 Group project</span>
             </p>
+            <p class="m-0 text-center text-dark">Copyright &copy; ezen
+                    2021</p>
         </div>
     </div>
