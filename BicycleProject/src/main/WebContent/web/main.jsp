@@ -32,7 +32,7 @@
 
  <%@include file="./header.jsp" %>
 
-    <!-- 공지사항 -->
+    <!-- 공지사항 --> 
     <div class="row">
         <div class="col-lg-1">
         </div>

@@ -33,6 +33,7 @@ public class BoardDao {
 				String boardRegDate = rs.getString("Board_regdate");
 				String boardContent = rs.getString("Board_content");
 				String boardWriter = rs.getString("Board_writer");
+				int boardId = rs.getInt("Board_id");
 
 				BoardDto boardDto = new BoardDto();
 				boardDto.setCategory_big(categoryBig);
@@ -40,6 +41,7 @@ public class BoardDao {
 				boardDto.setBoard_regdate(boardRegDate);
 				boardDto.setBoard_content(boardContent);
 				boardDto.setBoard_writer(boardWriter);
+				boardDto.setBoard_id(boardId);
 
 				arrayList.add(boardDto);
 			}
