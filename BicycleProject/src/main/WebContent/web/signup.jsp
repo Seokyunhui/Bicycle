@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,42 +13,45 @@
 
 </head>
 <body>
-        <!--전체 구역-->  
-        <div class="wrap" style="background-image: url('image/backimage.jpg');">
-            <!--로그인 폼 구역-->  
-            <div class="form-wrap">
-                <!--상단 로그인 텍스트-->  
-                <div class="register">
-                    <div>
-                        <span>회원가입</span>        
-                    </div>
-                </div>
-    
-                <!--상단 로고 구역-->
-                <div class="social-icons">
-                    <img src="image/카카오톡로고.png" alt="Kakao">
-                    <img src="image/네이버로고.png" alt="Naver">
-                    <img src="image/구글로고.png" alt="Google">
-                </div>
+	<!--전체 구역-->
+	<div class="wrap" style="background-image: url('image/backimage.jpg');">
+		<!--로그인 폼 구역-->
+		<div class="form-wrap">
+			<!--상단 로그인 텍스트-->
+			<div class="register">
+				<div>
+					<span>회원가입</span>
+				</div>
+			</div>
 
-                <!--회원가입 폼 구역-->
-                <form id="register" action="" class="input-group">
-                    <input type="text" class="input-field" placeholder="아이디" required>
-                    <input type="password" class="input-field" placeholder="비밀번호" required>
-                    <input type="password" class="input-field" placeholder="비밀번호 확인" required>
-                    <input type="text" class="input-field" placeholder="이름" required>
-                    <input type="phone" class="input-field" placeholder="전화번호" required>
-                    <input type="email" class="input-field" placeholder="이메일" required>
-                    <div class="submit-1">
-                        <button class="submit"><span>회원가입</span></button>
-                    </div>
-                </form>
-                
-            </div>
-        </div>
-        <script>
-        
-        </script>
-   
+			<!--상단 로고 구역-->
+			<div class="social-icons">
+				<img src="image/카카오톡로고.png" alt="Kakao"> <img
+					src="image/네이버로고.png" alt="Naver"> <img src="image/구글로고.png"
+					alt="Google">
+			</div>
+
+			<!--회원가입 폼 구역-->
+			<form id="register" action="" class="input-group">
+				<input type="text" class="input-field" placeholder="아이디" required>
+				<input type="password" class="input-field" placeholder="비밀번호"
+					required> <input type="password" class="input-field"
+					placeholder="비밀번호 확인" required> <input type="text"
+					class="input-field" placeholder="이름" required> <input
+					type="phone" class="input-field" placeholder="전화번호" required>
+				<input type="email" class="input-field" placeholder="이메일" required>
+				<div class="submit-1">
+					<button class="submit">
+						<span>회원가입</span>
+					</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<script>
+		
+	</script>
+
 </body>
 </html>
