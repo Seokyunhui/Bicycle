@@ -1,6 +1,13 @@
 # Bicycle
 Bycycle portfolio
 
-1. 모듈화 완료
-2. 로그인 페이지 합칠예정
-3. 지식정보 게시판 완성
+이젠아카데미 ㅈㅈㄱ 웹 개발 프로젝트
+
+2021/07/02시작
+
+진행률 30%
+
+css: bootstrap4.0.0
+
+language: JAVA,HTML,SQL,CSS,JSP
+
