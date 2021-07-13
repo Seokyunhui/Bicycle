@@ -1,3 +1,6 @@
+<%@page import="database.BoardDao"%>
+<%@page import="database.BoardDto"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,38 +60,114 @@
 	</div>
 
 
+
+	<%!BoardDao boardDao = new BoardDao();
+	List<BoardDto> arrayList = new ArrayList<>();
+	BoardDto boardDto;%>
+
+
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
 			<%
 			for (int i = 1; i <= 3; i++) {
 			%>
+			<%
+			if (i == 1) {
+				arrayList = boardDao.getList();
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).toList();
+				for (int k = 0; k < arrayList.size(); k++) {
+					boardDto = arrayList.get(k);
+			%>
+			<%
+			if (k == 0) {
+			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1>자전거 종류</h1>
+				<h1><%=boardDto.getCategory_small()%></h1>
+				<%
+				}
+				%>
 				<br>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 찬
-					구 왔 쩌 염</p>
-				<p>가 나 다 라 마 바 사 아 자 타 카 타 파 하 아 야 아 여 오 요 우 유 이 이 어 엌 아 앜 이 잌 </p>
+				<p>
+					<%=boardDto.getBoard_content()%>
+				</p>
+				
+				<%
+			}
+			%>
+			</div>
+			<hr>
+			
+
+			
+
+			<%
+			} else if (i == 2) {
+			arrayList = boardDao.getList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).toList();
+			for (int k = 0; k < arrayList.size(); k++) {
+
+				boardDto = arrayList.get(k);
+			%>
+			<%
+			if (k == 0) {
+			%>
+			<div id="section<%=i%>" class="container-fluid text-center"
+				style="padding-top: 35px; padding-bottom: 35px">
+
+				<h1><%=boardDto.getCategory_small()%></h1>
+				<%
+				}
+				%>
+				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+				<br>
+				<p>
+					<%=boardDto.getBoard_content()%>
+				</p>
+			</div>
+			<hr>
+
+
+			<%
+			}
+			%>
+
+			<%
+			} else if (i == 3) {
+			arrayList = boardDao.getList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).toList();
+			for (int k = 0; k < arrayList.size(); k++) {
+				boardDto = arrayList.get(k);
+			%>
+			<%
+			if (k == 0) {
+			%>
+			<div id="section<%=i%>" class="container-fluid text-center"
+				style="padding-top: 35px; padding-bottom: 35px">
+
+				<h1><%=boardDto.getCategory_small()%></h1>
+				<%
+				}
+				%>
+				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+				<br>
+				<p>
+					<%=boardDto.getBoard_content()%>
+				</p>
 			</div>
 			<hr>
 			<%
 			}
 			%>
-			
+
+			<%
+			}
+
+			}
+			%>
+
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
