@@ -1,3 +1,4 @@
+<%@page import="java.util.stream.Collectors"%>
 <%@page import="database.BoardDao"%>
 <%@page import="database.BoardDto"%>
 <%@page import="java.util.*"%>
@@ -75,7 +76,7 @@
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).toList();
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -89,24 +90,25 @@
 				<%
 				}
 				%>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
-				
+
 				<%
-			}
-			%>
+				}
+				%>
 			</div>
 			<hr>
-			
 
-			
+
+
 
 			<%
 			} else if (i == 2) {
 			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).toList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
 
 				boardDto = arrayList.get(k);
@@ -121,23 +123,22 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
-
-
-			<%
-			}
-			%>
 
 			<%
 			} else if (i == 3) {
 			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).toList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
 				boardDto = arrayList.get(k);
 			%>
@@ -151,19 +152,19 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
 			<%
-			}
-			%>
-
-			<%
-			}
+			}         
 
 			}
 			%>

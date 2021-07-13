@@ -31,7 +31,7 @@
 				String userid = (String) session.getAttribute("userID");
 				if (session.getAttribute("userID") == null) {
 				%>
-				<div class="col-lg-2 align-self-center">
+				<div class="col-lg-3 align-self-center">
 					<a href="login.jsp" class="btn btn-uni btn-sm mr-3">&nbsp;로그인&nbsp;</a>
 					<a href="signup.jsp" class="btn btn-uni btn-sm">회원가입</a>
 				</div>
@@ -60,7 +60,15 @@
 
 			<div class="col-lg-4">
 				<ul class="nav nav-pills justify-content-around display-5">
+					<% 
+						String group = (String) session.getAttribute("userGroup");
+					
+					if(group == null) {
+					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
+					<%}else if(group.equals("5")) { %> 
+					<li><a href="admin_BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
+					<%} %>
 					<li>|</li>
 					<li><a href="#" class="navbar-link text-dark">소통</a></li>
 					<li>|</li>

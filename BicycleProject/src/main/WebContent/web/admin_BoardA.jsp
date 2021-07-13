@@ -1,3 +1,4 @@
+<%@page import="java.util.stream.Collectors"%>
 <%@page import="database.BoardDao"%>
 <%@page import="database.BoardDto"%>
 <%@page import="java.util.*"%>
@@ -75,7 +76,7 @@
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).toList();
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -86,27 +87,36 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
+					<div class="text-right">
+					<form action="login_process.jsp" method="get" id="asd">
+					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글쓰기" name = "<%=boardDto.getBoard_id()%>">
+					<input type="button" class="btn btn-uni btn-sm mr-3">
+					<input type="button" class="btn btn-uni btn-sm mr-3">
+					</form>
+					</div>
+				
 				<%
-				}
+				} 
 				%>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
-				
+
 				<%
-			}
-			%>
+				}
+				%>
 			</div>
 			<hr>
-			
 
-			
+
+
 
 			<%
 			} else if (i == 2) {
 			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).toList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
 
 				boardDto = arrayList.get(k);
@@ -121,23 +131,22 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
-
-
-			<%
-			}
-			%>
 
 			<%
 			} else if (i == 3) {
 			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).toList();
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
 				boardDto = arrayList.get(k);
 			%>
@@ -151,17 +160,17 @@
 				<%
 				}
 				%>
-				<p class="text-right"><%=boardDto.getBoard_regdate()%></p>
+
 				<br>
 				<p>
 					<%=boardDto.getBoard_content()%>
 				</p>
+
+				<%
+				}
+				%>
 			</div>
 			<hr>
-			<%
-			}
-			%>
-
 			<%
 			}
 

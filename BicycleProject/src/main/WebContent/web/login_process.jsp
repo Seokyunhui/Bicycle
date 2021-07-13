@@ -25,6 +25,7 @@ request.setCharacterEncoding("UTF-8");
 		script.println("</script>");
 
 		session.setAttribute("userID", id);
+		session.setAttribute("userGroup", dao.getUserGroup(id));
 		String sessionID = (String) session.getAttribute("id");
 		script.println("<script>");
 		script.println("alert(" + sessionID + ");");
