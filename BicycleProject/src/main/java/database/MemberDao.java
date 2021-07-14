@@ -84,6 +84,27 @@ public class MemberDao {
 		return group;
 	}
 
+	public int getMemberUid(String id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery =  "SELECT Member_uid FROM member WHERE Member_id = ?";
+		int group = 0;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			group = rs.getInt("Member_uid");
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return group;
+	}
+
+	
 	public int Mem_register(MemberDto mem) {
 		Select_Member();
 		if(dtos == null)

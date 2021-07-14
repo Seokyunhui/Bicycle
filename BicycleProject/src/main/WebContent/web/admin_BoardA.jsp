@@ -89,41 +89,52 @@
 
 				<h1><%=boardDto.getCategory_small()%></h1>
 				<div class="text-right">
-					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
 						쓰기</a>
 				</div>
 
 
-			</div> 
+			</div>
 
 			<%
 			}
 			%>
-			<div class="text-right">
-					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="update">글 수정</button>
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="delete">글 삭제</button>
-				</form>
-				<div class="row justify-content-center">
-					<div class="col-md-4"></div>
-					<div class="col-md-4 text-center">
-						<h3>
-							<%=boardDto.getBoard_title()%>
-						</h3> 
-						<br>
-						<p>
-							<%=boardDto.getBoard_content()%>
-						</p>
-						
-					</div>
-					<div class="col-md-4"></div>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
 				</div>
-				<%
-				}
-				%>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+							삭제</button>
+					</form>
+				</div>
 			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 
 
@@ -145,41 +156,51 @@
 
 				<h1><%=boardDto.getCategory_small()%></h1>
 				<div class="text-right">
-					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
-						쓰기</a>
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
 				</div>
 
 
-			</div> 
+			</div>
 
 			<%
 			}
 			%>
-			<div class="text-right">
-					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="update">글 수정</button>
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="delete">글 삭제</button>
-				</form>
-				<div class="row justify-content-center">
-					<div class="col-md-4"></div>
-					<div class="col-md-4 text-center">
-						<h3>
-							<%=boardDto.getBoard_title()%>
-						</h3> 
-						<br>
-						<p>
-							<%=boardDto.getBoard_content()%>
-						</p>
-						
-					</div>
-					<div class="col-md-4"></div>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
 				</div>
-				<%
-				}
-				%>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+							삭제</button>
+					</form>
+				</div>
 			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 
 			<%
@@ -197,45 +218,54 @@
 
 				<h1><%=boardDto.getCategory_small()%></h1>
 				<div class="text-right">
-					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
-						쓰기</a>
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
 				</div>
 
 
-			</div> 
+			</div>
 
 			<%
 			}
 			%>
-			<div class="text-right">
-					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="update">글 수정</button>
-					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
-					value="delete">글 삭제</button>
-				</form>
-				<div class="row justify-content-center">
-					<div class="col-md-4"></div>
-					<div class="col-md-4 text-center">
-						<h3>
-							<%=boardDto.getBoard_title()%>
-						</h3> 
-						<br>
-						<p>
-							<%=boardDto.getBoard_content()%>
-						</p>
-						
-					</div>
-					<div class="col-md-4"></div>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
 				</div>
-				<%
-				}
-				%>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+							삭제</button>
+					</form>
+				</div>
 			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 			<%
 			}
-
 			}
 			%>
 

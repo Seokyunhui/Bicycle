@@ -67,7 +67,7 @@ public class BoardDao {
 			pstmt.setString(4, content);
 			pstmt.setString(5, writer);
 			pstmt.setInt(6, Member_id);
-			rs = pstmt.executeQuery();
+			pstmt.executeUpdate();
 			check = true;
 			dbDriver.closeAll(pstmt, connection);
 		} catch (SQLException e) {
@@ -78,13 +78,14 @@ public class BoardDao {
 
 	}
 
-	public boolean delete(String Board_id) {
+	public boolean delete(int Board_id) {
 		String sql = "DELETE FROM board WHERE Board_id=?";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {
 			pstmt = connection.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(1, Board_id);
+			pstmt.executeUpdate();
 			dbDriver.closeAll(pstmt, connection);
 			check = true;
 		} catch (SQLException e) {
@@ -94,8 +95,8 @@ public class BoardDao {
 		return check;
 
 	}
-	
-	public boolean update(String Board_id,String title,String content) {
+
+	public boolean update(String Board_id, String title, String content) {
 		String sql = "update board set Board_title= ?, Board_content = ? WHERE ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
@@ -104,40 +105,16 @@ public class BoardDao {
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, Board_id);
-			rs = pstmt.executeQuery();
+			pstmt.executeUpdate();
 			check = true;
 			dbDriver.closeAll(pstmt, connection);
 		} catch (SQLException e) {
 			check = false;
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return check;
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-	
-	
-	
-	
 
-	// update 추가 ! 하면 끝 ! 넹
+		return check;
+
+	}
+
 }
