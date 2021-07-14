@@ -29,8 +29,8 @@ request.setCharacterEncoding("UTF-8");
 			script.println("</script>");	
 		}else{
 			script.println("<script>");
-			script.println("alert(' 실패');");
-			script.println("history.bac글 수정k();");
+			script.println("alert('글 수정 실패');");
+			script.println("history.back();");
 			script.println("</script>");	
 		}
 	
