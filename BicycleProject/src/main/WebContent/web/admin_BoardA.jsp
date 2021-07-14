@@ -85,13 +85,13 @@
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
-
+			
 				<h1><%=boardDto.getCategory_small()%></h1>
+					<a href="#" class="btn btn-uni btn-sm mr-3">글 쓰기</a>
 					<div class="text-right">
 					<form action="login_process.jsp" method="get" id="asd">
-					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글쓰기" name = "<%=boardDto.getBoard_id()%>">
-					<input type="button" class="btn btn-uni btn-sm mr-3">
-					<input type="button" class="btn btn-uni btn-sm mr-3">
+					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글 수정" name ="<%=boardDto.getBoard_id()%>">
+					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글 삭제" name ="">
 					</form>
 					</div>
 				
