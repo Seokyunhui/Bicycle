@@ -54,6 +54,38 @@ public class BoardDao {
 
 	}
 
+	public BoardDto getDto(int id) {
+		Connection connection = dbDriver.connDB();
+		String sql = "select * from Board where Board_id= ? ";
+		BoardDto boardDto = new BoardDto();
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				String categoryBig = rs.getString("Category_big");
+				String categorySmall = rs.getString("Category_small");
+				String boardRegDate = rs.getString("Board_regdate");
+				String boardContent = rs.getString("Board_content");
+				String boardWriter = rs.getString("Board_writer");
+				String boardTitle = rs.getString("Board_title");
+				int boardId = rs.getInt("Board_id");
+
+				boardDto.setCategory_big(categoryBig);
+				boardDto.setCategory_small(categorySmall);
+				boardDto.setBoard_regdate(boardRegDate);
+				boardDto.setBoard_content(boardContent);
+				boardDto.setBoard_writer(boardWriter);
+				boardDto.setBoard_id(boardId);
+				boardDto.setBoard_title(boardTitle);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return boardDto;
+	}
+
 	public boolean insert(String Category_big, String Category_small, String title, String content, String writer,
 			int Member_id) {
 		String sql = "insert into board (Category_big, Category_small, Board_title, Board_content, Board_writer, B_Member_id) values(?,?,?,?,?,?)";
@@ -96,15 +128,15 @@ public class BoardDao {
 
 	}
 
-	public boolean update(String Board_id, String title, String content) {
-		String sql = "update board set Board_title= ?, Board_content = ? WHERE ? ";
+	public boolean update(int Board_id, String title, String content) {
+		String sql = "update board set Board_title= ?, Board_content = ? WHERE Board_id = ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
-			pstmt.setString(3, Board_id);
+			pstmt.setInt(3, Board_id);
 			pstmt.executeUpdate();
 			check = true;
 			dbDriver.closeAll(pstmt, connection);

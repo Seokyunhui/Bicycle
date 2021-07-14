@@ -103,7 +103,7 @@
 
 				<div class="col-md-1 text-right">
 					<form
-						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
 						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
 					</form>
@@ -112,7 +112,7 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
 							삭제</button>
 					</form>
 				</div>
@@ -145,7 +145,7 @@
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
-
+				
 				boardDto = arrayList.get(k);
 			%>
 			<%
@@ -169,7 +169,7 @@
 
 				<div class="col-md-1 text-right">
 					<form
-						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
 						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
 					</form>
@@ -178,7 +178,7 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
 							삭제</button>
 					</form>
 				</div>
@@ -231,7 +231,7 @@
 
 				<div class="col-md-1 text-right">
 					<form
-						action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
 						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
 					</form>
@@ -240,7 +240,7 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3">글
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
 							삭제</button>
 					</form>
 				</div>
