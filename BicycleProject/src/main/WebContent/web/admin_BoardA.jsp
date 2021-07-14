@@ -76,7 +76,8 @@
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).collect(Collectors.toList());
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
+				.collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -85,25 +86,40 @@
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
-			
+
 				<h1><%=boardDto.getCategory_small()%></h1>
-					<a href="#" class="btn btn-uni btn-sm mr-3">글 쓰기</a>
-					<div class="text-right">
-					<form action="login_process.jsp" method="get" id="asd">
-					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글 수정" name ="<%=boardDto.getBoard_id()%>">
-					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글 삭제" name ="">
-					</form>
+				<div class="text-right">
+					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
+						쓰기</a>
+				</div>
+
+
+			</div> 
+
+			<%
+			}
+			%>
+			<div class="text-right">
+					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="update">글 수정</button>
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="delete">글 삭제</button>
+				</form>
+				<div class="row justify-content-center">
+					<div class="col-md-4"></div>
+					<div class="col-md-4 text-center">
+						<h3>
+							<%=boardDto.getBoard_title()%>
+						</h3> 
+						<br>
+						<p>
+							<%=boardDto.getBoard_content()%>
+						</p>
+						
 					</div>
-				
-				<%
-				} 
-				%>
-
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
-
+					<div class="col-md-4"></div>
+				</div>
 				<%
 				}
 				%>
@@ -128,15 +144,38 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
+				<div class="text-right">
+					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
+						쓰기</a>
+				</div>
 
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
 
+			</div> 
+
+			<%
+			}
+			%>
+			<div class="text-right">
+					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="update">글 수정</button>
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="delete">글 삭제</button>
+				</form>
+				<div class="row justify-content-center">
+					<div class="col-md-4"></div>
+					<div class="col-md-4 text-center">
+						<h3>
+							<%=boardDto.getBoard_title()%>
+						</h3> 
+						<br>
+						<p>
+							<%=boardDto.getBoard_content()%>
+						</p>
+						
+					</div>
+					<div class="col-md-4"></div>
+				</div>
 				<%
 				}
 				%>
@@ -157,15 +196,38 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
+				<div class="text-right">
+					<a href="admin_BoardA_write" class="btn btn-uni btn-sm">글
+						쓰기</a>
+				</div>
 
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
 
+			</div> 
+
+			<%
+			}
+			%>
+			<div class="text-right">
+					<form action="admin_BoardA_process.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="update">글 수정</button>
+					<button type="submit" class="btn btn-uni btn-sm mr-3" id="Board_delete_or_update"
+					value="delete">글 삭제</button>
+				</form>
+				<div class="row justify-content-center">
+					<div class="col-md-4"></div>
+					<div class="col-md-4 text-center">
+						<h3>
+							<%=boardDto.getBoard_title()%>
+						</h3> 
+						<br>
+						<p>
+							<%=boardDto.getBoard_content()%>
+						</p>
+						
+					</div>
+					<div class="col-md-4"></div>
+				</div>
 				<%
 				}
 				%>

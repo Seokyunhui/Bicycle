@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class BoardDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -19,7 +18,7 @@ public class BoardDao {
 //		
 //		
 //	}
-	
+
 	public ArrayList<BoardDto> getList() {
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
 		Connection connection = dbDriver.connDB();
@@ -33,6 +32,7 @@ public class BoardDao {
 				String boardRegDate = rs.getString("Board_regdate");
 				String boardContent = rs.getString("Board_content");
 				String boardWriter = rs.getString("Board_writer");
+				String boardTitle = rs.getString("Board_title");
 				int boardId = rs.getInt("Board_id");
 
 				BoardDto boardDto = new BoardDto();
@@ -42,6 +42,7 @@ public class BoardDao {
 				boardDto.setBoard_content(boardContent);
 				boardDto.setBoard_writer(boardWriter);
 				boardDto.setBoard_id(boardId);
+				boardDto.setBoard_title(boardTitle);
 
 				arrayList.add(boardDto);
 			}
@@ -53,4 +54,90 @@ public class BoardDao {
 
 	}
 
+	public boolean insert(String Category_big, String Category_small, String title, String content, String writer,
+			int Member_id) {
+		String sql = "insert into board (Category_big, Category_small, Board_title, Board_content, Board_writer, B_Member_id) values(?,?,?,?,?,?)";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, Category_big);
+			pstmt.setString(2, Category_small);
+			pstmt.setString(3, title);
+			pstmt.setString(4, content);
+			pstmt.setString(5, writer);
+			pstmt.setInt(6, Member_id);
+			rs = pstmt.executeQuery();
+			check = true;
+			dbDriver.closeAll(pstmt, connection);
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		return check;
+
+	}
+
+	public boolean delete(String Board_id) {
+		String sql = "DELETE FROM board WHERE Board_id=?";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			dbDriver.closeAll(pstmt, connection);
+			check = true;
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		return check;
+
+	}
+	
+	public boolean update(String Board_id,String title,String content) {
+		String sql = "update board set Board_title= ?, Board_content = ? WHERE ? ";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, Board_id);
+			rs = pstmt.executeQuery();
+			check = true;
+			dbDriver.closeAll(pstmt, connection);
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return check;
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+
+	// update 추가 ! 하면 끝 ! 넹
 }
