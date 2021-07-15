@@ -18,7 +18,7 @@
 </head>
 <body>
 <!-- 헤더 -->
- <%@include file="./header.jsp" %>
+ <%@include file="./header.jsp" %> 
 
   
         <!-- 배너 이미지 -->
@@ -50,7 +50,7 @@
             <div class="col-lg-1">
             </div>
         </div>
-
+ 
 
         <!-- hr 줄 구역 -->
         <div class="row">
