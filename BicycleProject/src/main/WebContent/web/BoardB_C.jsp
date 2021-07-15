@@ -4,42 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동행 하는사람들...</title>
-    <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
-    <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
-    <style>
-        .prpl {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-=======
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>동행하는사람들...</title>
 <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
-	 <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
->>>>>>> branch 'BicycleProject' of https://github.com/Seokyunhui/Bicycle.git
-
-<style>
-.prpl {
-	padding-left: 20px;
-	padding-right: 20px;
-}
-
-.footer {
-	background-color: cornsilk;
-}
-</style>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+<script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- header -->
 	<jsp:include page="header.jsp" />
-	
+
 		<!-- 배너 타이틀 -->
     <div class="row">
         <div class="col-lg-1">
@@ -80,15 +54,16 @@
             <div class="col-lg-1">
             </div>
         </div>
-	
+
+
 	<div class="row">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4"></div>
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
-				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">자유게시판</a></li>
+				<li><a href="#section1" class="navbar-link text-dark">자유게시판</a></li>
 				<li></li>
-				<li><a href="BoardC_B.jsp" class="navbar-link text-dark">질문게시판</a></li>
+				<li><a href="#section2" class="navbar-link text-dark">질문게시판</a></li>
 				<li></li>
 				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
@@ -201,8 +176,6 @@
 		<div class="col-lg-1"></div>
 
 	</div>
-
-
 
 
 	<!-- footer -->
