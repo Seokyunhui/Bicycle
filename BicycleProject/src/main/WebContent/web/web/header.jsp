@@ -60,39 +60,19 @@
 
 			<div class="col-lg-4">
 				<ul class="nav nav-pills justify-content-around display-5">
-					<%
-					String group = null;
-					if (session.getAttribute("userGroup") != null) {
-						group = (String) session.getAttribute("userGroup");
-					}else{
-						group = "비회원";
-					}
-					if (!group.equals("5")) {
+					<% 
+						String group = (String) session.getAttribute("userGroup");
+					
+					if(group == null) {
 					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
-					<%
-					}else if (group.equals("5")) {
-					%>
+					<%}else if(group.equals("5")) { %> 
 					<li><a href="admin_BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
-					<%
-					}
-					%>
+					<%} %>
 					<li>|</li>
 					<li><a href="#" class="navbar-link text-dark">소통</a></li>
 					<li>|</li>
-					
-					<%
-					if (session.getAttribute("userGroup") != null) {
-						group = (String) session.getAttribute("userGroup");
-					}else{
-						group = "비회원";
-					}
-					if (!group.equals("5")) {
-					%>
-					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
-					<%
-					}
-					%>
+					<li><a href="#" class="navbar-link text-dark">중고거래</a></li>
 					<li>|</li>
 					<li><a href="#" class="navbar-link text-dark">챌린지</a></li>
 				</ul>
