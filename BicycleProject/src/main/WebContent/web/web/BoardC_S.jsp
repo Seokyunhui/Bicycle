@@ -81,9 +81,9 @@
 
                 <ul class="nav nav-pills justify-content-around display-5">
 
-                    <li><a href="BoardC_S.jsp" class="navbar-link text-dark">팝니다</a></li>
+                    <li><a href="#" class="navbar-link text-dark">삽니다</a></li>
                     <li>|</li>
-                    <li><a href="BoardC_B.jsp" class="navbar-link text-dark">삽니다</a></li>
+                    <li><a href="#" class="navbar-link text-dark">팝니다</a></li>
                 </ul>
             </div>
             <div class="col-lg-1">
@@ -116,35 +116,15 @@
             <div class="col-lg-1">
             </div>
             <div class="col-lg-6 mb-4">
-                <h3><b>중고거래 팝니다 게시판</b></h3>
+                <h3><b>중고거래 게시판</b></h3>
             </div>
-            <div class="col-lg-4 mb-4">      
-            </div>
-            <div class="col-lg-1">
-            </div>
-        </div>
-        
-        <!-- 글 작성 버튼 -->
-        <div class="row">
-            <div class="col-lg-1">
-            </div>
-            <div class="col-lg-10">
-                <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark" style="float: right;">작성</a>
+            <div class="col-lg-4 mb-4">
+            
+
             </div>
             <div class="col-lg-1">
             </div>
         </div>
-        <!-- 공백구역 -->
-        <div class="row">
-            <div class="col-lg-1">
-            </div>
-            <div class="col-lg-10">
-                <br>
-            </div>
-            <div class="col-lg-1">
-            </div>
-        </div>
-        
 
         <!-- 중고거래 썸네일 -->
         <div class="row">
@@ -152,24 +132,24 @@
             </div>
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary-link card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -177,94 +157,94 @@
             <div class="col-lg-2 col-md-4">
 
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 4.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 4.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 5.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 5.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="#" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
