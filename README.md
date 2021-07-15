@@ -1,3 +1,7 @@
+★★★업로드 시 주의사항★★★
+1. push 전에 공유할 것
+2. .classpath파일을 지우고 올릴 것
+
 # Bicycle
 Bycycle portfolio
 
