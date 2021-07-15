@@ -1,6 +1,6 @@
 ★★★업로드 시 주의사항★★★
-1. push 전에 공유할 것
-2. .classpath파일을 지우고 올릴 것
+1. 풀리퀘스트 충돌 체크 필수!
+2. .classpath파일 빼고 풀리퀘스트 보낼것
 
 # Bicycle
 Bycycle portfolio
