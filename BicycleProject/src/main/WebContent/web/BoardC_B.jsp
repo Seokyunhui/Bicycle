@@ -163,7 +163,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
@@ -174,7 +174,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
@@ -199,7 +199,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
@@ -223,7 +223,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -235,7 +235,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
@@ -246,7 +246,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
                 <br>
@@ -269,7 +269,7 @@
                         <p class="card-text">2021-7-25(글생성날짜)</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 삽니다</h5>
                         <p class="card-text">320000원</p>
-                        <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- 헤더 -->
- <%@include file="./header.jsp" %>
+ <%@include file="./header.jsp"%>
 <%
 int boardid = Integer.parseInt(request.getParameter("Board_id"));
 BoardDao boardDao = new BoardDao();
