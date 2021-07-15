@@ -67,7 +67,7 @@
 					}else {
 						group = 0;
 					}
-					if (group != 0) {
+					if (group != 5) {
 					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
 					<%
