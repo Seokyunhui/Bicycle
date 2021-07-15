@@ -63,7 +63,7 @@ public class MemberDao {
 	public String getUserName() {
 		return name;
 	}
-	
+	// ------------
 	public String getUserGroup(String id) {
 		DBDriver dbDriver = new DBDriver();
 		Connection conn = dbDriver.connDB();
@@ -83,7 +83,40 @@ public class MemberDao {
 		
 		return group;
 	}
-
+//---------------
+	public MemberDto getUserInfo(String id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery =  "SELECT Member_group FROM member WHERE Member_id = ?";
+		int Member_uid,Member_phone,Member_group,Member_regcount,Member_comcount,Member_ch_dist = 0;	
+		String Member_id,Member_pw,Member_name,Member_mail,Member_regdate = null;	// 아이디
+		MemberDto dto = null;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			Member_uid = rs.getInt("Member_uid");
+			Member_id = rs.getString("Member_id");
+			Member_pw = rs.getString("Member_pw");
+			Member_name = rs.getString("Member_name");
+			Member_mail = rs.getString("Member_mail");
+			Member_regdate = rs.getString("Member_regdate");
+			Member_phone = rs.getInt("Member_phone");
+			Member_group = rs.getInt("Member_group");
+			Member_regcount = rs.getInt("Member_regcount");
+			Member_comcount = rs.getInt("Member_comcount");
+			Member_ch_dist = rs.getInt("Member_ch_dist");
+			dto = new MemberDto(Member_uid, Member_id, Member_pw, Member_name, Member_phone, Member_mail, Member_regdate, Member_group, Member_regcount, Member_comcount, Member_ch_dist);
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
 	public int getMemberUid(String id) {
 		DBDriver dbDriver = new DBDriver();
 		Connection conn = dbDriver.connDB();

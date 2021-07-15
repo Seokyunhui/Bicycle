@@ -64,13 +64,14 @@
 					String group = null;
 					if (session.getAttribute("userGroup") != null) {
 						group = (String) session.getAttribute("userGroup");
+					}else{
+						group = "비회원";
 					}
-
-					if (group == null) {
+					if (!group.equals("5")) {
 					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
 					<%
-					} else if (group.equals("5")) {
+					}else if (group.equals("5")) {
 					%>
 					<li><a href="admin_BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
 					<%
