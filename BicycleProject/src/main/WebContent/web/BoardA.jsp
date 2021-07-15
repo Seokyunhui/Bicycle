@@ -76,7 +76,8 @@
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).collect(Collectors.toList());
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
+				.collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -87,19 +88,31 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
-
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
-
-				<%
-				}
-				%>
+			
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<br>
+			<%
+			}
+			%>
+
 			<hr>
 
 
@@ -110,7 +123,7 @@
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
-
+				
 				boardDto = arrayList.get(k);
 			%>
 			<%
@@ -120,19 +133,30 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
-
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
-
-				<%
-				}
-				%>
+			
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 
 			<%
@@ -149,23 +173,33 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
-
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
-
-				<%
-				}
-				%>
+			
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 			<%
-			}         
-
+			}
 			}
 			%>
 
