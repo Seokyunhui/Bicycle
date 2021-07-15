@@ -61,17 +61,17 @@
 			<div class="col-lg-4">
 				<ul class="nav nav-pills justify-content-around display-5">
 					<%
-					String group = null;
+					int group = 0;
 					if (session.getAttribute("userGroup") != null) {
-						group = (String) session.getAttribute("userGroup");
-					}else{
-						group = "비회원";
+						group = (Integer) session.getAttribute("userGroup");
+					}else {
+						group = 0;
 					}
-					if (!group.equals("5")) {
+					if (group != 0) {
 					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
 					<%
-					}else if (group.equals("5")) {
+					}else if (group == 5) {
 					%>
 					<li><a href="admin_BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
 					<%
