@@ -94,7 +94,7 @@
 					<input type="search" placeholder="search"
 						aria-describedby="button-addon5" class="form-control">
 					<div class="input-group-append">
-						<button id="button-addon5" type="submit" class="btn btn-info">
+						<button id="button-addon5" type="submit" class="btn btn-primary">
 							<i class="fa fa-search" aria-hidden="true"></i>
 						</button>
 					</div>
@@ -105,7 +105,7 @@
 		<div class="col-lg-1">
 			<div class="col-lg-5"></div>
 			<div class="col-lg-5">
-				<a href="btn btn-info"><input type="button" class="btn btn-info"
+				<a href="btn btn-info"><input type="button" class="btn btn-primary"
 					value="글등록"></a>
 			</div>
 		</div>
