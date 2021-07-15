@@ -9,9 +9,11 @@ Bycycle portfolio
 
 2021/07/02시작
 
-진행률 30%
+진행률 40%
 
 css: bootstrap4.0.0
+SQL : mysql
+구현도구 : Eclipse
 
 language: JAVA,HTML,SQL,CSS,JSP
 
