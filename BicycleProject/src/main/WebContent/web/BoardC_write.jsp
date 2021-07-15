@@ -109,6 +109,10 @@ request.setCharacterEncoding("UTF-8");
         </div>
 
 
+
+
+		<form>
+		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
             <div class="col-lg-1"></div>
@@ -128,6 +132,15 @@ request.setCharacterEncoding("UTF-8");
                         <option>인천</option>
                         <option>부산</option>
                         <option>제주도</option>
+                    </select>
+                    
+                    <select id="selectbox" title="constituency" name="BoardC_write_constituency">
+                        <option selected="selected">종류</option>
+                        <option>자전거</option>
+                        <option>헬멧</option>
+                        <option>장갑</option>
+                        <option>신발</option>
+                        <option>기타</option>
                     </select>
                 </div>
             </div>
@@ -184,7 +197,10 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" neme="file_upload">
+                	<form method="post" action="" enctype="multipart/form-data">
+                    <input type="file" class="form-control-file" neme="uploadFile">
+                    <input type="submit" value="upload">
+                    </form>
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -197,15 +213,19 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <textarea type="text" class="form-control" rows="20" placeholder="글 양식입니다.
-                    &#13;&#10;이름:&#13;&#10;&#13;&#10;가격:&#13;&#10;&#13;&#10;번호:&#13;&#10;&#13;&#10;지역:&#13;&#10;&#13;&#10;내용:&#13;&#10;&#13;&#10;*양식에 맞추어 작성 해주세요*." id="content" name="BoardC_write_content"></textarea>
+                    <textarea type="text" class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="BoardC_write_content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
         </div>
-
+		</form>
+	
+	
+	
+	
+	
         <!-- 공백 -->
         <div class="row">
             <div class="col-lg-1"></div>
