@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`Member_id` INT, `Member_phone`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
-CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id, a.Member_phone,
+CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id,a.Member_id, a.Member_phone,
 b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
 c.Market_name,c.Market_price,Market_addr, c.Market_id
 From Member AS a, Board AS b, Market_Board AS c
