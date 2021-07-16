@@ -161,12 +161,11 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`Member_id` INT, `Member_phone`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
-CREATE  OR REPLACE VIEW `BoardC` AS Select a.Member_id, a.Member_phone,
+CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id, a.Member_phone,
 b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
 c.Market_name,c.Market_price,Market_addr
 From Member AS a, Board AS b, Market_Board AS c
-where b.Category_big like '중고거래';
-
+where b.Category_big like '중고거래' AND a.Member_uid = b.B_Member_id AND b.Board_id = c.M_Board_id;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
