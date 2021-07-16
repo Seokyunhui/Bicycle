@@ -111,36 +111,40 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form>
+		<form action="BoardC_write_action.jsp" method="post">
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 form-group">
                 <div class="select-box select-script">
-                    <select id="selectbox" title="kategorie" name="BoardC_write_kategorie">
+                    <select id="selectbox"  name="board_category_sm">
                         <option selected disabled hidden>선택</option>
-                        <option>삽니다</option>
-                        <option>팝니다</option>
+                        <option value="삽니다">삽니다</option>
+                        <option value="팝니다">팝니다</option>
                     </select>
                     
-                    <select id="selectbox" title="constituency" name="BoardC_write_constituency">
+                    <select id="selectbox" name="market_board_addr">
                         <option selected="selected">지역</option>
-                        <option>김포</option>
-                        <option>서울</option>
-                        <option>인천</option>
-                        <option>부산</option>
-                        <option>제주도</option>
+                        <option value="서울">서울</option>
+                        <option value="경기도">경기도</option>
+                        <option value="강원도">강원도</option>
+                        <option value="경상도">경상도</option>
+                        <option value="충청도">충청도</option>
+                        <option value="전라도">전라도</option>
                     </select>
                     
-                    <select id="selectbox" title="constituency" name="BoardC_write_constituency">
+                    <select id="selectbox" name="market_name">
                         <option selected="selected">종류</option>
-                        <option>자전거</option>
-                        <option>헬멧</option>
-                        <option>장갑</option>
-                        <option>신발</option>
-                        <option>기타</option>
+                        <option value="자전거">자전거</option>
+                        <option value="자전거헬멧">자전거헬멧</option>
+                        <option value="자전거거치대">자전거거치대</option>
+                        <option value="자전거가방">자전거가방</option>
+                        <option value="자전거라이트">자전거라이트</option>
+                        <option value="자전거펌프">자전거펌프</option>
+                        <option value="자전거짐받이">자전거짐받이</option>
+                        <option value="자전거벨">자전거벨</option>
                     </select>
                 </div>
             </div>
@@ -169,7 +173,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" id="title" name="BoardC_write_title_header">
+                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title">
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -182,7 +186,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="가격" id="price" name="BoardC_write_price">
+                    <input type="text" class="form-control" placeholder="가격" id="price" name="market_price">
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -197,10 +201,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                	<form method="post" action="" enctype="multipart/form-data">
                     <input type="file" class="form-control-file" neme="uploadFile">
-                    <input type="submit" value="upload">
-                    </form>
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -213,7 +214,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <textarea type="text" class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="BoardC_write_content"></textarea>
+                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="Board_content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>
@@ -263,11 +264,11 @@ request.setCharacterEncoding("UTF-8");
         <!--hr-->
         <div class="row">
             <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            
+            <div class="col-lg-10">
                 <hr>
             </div>
-            <div class="col-lg-1"></div>
+            
             <div class="col-lg-1"></div>
         </div>
 

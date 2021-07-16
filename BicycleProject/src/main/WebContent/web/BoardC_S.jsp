@@ -154,10 +154,10 @@
                 <div class="card text-center w-100" style="width: 15rem;">
                     <img class="card-img-top" src="./image/중고 자전거 1.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
+                        <p class="card-text"><!-- 카테고리 소분류 --></p>
+                        <p class="card-text"><!-- regdate subString --></p>
+                        <h5 class="card-title "><!-- 제목 --></h5>
+                        <p class="card-text"><!-- price --></p>
                         <a href="BoardC_product.jsp" class="btn btn-primary-link card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
+                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다1</h5>
                         <p class="card-text">320000원</p>
                         <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
@@ -181,7 +181,7 @@
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
+                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다2</h5>
                         <p class="card-text">320000원</p>
                         <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
@@ -191,7 +191,7 @@
                     <img class="card-img-top" src="./image/중고 자전거 5.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
+                        <p class="card-text">2021-7-25(글생성날짜)3</p>
                         <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
                         <p class="card-text">320000원</p>
                         <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
@@ -329,8 +329,12 @@
         <div class="row">
             <div class="col-lg-1">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-8">
                 <hr>
+            </div>
+            <div class="col-lg-1">
             </div>
             <div class="col-lg-1">
             </div>
