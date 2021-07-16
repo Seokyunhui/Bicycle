@@ -37,19 +37,11 @@ request.setCharacterEncoding("UTF-8");
 		for(String value : request.getParameterValues("market_name")){
 			marketName = value;
 		}
-		
 		int market_price = Integer.parseInt(request.getParameter("market_price"));
 		String boardTitle = request.getParameter("board_title"); 		// 글 제목
 		String boardContent = request.getParameter("Board_content"); 	//글 내용
 		String writer = (String) session.getAttribute("userID");		//글 쓴이
 		int MemberUid = memberDao.getMemberUid(writer);					//글 쓴이 기본키
-		
-		
-		
-		
-		
-		
-		
 		
 		if(boardDao.insert(categoryLg, categorySm, boardTitle, boardContent,
 				writer, MemberUid, market_board_addr, marketName, market_price)){

@@ -16,6 +16,7 @@
     </script>
     <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
+
 <body>
 <!-- 헤더 -->
  <%@include file="./header.jsp" %>

@@ -28,6 +28,17 @@ request.setCharacterEncoding("UTF-8");
     </style>
 
 <title>중고거래 글등록 페이지</title>
+    <%
+
+
+        if (session.getAttribute("userID") == null) {
+        	
+         %>                      
+        	<script>alert('로그인이 필요합니다.'); window.history.back(); </script>
+        <%
+           
+        }
+    %>
 </head>
 <body>
 	

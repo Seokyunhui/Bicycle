@@ -8,29 +8,43 @@ public class MarketBoardDao {
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
 
-	public ArrayList<MarketBoardDto> getList() {
+	public ArrayList<BoardDto> getList() {
 		Connection connection = dbDriver.connDB();
-		String sql = "select * form market_board";
-		ArrayList<MarketBoardDto> arrayList = new ArrayList<>();
+		String sql = "select * from boardc";
+		ArrayList<BoardDto> arrayList = new ArrayList<>();
 
 		try {
 			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int market_id = rs.getInt("Market_id");
-				int m_Board_Id = rs.getInt("M_Board_id");
+				int m_Member_id = rs.getInt("B_Member_id");
 				int market_Price = rs.getInt("Market_price");
 				String market_Addr = rs.getString("Market_addr");
+				String boardWriter = rs.getString("member_id");
 				String market_Name = rs.getString("Market_name");
-
-				MarketBoardDto marketBoardDto = new MarketBoardDto();
-				marketBoardDto.setMarketId(market_id);
-				marketBoardDto.setM_Board_Id(m_Board_Id);
-				marketBoardDto.setMarketPrice(market_Price);
-				marketBoardDto.setMarketAddr(market_Addr);
-				marketBoardDto.setMarketName(market_Name);
-
-				arrayList.add(marketBoardDto);
+				String categorySmall = rs.getString("Category_small");
+				String boardRegDate = rs.getString("Board_regdate").substring(0, 10);
+				String boardContent = rs.getString("Board_content");
+				String boardTitle = rs.getString("Board_title");
+				int boardId = rs.getInt("Board_id");
+				
+				
+				BoardDto boardDto = new BoardDto();
+				
+				boardDto.setMarketId(market_id);
+				boardDto.setBoard_writer(boardWriter);
+				boardDto.setMember_uid(m_Member_id);
+				boardDto.setMarketPrice(market_Price);
+				boardDto.setMarketAddr(market_Addr);
+				boardDto.setMarketName(market_Name);
+				boardDto.setCategory_small(categorySmall);
+				boardDto.setBoard_regdate(boardRegDate);
+				boardDto.setBoard_content(boardContent);
+				boardDto.setBoard_title(boardTitle);
+				boardDto.setBoard_id(boardId);
+				
+				arrayList.add(boardDto);
 
 			}
 
@@ -98,6 +112,57 @@ public class MarketBoardDao {
 		return check;
 
 	}
+	
+	public BoardDto getDto(int Market_id) {
+		Connection connection = dbDriver.connDB();
+		String sql = "select * from boardc where market_id = ?";
+		BoardDto boardDto = new BoardDto();
+
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, Market_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int market_id = rs.getInt("Market_id");
+				int m_Member_id = rs.getInt("B_Member_id");
+				int market_Price = rs.getInt("Market_price");
+				String market_Addr = rs.getString("Market_addr");
+				String boardWriter = rs.getString("member_id");
+				String market_Name = rs.getString("Market_name");
+				String categorySmall = rs.getString("Category_small");
+				String boardRegDate = rs.getString("Board_regdate").substring(0, 10);
+				String boardContent = rs.getString("Board_content");
+				String boardTitle = rs.getString("Board_title");
+				int boardId = rs.getInt("Board_id");
+				
+				
+				
+				
+				boardDto.setMarketId(market_id);
+				boardDto.setBoard_writer(boardWriter);
+				boardDto.setMember_uid(m_Member_id);
+				boardDto.setMarketPrice(market_Price);
+				boardDto.setMarketAddr(market_Addr);
+				boardDto.setMarketName(market_Name);
+				boardDto.setCategory_small(categorySmall);
+				boardDto.setBoard_regdate(boardRegDate);
+				boardDto.setBoard_content(boardContent);
+				boardDto.setBoard_title(boardTitle);
+				boardDto.setBoard_id(boardId);
+				
+				
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return boardDto;
+
+	}
+	
 	
 	
 

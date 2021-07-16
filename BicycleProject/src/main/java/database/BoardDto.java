@@ -10,6 +10,60 @@ public class BoardDto {
 	private String Board_regdate;
 	private String Board_editdate;
 	private String Board_title;
+	private int marketId; // 중고거래 테이블 PK
+	private int m_Board_Id; // 게시판 테이블 FK
+	private int marketPrice; // 중고거래 가격
+	private String marketAddr; // 중고거래 주소
+	private String marketName; // 중고거래 종류
+	private int member_uid;
+
+	public int getMember_uid() {
+		return member_uid;
+	}
+
+	public void setMember_uid(int member_uid) {
+		this.member_uid = member_uid;
+	}
+
+	public int getMarketId() {
+		return marketId;
+	}
+
+	public void setMarketId(int marketId) {
+		this.marketId = marketId;
+	}
+
+	public int getM_Board_Id() {
+		return m_Board_Id;
+	}
+
+	public void setM_Board_Id(int m_Board_Id) {
+		this.m_Board_Id = m_Board_Id;
+	}
+
+	public int getMarketPrice() {
+		return marketPrice;
+	}
+
+	public void setMarketPrice(int marketPrice) {
+		this.marketPrice = marketPrice;
+	}
+
+	public String getMarketAddr() {
+		return marketAddr;
+	}
+
+	public void setMarketAddr(String marketAddr) {
+		this.marketAddr = marketAddr;
+	}
+
+	public String getMarketName() {
+		return marketName;
+	}
+
+	public void setMarketName(String marketName) {
+		this.marketName = marketName;
+	}
 
 	public String getBoard_title() {
 		return Board_title;
