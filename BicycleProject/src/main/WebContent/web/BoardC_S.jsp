@@ -154,7 +154,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -167,7 +167,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -180,7 +180,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 4.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 4.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -193,7 +193,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 5.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 5.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -206,7 +206,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -242,7 +242,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -255,7 +255,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -268,7 +268,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 2.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -281,7 +281,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>
@@ -294,7 +294,7 @@
 
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 6.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text">[팝니다]</p>
                         <p class="card-text">2021-7-25(글생성날짜)</p>

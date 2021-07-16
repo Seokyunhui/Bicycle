@@ -204,6 +204,7 @@
                 </div>
             </div>
 
+
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
                     <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
