@@ -57,51 +57,18 @@ public class MarketBoardDao {
 
 	}
 	
-	public boolean insert(String Category_big, String Category_small, String title, String content, String writer,
-			int Member_id,String market_board_addr,String marketName,int market_price) {
-		String sql = "insert into board (Category_big, Category_small, Board_title, Board_content, Board_writer, B_Member_id) values(?,?,?,?,?,?)";
+	public boolean insert(int Member_id,String market_board_addr,String marketName,int market_price, int board_id) {
 		Connection connection = dbDriver.connDB();
 		boolean check;
-		try {
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, Category_big);
-			pstmt.setString(2, Category_small);
-			pstmt.setString(3, title);
-			pstmt.setString(4, content);
-			pstmt.setString(5, writer);
-			pstmt.setInt(6, Member_id);
-			pstmt.executeUpdate();
-			check = true;
-			
-		} catch (SQLException e) {
-			check = false;
-			e.printStackTrace();
-		}
 		
 		
 		try {
-			int board_id = 0;
-			String boardid = 
-					"select Board_id from board where Category_big = ? and Category_small = ? and Board_title = ? and Board_content = ? and Board_writer = ? and B_Member_id = ?";
-			pstmt = connection.prepareStatement(boardid);
-			pstmt.setString(1, Category_big);
-			pstmt.setString(2, Category_small);
-			pstmt.setString(3, title);
-			pstmt.setString(4, content);
-			pstmt.setString(5, writer);
-			pstmt.setInt(6, Member_id);
-			
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-			board_id = rs.getInt("board_id");
-			}
-			
 			String marketSql = "insert into market_board(M_Board_id, Market_price, Market_addr, Market_name) values(?,?,?,?)";
 			pstmt = connection.prepareStatement(marketSql);
 			pstmt.setInt(1, board_id);
 			pstmt.setInt(2, market_price);
 			pstmt.setString(3, market_board_addr);
-			pstmt.setNString(4, marketName);
+			pstmt.setString(4, marketName);
 			pstmt.executeUpdate();
 			dbDriver.closeAll(pstmt, connection);
 			check = true;
@@ -163,6 +130,46 @@ public class MarketBoardDao {
 
 	}
 	
+	
+	public boolean updateMarket(int market_id, String market_name, String market_price) {
+		String sql = "update market_board set Market_name = ?, Market_price = ?, Market_addr = ? WHERE market_id = ? ";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, market_name);
+			pstmt.setString(2, market_price);
+			pstmt.setInt(3, market_id);
+			pstmt.executeUpdate();
+			check = true;
+			dbDriver.closeAll(pstmt, connection);
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+
+		return check;
+
+	}
+		
+	public boolean deletemarekt(int Board_id, int market_id) {
+		String sql = "DELETE FROM market_board WHERE M_Board_id = ? AND Market_id = ?";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, Board_id);
+			pstmt.setInt(2, market_id);
+			pstmt.executeUpdate();
+			dbDriver.closeAll(pstmt, connection);
+			check = true;
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+		return check;
+
+	}
 	
 	
 

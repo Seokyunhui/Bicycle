@@ -18,6 +18,34 @@ public class BoardDao {
 //		
 //		
 //	}
+	
+	public int getboardId(String writer, String boardContent , int member_id) {
+		Connection connection = dbDriver.connDB();
+		String sql = "select Board_id from Board where Board_writer = ? AND Board_content = ? AND B_Member_id = ?  ";
+		int boardId = 0;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, boardContent);
+			pstmt.setInt(3, member_id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				boardId = rs.getInt("Board_id");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return boardId;
+		
+		
+	}
+	
+	
 
 	public ArrayList<BoardDto> getList() {
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
