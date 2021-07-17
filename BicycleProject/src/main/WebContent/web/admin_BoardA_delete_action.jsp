@@ -22,7 +22,7 @@ request.setCharacterEncoding("UTF-8");
 		script.println("alert('글삭제 성공');");
 		script.println("location.href= './admin_BoardA.jsp'");
 		script.println("</script>");	
-	}
+	} 
 	%>
 </body>
 </html>

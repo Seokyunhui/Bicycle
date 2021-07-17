@@ -22,7 +22,6 @@
 	background-color: cornsilk;
 }
 </style>
-<title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />

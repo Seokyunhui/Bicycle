@@ -29,7 +29,7 @@ public class BoardDao {
 			while (rs.next()) {
 				String categoryBig = rs.getString("Category_big");
 				String categorySmall = rs.getString("Category_small");
-				String boardRegDate = rs.getString("Board_regdate");
+				String boardRegDate = rs.getString("Board_regdate").substring(0, 10);
 				String boardContent = rs.getString("Board_content");
 				String boardWriter = rs.getString("Board_writer");
 				String boardTitle = rs.getString("Board_title");

@@ -1,3 +1,8 @@
+<%@page import="database.MarketBoardDao"%>
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="database.BoardDao"%>
+<%@page import="database.BoardDto"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
@@ -144,136 +149,83 @@
             <div class="col-lg-1">
             </div>
         </div>
-        
+        <%       
+        	List<BoardDto> arrayList = new ArrayList<>();
+      		BoardDto boardDto = new BoardDto();
+      		MarketBoardDao marketBoardDao = new MarketBoardDao();
+      		arrayList = marketBoardDao.getList();
+      		arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("팝니다")).collect(Collectors.toList());     	
+        %>
 
-        <!-- 중고거래 썸네일 -->
+        <!-- 중고거래 상단 썸네일 -->
         <div class="row">
             <div class="col-lg-1">
             </div>
+			<%
+				for(int i = 0; i<5; i++){
+					if(arrayList.size()<=i){
+						break;
+					}	
+					boardDto =  arrayList.get(i);
+			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary-link card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
+                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
+                        <h5 class="card-title "><%=boardDto.getBoard_title() %></h5>
+                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-2 col-md-4">
-
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 4.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 5.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
+			<%} %>
+            <div class="col-lg-1">
             </div>
 
-            <div class="col-lg-2 col-md-4">
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 6.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./image/중고 자전거 2.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">[팝니다]</p>
-                        <p class="card-text">2021-7-25(글생성날짜)</p>
-                        <h5 class="card-title ">(글제목)삼천리 자전거 팝니다</h5>
-                        <p class="card-text">320000원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
-                    </div>
-                </div>
-            </div>
+        </div>
 
-            <div class="col-lg-2">
-
+        <!--공백-->
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <br>
+                <br>
             </div>
             <div class="col-lg-1">
             </div>
+        </div>
+
+        <!-- 중고거래 하단 썸네일 -->
+        <div class="row">
+
+            <div class="col-lg-1">
+            </div>
+
+			<%
+				for(int i = 5; i<10; i++){
+				if(arrayList.size()<=i){ break; }
+				boardDto =  arrayList.get(i);
+			%>			
+            <div class="col-lg-2 col-md-4">
+                <div class="card text-center w-100" style="width: 15rem;">
+                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
+                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
+                        <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
+                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
+                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                    </div>
+                </div>
+            </div>
+			<%} %>
+
+            <div class="col-lg-1">
+            </div>
+            
         </div>
 
         <!--공백-->
@@ -329,8 +281,12 @@
         <div class="row">
             <div class="col-lg-1">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-8">
                 <hr>
+            </div>
+            <div class="col-lg-1">
             </div>
             <div class="col-lg-1">
             </div>

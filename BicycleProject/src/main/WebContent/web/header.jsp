@@ -90,6 +90,10 @@
 					%>
 					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
 					<%
+					} else if(group==5){
+					%>
+					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
+					<%	
 					}
 					%>
 					<li>|</li>

@@ -16,10 +16,11 @@
     </script>
     <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
+
 <body>
 <!-- 헤더 -->
  <%@include file="./header.jsp" %>
-
+	
   
         <!-- 배너 이미지 -->
         <div class="row">
@@ -192,11 +193,9 @@
         <!--hr-->
         <div class="row">
             <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-10">
                 <hr>
             </div>
-            <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
         </div>
 
