@@ -175,7 +175,7 @@
                         <p class="card-text"><%=boardDto.getCategory_small() %></p>
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
                         <h5 class="card-title "><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %></p>
+                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
                         <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                         <p class="card-text"><%=boardDto.getCategory_small() %></p>
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
                         <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %></p>
+                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
                         <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>

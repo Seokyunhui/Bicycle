@@ -145,7 +145,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="card-title"><%=boardDto.getBoard_title()+ " " + boardDto.getCategory_small() %></h5>
+                                <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
                                 <p class="card-text"><%=boardDto.getMarketName() %> </p>
                                 <p class="card-text">가격: <%=boardDto.getMarketPrice() %>원</p>
                                 <p class="card-text">판매자: <%=boardDto.getBoard_writer() %></p>
