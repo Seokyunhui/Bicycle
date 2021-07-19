@@ -1,4 +1,3 @@
-
 <%@page import="database.MemberDto"%>
 <%@page import="database.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -78,7 +77,7 @@
 					}
 					%>
 					<li>|</li>
-					<li><a href="#" class="navbar-link text-dark">소통</a></li>
+					<li><a href="./BoardB_M.jsp" class="navbar-link text-dark">소통</a></li>
 					<li>|</li>
 					<%	
 					if (session.getAttribute("userGroup") != null) {
