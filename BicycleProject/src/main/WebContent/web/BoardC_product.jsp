@@ -1,3 +1,4 @@
+<%@page import="database.Add_fileDao"%>
 <%@page import="database.BoardDto"%>
 <%@page import="database.MarketBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -134,14 +135,15 @@
 			int market_id = Integer.parseInt((String) request.getParameter("Market_id"));
 			MarketBoardDao marketBoardDao = new MarketBoardDao();
 			BoardDto boardDto = marketBoardDao.getDto(market_id);
-			
+			Add_fileDao add_fileDao = new Add_fileDao();
+			add_fileDao.getDto(boardDto.getBoard_id()).getFile_dir();
 			%>
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
                     <div class="row no-gutters">
                         <div class="col-4 w-80%">
-                            <img src="./image/중고 자전거 1.jpg" alt="" class="card-img" />
+                            <img src="d:/Bicycle/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BicycleProject/upload/스크린샷(1)4.png" alt="이미지" class="card-img" />
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">

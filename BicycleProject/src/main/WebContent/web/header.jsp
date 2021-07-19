@@ -69,7 +69,7 @@
 					}
 					if (group != 5) {
 					%>
-					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
+					<li><a href="BoardA.jsp?categoty_sm=자전거 종류" class="navbar-link text-dark">지식정보</a></li>
 					<%
 					}else if (group == 5) {
 					%>
@@ -88,11 +88,11 @@
 					}
 					if (group != 5) {
 					%>
-					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=0" class="navbar-link text-dark">중고거래</a></li>
 					<%
 					} else if(group==5){
 					%>
-					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=0" class="navbar-link text-dark">중고거래</a></li>
 					<%	
 					}
 					%>

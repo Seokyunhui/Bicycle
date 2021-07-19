@@ -153,7 +153,7 @@
         	List<BoardDto> arrayList = new ArrayList<>();
       		BoardDto boardDto = new BoardDto();
       		MarketBoardDao marketBoardDao = new MarketBoardDao();
-      		arrayList = marketBoardDao.getList();
+      		//arrayList = marketBoardDao.getList();
       		arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("삽니다")).collect(Collectors.toList());     	
         %>
 

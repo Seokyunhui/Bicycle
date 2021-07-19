@@ -15,7 +15,6 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 <%
-		
 		PrintWriter script = response.getWriter();
 		BoardDao boardDao = new BoardDao();
 		MemberDao memberDao = new MemberDao();
@@ -33,15 +32,14 @@ request.setCharacterEncoding("UTF-8");
 			script.println("<script>");
 			script.println("alert('글쓰기 성공');");
 			script.println("location.href= './admin_BoardA.jsp'");
-			script.println("</script>");	
+			script.println("</script>");
 		}else{
 			script.println("<script>");
 			script.println("alert('글쓰기 실패');");
 			script.println("history.back();");
 			script.println("</script>");	
 		}
-	
-	%>
+%>
 	
 </body>
 </html>

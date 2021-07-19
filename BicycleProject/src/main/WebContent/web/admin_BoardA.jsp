@@ -62,9 +62,11 @@
 
 
 
-	<%!BoardDao boardDao = new BoardDao();
-	List<BoardDto> arrayList = new ArrayList<>();
-	BoardDto boardDto;%>
+	<%!
+		BoardDao boardDao = new BoardDao();
+		List<BoardDto> arrayList = new ArrayList<>();
+		BoardDto boardDto;
+	%>
 
 
 	<div class="row">

@@ -7,14 +7,16 @@ public class MarketBoardDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
-
-	public ArrayList<BoardDto> getList() {
+	
+	public ArrayList<BoardDto> getList(String cetegory_sm,int pagesize) {
 		Connection connection = dbDriver.connDB();
-		String sql = "select * from boardc";
+		String sql = "select * from boardc where Category_small = ? ORDER BY Board_id DESC LIMIT ?, 10 ";
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
 
 		try {
 			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, cetegory_sm);
+			pstmt.setInt(2, pagesize);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				int market_id = rs.getInt("Market_id");

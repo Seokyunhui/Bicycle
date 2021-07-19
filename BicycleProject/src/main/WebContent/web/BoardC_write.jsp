@@ -122,7 +122,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form action="BoardC_write_action.jsp" method="post">
+		<form action="BoardC_write_action.jsp" method="post" enctype="multipart/form-data" >
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
@@ -212,7 +212,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="file" class="form-control-file" neme="uploadFile">
+                    <input type="file" class="form-control-file" name="uploadFile">
                 </div>
             </div>
             <div class="col-lg-1"></div>

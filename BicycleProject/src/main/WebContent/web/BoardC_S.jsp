@@ -153,8 +153,12 @@
         	List<BoardDto> arrayList = new ArrayList<>();
       		BoardDto boardDto = new BoardDto();
       		MarketBoardDao marketBoardDao = new MarketBoardDao();
-      		arrayList = marketBoardDao.getList();
-      		arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("팝니다")).collect(Collectors.toList());     	
+      		int pagesize = 0;
+      		if(request.getParameter("pagesize")!=null){
+      			pagesize = Integer.parseInt(request.getParameter("pagesize"));
+      		}
+      		arrayList = marketBoardDao.getList("팝니다", pagesize);
+      		   	
         %>
 
         <!-- 중고거래 상단 썸네일 -->
@@ -217,7 +221,7 @@
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
                         <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
                         <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
-                        <a href="BoardC_product.jsp" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -260,11 +264,11 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=0" >1</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
