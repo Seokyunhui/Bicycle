@@ -22,8 +22,8 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 	<%
-	 String path = request.getSession().getServletContext().getRealPath("upload");
-	MultipartRequest multi = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+	 
+	MultipartRequest multi = new MultipartRequest(request, "D:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 	Enumeration files = multi.getFileNames();
 	
 
@@ -32,7 +32,7 @@ request.setCharacterEncoding("UTF-8");
 	String file_contenttype = multi.getContentType(file);
 	File filesize = multi.getFile(file); 
 	int file_Size = (int) filesize.length();
-	String file_Dir = path + "\\" + filename;
+	String file_Dir = "D:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + filename;
 	
 	
 	

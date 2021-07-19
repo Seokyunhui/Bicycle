@@ -1,3 +1,4 @@
+<%@page import="database.Add_fileDao"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="database.BoardDao"%>
@@ -153,6 +154,7 @@
         	List<BoardDto> arrayList = new ArrayList<>();
       		BoardDto boardDto = new BoardDto();
       		MarketBoardDao marketBoardDao = new MarketBoardDao();
+      		Add_fileDao add_fileDao = new Add_fileDao();
       		int pagesize = 0;
       		if(request.getParameter("pagesize")!=null){
       			pagesize = Integer.parseInt(request.getParameter("pagesize"));
@@ -174,7 +176,7 @@
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text"><%=boardDto.getCategory_small() %></p>
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
@@ -215,7 +217,7 @@
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="/image/중고 자전거 1.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text"><%=boardDto.getCategory_small() %></p>
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
