@@ -166,7 +166,8 @@
             </div>
             <div class="col-lg-1"></div>
         </div>
-
+  
+  
         <!-- footer -->
  <%@include file="./footer.jsp" %>
 
