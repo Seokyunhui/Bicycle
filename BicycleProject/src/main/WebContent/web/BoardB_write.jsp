@@ -16,7 +16,14 @@
     </script>
     <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
-
+	<% if(session.getAttribute("userID")==null){ 
+	%>
+		<script>
+			alert('로그인이 필요합니다.'); window.history.back();
+		</script>
+	<% 
+	}
+	%>
 <body>
 <!-- 헤더 -->
  <%@include file="./header.jsp" %>
@@ -123,7 +130,6 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="제목" name="board_title">
                 </div>
-                     <input type="file" value="fileName">
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
@@ -135,6 +141,19 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <br>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+        </div>
+
+	 <!-- 파일 업로드 구역 -->
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <div class="form-group">
+                    <input type="file" class="form-control-file" neme="uploadFile">
+                </div>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
