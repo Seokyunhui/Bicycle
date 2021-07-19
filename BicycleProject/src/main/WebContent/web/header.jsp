@@ -1,4 +1,3 @@
-
 <%@page import="database.MemberDto"%>
 <%@page import="database.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -60,19 +59,42 @@
 
 			<div class="col-lg-4">
 				<ul class="nav nav-pills justify-content-around display-5">
-					<% 
-						String group = (String) session.getAttribute("userGroup");
-					
-					if(group == null) {
+					<%
+					int group = 0;
+					if (session.getAttribute("userGroup") != null) {
+						group = (Integer) session.getAttribute("userGroup");
+					}else {
+						group = 0;
+					}
+					if (group != 5) {
 					%>
 					<li><a href="BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
-					<%}else if(group.equals("5")) { %> 
+					<%
+					}else if (group == 5) {
+					%>
 					<li><a href="admin_BoardA.jsp" class="navbar-link text-dark">지식정보</a></li>
-					<%} %>
+					<%
+					}
+					%>
 					<li>|</li>
-					<li><a href="#" class="navbar-link text-dark">소통</a></li>
+					<li><a href="./BoardB_M.jsp" class="navbar-link text-dark">소통</a></li>
 					<li>|</li>
-					<li><a href="#" class="navbar-link text-dark">중고거래</a></li>
+					<%	
+					if (session.getAttribute("userGroup") != null) {
+						group = (Integer) session.getAttribute("userGroup");
+					}else {
+						group = 0;
+					}
+					if (group != 5) {
+					%>
+					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
+					<%
+					} else if(group==5){
+					%>
+					<li><a href="BoardC_S.jsp" class="navbar-link text-dark">중고거래</a></li>
+					<%	
+					}
+					%>
 					<li>|</li>
 					<li><a href="#" class="navbar-link text-dark">챌린지</a></li>
 				</ul>

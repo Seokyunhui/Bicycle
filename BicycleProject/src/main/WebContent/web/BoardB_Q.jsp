@@ -28,7 +28,6 @@ style>.prpl {
 	background-color: cornsilk;
 }
 </style>
-<title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
@@ -64,6 +63,10 @@ style>.prpl {
 				class="sr-only">Next</span>
 			</a>
 		</div>
+
+
+
+
 		<div class="col-lg-1"></div>
 	</div>
 
@@ -116,6 +119,11 @@ style>.prpl {
 		</div>
 		<!--글등록-->
 		<div class="col-lg-1">
+ 
+
+			<div class="col-lg-5"></div>
+			<div class="col-lg-5">
+
 				<a href="btn btn-info"><input type="button"
 					class="btn btn-primary" value="글등록"></a>
 			</div>

@@ -10,28 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 public class MemberDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+
 	private String id;
 	private String pw;
 	private String name;
 	private ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
-	
-	public MemberDao() {}
+
+	public MemberDao() {
+	}
+
 	public MemberDao(HttpServletRequest request) {
 		id = request.getParameter("userID");
-		pw = request.getParameter("userPW"); 
+		pw = request.getParameter("userPW");
 	}
 
 	public void loginAccept() {
 		DBDriver dbDriver = new DBDriver();
 		Connection conn = dbDriver.connDB();
-		String strQuery =  "SELECT * FROM member WHERE Member_id = ?";
-		
+		String strQuery = "SELECT * FROM member WHERE Member_id = ?";
+
 		try {
 			pstmt = conn.prepareStatement(strQuery);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				String m_id = rs.getString("Member_id");
 				String m_pw = rs.getString("Member_pw");
 				String m_name = rs.getString("Member_name");
@@ -46,28 +48,29 @@ public class MemberDao {
 		}
 
 	}
-	
-	public int loginCheck(){
+
+	public int loginCheck() {
 		loginAccept();
-		if(dtos == null) {
-			return -1; 	//아이디 없음
+		if (dtos == null) {
+			return -1; // 아이디 없음
 		}
-		for(int i = 0; i < dtos.size(); i++) {
-			if(dtos.get(i).getMember_pw().equals(pw)) {
-				return 1;	// 로그인 성공
-			}			
+		for (int i = 0; i < dtos.size(); i++) {
+			if (dtos.get(i).getMember_pw().equals(pw)) {
+				return 1; // 로그인 성공
+			}
 		}
-		return 0;	// 패스워드 오류
+		return 0; // 패스워드 오류
 	}
-	
+
 	public String getUserName() {
 		return name;
 	}
-	
+
+	// ------------
 	public String getUserGroup(String id) {
 		DBDriver dbDriver = new DBDriver();
 		Connection conn = dbDriver.connDB();
-		String strQuery =  "SELECT Member_group FROM member WHERE Member_id = ?";
+		String strQuery = "SELECT Member_group FROM member WHERE Member_id = ?";
 		String group = null;
 		try {
 			pstmt = conn.prepareStatement(strQuery);
@@ -80,42 +83,100 @@ public class MemberDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
+		return group;
+	}
+
+//---------------
+	public MemberDto getUserInfo(String id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery = "SELECT * FROM member WHERE Member_id = ?";
+		int Member_uid, Member_phone, Member_group, Member_regcount, Member_comcount, Member_ch_dist = 0;
+		String Member_id, Member_pw, Member_name, Member_mail, Member_regdate = null; // 아이디
+		MemberDto dto = null;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Member_uid = rs.getInt(1);
+				Member_id = rs.getString("Member_id");
+				Member_pw = rs.getString("Member_pw");
+				Member_name = rs.getString("Member_name");
+				Member_mail = rs.getString("Member_mail_id") + rs.getString("Member_mail_addr");
+				Member_regdate = rs.getString("Member_regdate");
+				Member_phone = rs.getInt("Member_phone");
+				Member_group = rs.getInt("Member_group");
+				Member_regcount = rs.getInt("Member_regcount");
+				Member_comcount = rs.getInt("Member_comcount");
+				Member_ch_dist = rs.getInt("Member_ch_dist");
+				dto = new MemberDto(Member_uid, Member_id, Member_pw, Member_name, Member_phone, Member_mail,
+						Member_regdate, Member_group, Member_regcount, Member_comcount, Member_ch_dist);
+			}
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+
+	public int getMemberUid(String id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery = "SELECT Member_uid FROM member WHERE Member_id = ?";
+		int group = 0;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			rs.next();
+			group = rs.getInt("Member_uid");
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return group;
 	}
 
 	public int Mem_register(MemberDto mem) {
 		Select_Member();
-		if(dtos == null)
+		if (dtos == null)
 			return -1;
-		for(int i = 0; i < dtos.size(); i++) {
-			if(dtos.get(i).getMember_id().equals(mem.getMember_id())) {
+		for (int i = 0; i < dtos.size(); i++) {
+			if (dtos.get(i).getMember_id().equals(mem.getMember_id())) {
 				return 1; // 아이디 중복
 			}
 		}
 		Insert_Member(mem);
 		return 0; // 아이디 중복 X // 회원 등록 O
 	}
+
 	public void Select_Member() {
 		DBDriver dbDriver = new DBDriver();
-		Connection conn =dbDriver.connDB();
+		Connection conn = dbDriver.connDB();
 		String strQuery = "SELECT * FROM member";
 		try {
 			pstmt = conn.prepareStatement(strQuery);
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				String m_id = rs.getString("Member_id");
 				MemberDto mem = new MemberDto(m_id);
 				dtos.add(mem);
-			}			
+			}
 			dbDriver.closeAll(rs, pstmt, conn);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
+
 	public void Insert_Member(MemberDto mem) {
 		DBDriver dbDriver = new DBDriver();
-		Connection conn =dbDriver.connDB();
+		Connection conn = dbDriver.connDB();
 		String strQuery = "INSERT INTO Member (Member_id, Member_pw, Member_name, Member_phone,Member_mail_id,Member_mail_addr) values (?,?,?,?,?,?)";
 
 		try {
@@ -127,14 +188,14 @@ public class MemberDao {
 			String[] mail = mem.getMember_mail().split("@");
 			pstmt.setString(5, mail[0]);
 			pstmt.setString(6, mail[1]);
-			
+
 			pstmt.executeUpdate();
-			
+
 			dbDriver.closeAll(pstmt, conn);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }

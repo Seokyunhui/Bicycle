@@ -1,3 +1,7 @@
+★★★업로드 시 주의사항★★★
+1. 풀리퀘스트 충돌 체크 필수!
+2. 작업은 항상 새로운 branch를 만들어서 진행해주세요
+
 # Bicycle
 Bycycle portfolio
 
@@ -5,9 +9,11 @@ Bycycle portfolio
 
 2021/07/02시작
 
-진행률 30%
+진행률 40%
 
 css: bootstrap4.0.0
+SQL : mysql
+구현도구 : Eclipse
 
 language: JAVA,HTML,SQL,CSS,JSP
 

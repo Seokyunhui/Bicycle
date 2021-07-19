@@ -32,6 +32,19 @@ public class MemberDto {
 		this.Member_phone = Member_phone;
 		this.Member_mail = Member_mail;
 	}
+	//userInfo 생성자
+	public MemberDto(int Member_uid,String Member_id,String Member_pw,String Member_name,int Member_phone,String Member_mail,String Member_regdate,int Member_group,int Member_regcount,int Member_comcount,int Member_ch_dist) {
+		this.Member_id = Member_id;
+		this.Member_pw = Member_pw;
+		this.Member_name = Member_name;
+		this.Member_phone = Member_phone;
+		this.Member_mail = Member_mail;
+		this.Member_regdate = Member_regdate;
+		this.Member_group = Member_group;
+		this.Member_regcount = Member_regcount;
+		this.Member_comcount = Member_comcount;
+		this.Member_ch_dist = Member_ch_dist;
+	}
 	public String getMember_id() {
 		return Member_id;
 	}

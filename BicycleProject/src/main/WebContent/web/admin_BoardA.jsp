@@ -76,7 +76,8 @@
 			<%
 			if (i == 1) {
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류")).collect(Collectors.toList());
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
+				.collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
@@ -87,27 +88,53 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-					<div class="text-right">
-					<form action="login_process.jsp" method="get" id="asd">
-					<input type="submit" class="btn btn-uni btn-sm mr-3" value="글쓰기" name = "<%=boardDto.getBoard_id()%>">
-					<input type="button" class="btn btn-uni btn-sm mr-3">
-					<input type="button" class="btn btn-uni btn-sm mr-3">
-					</form>
-					</div>
-				
-				<%
-				} 
-				%>
+				<div class="text-right">
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
+						쓰기</a>
+				</div>
 
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
 
-				<%
-				}
-				%>
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
+							삭제</button>
+					</form>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 
 
@@ -118,7 +145,7 @@
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			for (int k = 0; k < arrayList.size(); k++) {
-
+				
 				boardDto = arrayList.get(k);
 			%>
 			<%
@@ -128,19 +155,52 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
+				<div class="text-right">
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
+				</div>
 
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
 
-				<%
-				}
-				%>
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
+							삭제</button>
+					</form>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 
 			<%
@@ -157,23 +217,55 @@
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
-				<%
-				}
-				%>
+				<div class="text-right">
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
+				</div>
 
-				<br>
-				<p>
-					<%=boardDto.getBoard_content()%>
-				</p>
 
-				<%
-				}
-				%>
 			</div>
+
+			<%
+			}
+			%>
+			<div class="row justify-content-end">
+
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1 text-right">
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
+							삭제</button>
+					</form>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4 text-center">
+					<h3>
+						<%=boardDto.getBoard_title()%>
+					</h3>
+					<br>
+					<p>
+						<%=boardDto.getBoard_content()%>
+					</p>
+
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+			<%
+			}
+			%>
+
 			<hr>
 			<%
 			}
-
 			}
 			%>
 

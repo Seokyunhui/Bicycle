@@ -1,4 +1,4 @@
-<%@page import="database.MemberDao"%>
+ <%@page import="database.MemberDao"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -25,8 +25,9 @@ request.setCharacterEncoding("UTF-8");
 		script.println("</script>");
 
 		session.setAttribute("userID", id);
-		session.setAttribute("userGroup", dao.getUserGroup(id));
-		String sessionID = (String) session.getAttribute("id");
+		//session.setAttribute("userGroup", dao.getUserGroup(id));
+		session.setAttribute("userGroup", dao.getUserInfo(id).getMember_group());
+		String sessionID = (String) session.getAttribute("userID");
 		script.println("<script>");
 		script.println("alert(" + sessionID + ");");
 		script.println("</script>");

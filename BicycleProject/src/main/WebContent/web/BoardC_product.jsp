@@ -1,3 +1,5 @@
+<%@page import="database.BoardDto"%>
+<%@page import="database.MarketBoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -128,7 +130,12 @@
             </div>
             <div class="col-lg-1">
             </div>
-
+			<%
+			int market_id = Integer.parseInt((String) request.getParameter("Market_id"));
+			MarketBoardDao marketBoardDao = new MarketBoardDao();
+			BoardDto boardDto = marketBoardDao.getDto(market_id);
+			
+			%>
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
@@ -138,13 +145,13 @@
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="card-title">[글제목 팝니다]</h5>
-                                <p class="card-text">이름: 자전거 </p>
-                                <p class="card-text">가격: 5000원</p>
-                                <p class="card-text">판매자: 서규니</p>
+                                <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
+                                <p class="card-text"><%=boardDto.getMarketName() %> </p>
+                                <p class="card-text">가격: <%=boardDto.getMarketPrice() %>원</p>
+                                <p class="card-text">판매자: <%=boardDto.getBoard_writer() %></p>
                                 <p class="card-text">번호: 010-0000-0000</p>
-                                <p class="card-text">지역: 김포시 장기동</p>
-                                <p class="card-text">이자전거는 서규니씨가 애지중지한 자전거입니다 값싸게 판매합니다!</p>
+                                <p class="card-text">지역: <%=boardDto.getMarketAddr() %></p>
+                                <p class="card-text"><%=boardDto.getBoard_content() %></p>
                             </div>
                         </div>
                     </div>
