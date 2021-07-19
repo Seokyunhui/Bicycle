@@ -40,7 +40,6 @@
                     <img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide" class="w-100">
                 </div>
             </div>
-
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span> </a>
@@ -52,52 +51,38 @@
             </div>
         </div>
 
-
-        <!-- hr 줄 구역 -->
+       
+        <!--hr-->
         <div class="row">
-            <div class="col-lg-1">
-            </div>
+            <div class="col-lg-1"></div>
             <div class="col-lg-10">
                 <hr>
             </div>
-            <div class="col-lg-1">
-            </div>
+            <div class="col-lg-1"></div>
         </div>
 
         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
-        <!-- 공백 -->
+         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
-                <h3>게시글 등록</h3><br>
+            <div class="col-lg-12">
+                <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
-		<form action="admin_BoardA_write_action.jsp" method="post">
+		<form action="BoardB_write_action.jsp" method="post">
         <!-- 팝,삽 카테고리 -->
         <div class="row">
             <div class="col-lg-1"></div>
@@ -129,64 +114,47 @@
             <div class="col-lg-1"></div>
         </div>
 
-        <!-- 공백 -->
+         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
         <!-- 상세 텍스트 구역 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
+            <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <div class="form-group">
 
-                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." 
+                    <textarea class="form-control" rows="20" placeholder="자유롭게 작성해주세요." 
                         name="Board_content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
+            <div class="col-lg-2"></div>
         </div>
 		</form>
+		
         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
         <!-- 공백 -->
         <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <br>
             </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
         </div>
 
 
@@ -198,7 +166,8 @@
             </div>
             <div class="col-lg-1"></div>
         </div>
-
+  
+  
         <!-- footer -->
  <%@include file="./footer.jsp" %>
 
