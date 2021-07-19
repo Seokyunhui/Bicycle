@@ -36,6 +36,7 @@
 					String writer = request.getParameter("writer");
 					int MemberId 	= memberDao.getMemberUid(writer);
 					
+					
 				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberUid)){
 					script.println("<script>");
 					script.println("alert('등록되었습니다.')");

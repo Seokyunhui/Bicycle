@@ -136,6 +136,7 @@ style>.prpl {
 				<table class="table table-hover">
 					<div class="panel-heading">게시판</div>
 					
+					
 					<thead>
 						<tr style="height: 60%">
 							<th style="width: 10%">번호</th>
