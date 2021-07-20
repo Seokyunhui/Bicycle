@@ -138,6 +138,8 @@
 			MarketBoardDao marketBoardDao = new MarketBoardDao();
 			BoardDto boardDto = marketBoardDao.getDto(market_id);
 			Add_fileDao add_fileDao = new Add_fileDao();
+			MemberDao memberDao = new MemberDao();
+			MemberDto memberDto = memberDao.getUserInfo(boardDto.getBoard_writer());
 			
 			%>
         <div class="col-lg-8">
@@ -154,7 +156,7 @@
                                 <p class="card-text"><%=boardDto.getMarketName() %> </p>
                                 <p class="card-text">가격: <%=boardDto.getMarketPrice() %>원</p>
                                 <p class="card-text">판매자: <%=boardDto.getBoard_writer() %></p>
-                                <p class="card-text">번호: 010-0000-0000</p>
+                                <p class="card-text">번호: 0<%= memberDto.getMember_phone() %></p>
                                 <p class="card-text">지역: <%=boardDto.getMarketAddr() %></p>
                                 <p class="card-text"><%=boardDto.getBoard_content() %></p>
                             </div>

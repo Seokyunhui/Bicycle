@@ -29,6 +29,7 @@ request.setCharacterEncoding("UTF-8");
 
 	String file = (String) files.nextElement();
 	String filename = multi.getFilesystemName(file); //
+	
 	String file_contenttype = multi.getContentType(file);
 	File filesize = multi.getFile(file); 
 	int file_Size = (int) filesize.length();
