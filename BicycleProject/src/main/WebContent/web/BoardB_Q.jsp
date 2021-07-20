@@ -18,6 +18,12 @@
 	padding-right: 20px;
 }
 
+<
+style>.prpl {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 .footer {
 	background-color: cornsilk;
 }
@@ -59,6 +65,8 @@
 		</div>
 
 
+
+
 		<div class="col-lg-1"></div>
 	</div>
 
@@ -72,8 +80,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4"></div>
+		<div class="col-lg-8"></div>
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
 				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">자유게시판</a></li>
@@ -83,25 +90,19 @@
 				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
+		<div class="col-lg-1"></div>
 	</div>
 
-
+	<!-- 공백 -->
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
+		<div class="col-lg-12">
 			<br>
 		</div>
 	</div>
+
+
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
+		<div class="col-lg-9"></div>
 		<div class="col-lg-1">
 			<!--검색-->
 			<form action="">
@@ -118,14 +119,18 @@
 		</div>
 		<!--글등록-->
 		<div class="col-lg-1">
+ 
+
 			<div class="col-lg-5"></div>
 			<div class="col-lg-5">
+
 				<a href="btn btn-info"><input type="button"
 					class="btn btn-primary" value="글등록"></a>
 			</div>
-		</div>
 		<div class="col-lg-1"></div>
-	</div>
+		</div>
+
+	<!-- 공백 -->
 	<div class="row">
 		<br>
 	</div>
@@ -138,6 +143,8 @@
 				<!-- Default panel contents -->
 				<table class="table table-hover">
 					<div class="panel-heading">게시판</div>
+					
+					
 					<thead>
 						<tr style="height: 60%">
 							<th style="width: 10%">번호</th>
@@ -161,18 +168,13 @@
 				</table>
 			</div>
 		</div>
-
 		<div class="col-lg-1"></div>
 	</div>
 
 
 	<!--목록버튼-->
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
+		<div class="col-lg-5"></div>
 		<div class="col-lg-2">
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="#"> < </a></li>
@@ -184,12 +186,7 @@
 				<li class="page-item"><a class="page-link" href="#">></a></li>
 			</ul>
 		</div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-		<div class="col-lg-1"></div>
-
+		<div class="col-lg-5"></div>
 	</div>
 
 
