@@ -14,10 +14,16 @@
 
 </head>
 <script type = "text/javascript">
+function guest_rep_onclick_reply(action, id){
+	var s = id;
+	var a = action;
+	window.open("BoardB_M_Commentform.jsp?id="+encodeURI(s)+'&action=' + encodeURI(a),"댓글추가","width=400, height=300, left=100, top=50");
+	//window.location.href = url; 
+}
 function guest_rep_onclick_edit(action,id){
 	var s = id;
 	var a = action;
-	window.open("BoardB_M_editform.jsp?id="+encodeURI(s),"댓글수정","width=400, height=300, left=100, top=50");
+	window.open("BoardB_M_editform.jsp?id="+encodeURI(s)+'action=' + encodeURI(a),"글수정","width=400, height=300, left=100, top=50");
 	//window.location.href = url; 
 }
 function guest_rep_onclick_delete(action,id){
@@ -92,8 +98,8 @@ function guest_rep_onclick_delete(action,id){
 								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> 
 								<%} %>
 								<a
-								href="#" onclick="guest_rep_onclick_reply"
-								class="btn btn-default btn-xs">&nbsp;<span>리플</span></a>
+								href="#" onclick="guest_rep_onclick_reply('comment','<%=boardDto.getBoard_id() %>')"
+								class="btn btn-default btn-xs">&nbsp;<span>댓글</span></a>
 							</span>
 							<div class="row">
 								
@@ -105,7 +111,7 @@ function guest_rep_onclick_delete(action,id){
 								<div class="col-lg-1"></div>
 								<div class="col-lg-10">
 									<ul class="list-group">
-										<li id="guest_rep_id]" class="list-group-item">
+										<li id="guest_rep_id" class="list-group-item">
 											<div class="guest_rep_class">
 												<strong>내옹이</strong> <small>(리플 단 날짜 및 시간)</small> <span
 													class="control"> <a href="#"
@@ -127,6 +133,7 @@ function guest_rep_onclick_delete(action,id){
 					<br>
 						
 						<br>
+						<!--  댓글 창
 						<div class="row">
 							<div class="col-lg-1"></div>
 							<div class="col-lg-10">
@@ -137,6 +144,7 @@ function guest_rep_onclick_delete(action,id){
 							</div>
 							<div class="col-lg-1"></div>
 						</div>
+						 -->
 					</li>
 				</ol>
 			</div>

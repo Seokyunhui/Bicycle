@@ -22,7 +22,7 @@
 			script.println("<script>");
 			script.println("location.href= './BoardB_M.jsp'");
 			script.println("</script>");
-		}else{
+		}else if(action.equals("edit")){
 			String boardTitle = "-";
 			String boardContent = request.getParameter("BoardB_M_Contents");
 
@@ -37,7 +37,10 @@
 				script.println("history.back();");
 				script.println("</script>");
 			}
+		}else if(action.equals("comment")){
+			
 		}
+		
 	%>
 
 </body>

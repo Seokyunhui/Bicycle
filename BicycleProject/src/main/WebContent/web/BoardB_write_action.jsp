@@ -43,7 +43,7 @@ request.setCharacterEncoding("UTF-8");
 					int MemberId 	= memberDao.getMemberUid(writer);
 					
 					
-				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberUid)){
+				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberId)){
 					script.println("<script>");
 					script.println("alert('등록되었습니다.')");
 					script.println("</script>");
