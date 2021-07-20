@@ -75,9 +75,10 @@
 			%>
 			<%
 			if (i == 1) {
-				arrayList = boardDao.getList();
+				arrayList = boardDao.getList();//현재 board 테이블에 있는 모든 값을 객체화 하여 ArrayList 컬렉션으로 대입
 				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
 				.collect(Collectors.toList());
+				//board 테이블안 행 요소들의 category_sm 값이 자전거 종류(공백포함) 인 요소들만 필터링하여 List 타입으로 리턴
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
@@ -94,7 +95,8 @@
 
 			<%
 			for (int k = 0; k < arrayList.size(); k++) {
-				boardDto = arrayList.get(k);
+				//k가 arrayList 안 객체숫자보다 클때까지 반복
+				boardDto = arrayList.get(k);//arrayList의 k 번째 값을 boardDto에 대입 *제네릭타입은 <BoardDto> 이다.*
 			%>
 
 			<div class="row justify-content-end">
@@ -103,6 +105,7 @@
 					<form
 						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
+						<!-- k번째 boardDto.getBoard_id() 리턴값 으로 form태그 action 태그안 Board_id 값을 지정  -->
 						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
 					</form>
 				</div>
@@ -110,6 +113,7 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
+						<!-- k번째 boardDto.getBoard_id() 리턴값 으로 form태그 action 태그안 Board_id 값을 지정  -->
 						<button type="submit" class="btn btn-uni btn-sm mr-3"
 							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
 					</form>
@@ -119,11 +123,11 @@
 				<div class="col-md-4"></div>
 				<div class="col-md-4 text-center">
 					<h3>
-						<%=boardDto.getBoard_title()%>
+						<%=boardDto.getBoard_title()%> <!-- k번째 boardDto의 Board_title 필드값 get 메소드로 호출 -->
 					</h3>
 					<br>
 					<p>
-						<%=boardDto.getBoard_content()%>
+						<%=boardDto.getBoard_content()%><!-- k번째 boardDto의 Board_content 필드값 get 메소드로 호출 -->
 					</p>
 
 				</div>
@@ -139,7 +143,7 @@
 
 
 			<%
-			} else if (i == 2) {
+			} else if (i == 2) {//i가 2일때 category_sm 값이 유의사항인 객체를 필터링
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
 			%>
@@ -203,7 +207,7 @@
 			<hr>
 
 			<%
-			} else if (i == 3) {
+			} else if (i == 3) { //i가 2일때 category_sm 값이 대처사항 인 객체를 필터링
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).collect(Collectors.toList());
 			%>
