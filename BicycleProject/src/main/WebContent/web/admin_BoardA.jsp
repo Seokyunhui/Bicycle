@@ -78,16 +78,11 @@
 				arrayList = boardDao.getList();
 				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
 				.collect(Collectors.toList());
-				for (int k = 0; k < arrayList.size(); k++) {
-					boardDto = arrayList.get(k);
-			%>
-			<%
-			if (k == 0) {
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1><%=boardDto.getCategory_small()%></h1>
+				<h1>지식정보</h1>
 				<div class="text-right">
 					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
 						쓰기</a>
@@ -96,9 +91,12 @@
 
 			</div>
 
+
 			<%
-			}
+			for (int k = 0; k < arrayList.size(); k++) {
+				boardDto = arrayList.get(k);
 			%>
+
 			<div class="row justify-content-end">
 
 				<div class="col-md-1 text-right">
@@ -112,8 +110,8 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
-							삭제</button>
+						<button type="submit" class="btn btn-uni btn-sm mr-3"
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
 					</form>
 				</div>
 			</div>
@@ -144,27 +142,28 @@
 			} else if (i == 2) {
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
-			for (int k = 0; k < arrayList.size(); k++) {
-				
-				boardDto = arrayList.get(k);
-			%>
-			<%
-			if (k == 0) {
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1><%=boardDto.getCategory_small()%></h1>
+				<h1>대처사항</h1>
 				<div class="text-right">
-					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
+						쓰기</a>
 				</div>
 
 
 			</div>
 
 			<%
-			}
+			for (int k = 0; k < arrayList.size(); k++) {
+
+				boardDto = arrayList.get(k);
 			%>
+
+
+
+
 			<div class="row justify-content-end">
 
 				<div class="col-md-1 text-right">
@@ -178,8 +177,8 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
-							삭제</button>
+						<button type="submit" class="btn btn-uni btn-sm mr-3"
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
 					</form>
 				</div>
 			</div>
@@ -207,26 +206,24 @@
 			} else if (i == 3) {
 			arrayList = boardDao.getList();
 			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).collect(Collectors.toList());
-			for (int k = 0; k < arrayList.size(); k++) {
-				boardDto = arrayList.get(k);
-			%>
-			<%
-			if (k == 0) {
 			%>
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1><%=boardDto.getCategory_small()%></h1>
+				<h1>유의사항</h1>
 				<div class="text-right">
-					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글 쓰기</a>
+					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
+						쓰기</a>
 				</div>
 
 
 			</div>
 
 			<%
-			}
+			for (int k = 0; k < arrayList.size(); k++) {
+				boardDto = arrayList.get(k);
 			%>
+
 			<div class="row justify-content-end">
 
 				<div class="col-md-1 text-right">
@@ -240,8 +237,8 @@
 					<form
 						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
 						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3" onclick="return confirm('정말로 삭제하시겠습니까?')">글
-							삭제</button>
+						<button type="submit" class="btn btn-uni btn-sm mr-3"
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
 					</form>
 				</div>
 			</div>

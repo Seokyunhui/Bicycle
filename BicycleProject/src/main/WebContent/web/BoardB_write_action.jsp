@@ -1,4 +1,3 @@
-
 <%@page import="javax.swing.border.Border"%>
 <%@page import="database.MemberDao"%>
 <%@page import="database.BoardDao"%>
