@@ -19,14 +19,14 @@ USE `BicycleDB` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BicycleDB`.`Member` (
   `Member_uid` INT NOT NULL AUTO_INCREMENT,
-  `Member_id` VARCHAR(10) NOT NULL UNIQUE,
+  `Member_id` VARCHAR(10) NOT NULL,
   `Member_pw` VARCHAR(20) NOT NULL,
   `Member_name` VARCHAR(10) NOT NULL,
-  `Member_phone` INT NOT NULL DEFAULT 0,
+  `Member_phone` CHAR(11) NOT NULL DEFAULT 0,
   `Member_mail_id` CHAR(20) NOT NULL DEFAULT 0,
   `Member_mail_addr` CHAR(20) NOT NULL DEFAULT 0,
   `Member_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Member_group` CHAR(10) NOT NULL DEFAULT 0,
+  `Member_group` CHAR(10) NOT NULL DEFAULT '1',
   `Member_regcount` INT NOT NULL DEFAULT 0,
   `Member_comcount` INT NOT NULL DEFAULT 0,
   `Member_ch_dist` INT NOT NULL DEFAULT 0,
@@ -42,19 +42,19 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Board` (
   `Category_big` VARCHAR(45) NOT NULL,
   `Category_small` VARCHAR(45) NOT NULL,
   `Board_writer` VARCHAR(10) NOT NULL,
+  `Board_title` VARCHAR(45) NOT NULL,
   `Board_content` TEXT(100) NULL,
   `Board_hit` INT NOT NULL DEFAULT 0,
   `Board_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Board_editdate` DATETIME NULL,
+  `Board_editdate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `B_Member_id` INT NOT NULL,
-  `Board_title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Board_id`),
   INDEX `Member_id_idx` (`B_Member_id` ASC) VISIBLE,
   CONSTRAINT `Member_id`
     FOREIGN KEY (`B_Member_id`)
     REFERENCES `BicycleDB`.`Member` (`Member_uid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Add_File` (
   `File_contenttype` VARCHAR(50) NOT NULL,
   `F_Board_id` INT NOT NULL,
   `File_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `File_editdate` DATETIME NULL,
+  `File_editdate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `F_Member_id` INT NOT NULL,
   PRIMARY KEY (`File_id`),
   INDEX `Member_id_idx` (`F_Member_id` ASC) VISIBLE,
@@ -77,13 +77,13 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Add_File` (
   CONSTRAINT `F_Member_id`
     FOREIGN KEY (`F_Member_id`)
     REFERENCES `BicycleDB`.`Member` (`Member_uid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `F_Board_id`
     FOREIGN KEY (`F_Board_id`)
     REFERENCES `BicycleDB`.`Board` (`Board_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Comment` (
   `Comment_name` VARCHAR(50) NOT NULL,
   `Comment_content` TEXT(50) NOT NULL,
   `Comment_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Comment_editdate` DATETIME NULL,
+  `Comment_editdate` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `C_Member_id` INT NOT NULL,
   `C_Board_id` INT NOT NULL,
   PRIMARY KEY (`Comment_id`),
@@ -104,13 +104,13 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Comment` (
   CONSTRAINT `C_Member_id`
     FOREIGN KEY (`C_Member_id`)
     REFERENCES `BicycleDB`.`Member` (`Member_uid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `C_Board_id`
     FOREIGN KEY (`C_Board_id`)
     REFERENCES `BicycleDB`.`Board` (`Board_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -128,8 +128,8 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Market_Board` (
   CONSTRAINT `M_Board_id`
     FOREIGN KEY (`M_Board_id`)
     REFERENCES `BicycleDB`.`Board` (`Board_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -145,8 +145,8 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Challege` (
   CONSTRAINT `Ch_Member_id`
     FOREIGN KEY (`Ch_Member_id`)
     REFERENCES `BicycleDB`.`Member` (`Member_uid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 USE `BicycleDB` ;
@@ -154,10 +154,10 @@ USE `BicycleDB` ;
 -- -----------------------------------------------------
 -- Placeholder table for view `BicycleDB`.`BoardC`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_regdate` INT, `Market_name` INT, `Martket_price` INT, `Market_addr` INT);
+CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`B_Member_id` INT, `Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_regdate` INT, `Market_name` INT, `Market_price` INT, `Market_addr` INT, `Market_id` INT);
 
 -- -----------------------------------------------------
--- View `BicycleDB`.`BoardC`  중고거래 게시판 뷰
+-- View `BicycleDB`.`BoardC`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
@@ -167,27 +167,20 @@ c.Market_name,c.Market_price,Market_addr, c.Market_id
 From Member AS a, Board AS b, Market_Board AS c
 where b.Category_big like '중고거래' AND a.Member_uid = b.B_Member_id AND b.Board_id = c.M_Board_id;
 
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-create user 'bicycleDBAdmin'@'%' IDENTIFIED BY '1234';
-grant all privileges on bicycledb.* to 'bicycleDBAdmin' with grant option;
+-- -----------------------------------------------------
+-- Data for table `BicycleDB`.`Member`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `BicycleDB`;
+INSERT INTO `BicycleDB`.`Member` (`Member_uid`, `Member_id`, `Member_pw`, `Member_name`, `Member_phone`, `Member_mail_id`, `Member_mail_addr`, `Member_regdate`, `Member_group`, `Member_regcount`, `Member_comcount`, `Member_ch_dist`) VALUES (1, 'admin', '1234', '관리자', '01011111111', 'test', 'test.com', '2021-07-01 19:21:36', '5', 0, 0, 0);
+INSERT INTO `BicycleDB`.`Member` (`Member_uid`, `Member_id`, `Member_pw`, `Member_name`, `Member_phone`, `Member_mail_id`, `Member_mail_addr`, `Member_regdate`, `Member_group`, `Member_regcount`, `Member_comcount`, `Member_ch_dist`) VALUES (2, 'red', '1234', '김빨강', '01012343333', 'red', 'test.com', '2021-07-10 10:20:36', '1', 0, 0, 0);
+INSERT INTO `BicycleDB`.`Member` (`Member_uid`, `Member_id`, `Member_pw`, `Member_name`, `Member_phone`, `Member_mail_id`, `Member_mail_addr`, `Member_regdate`, `Member_group`, `Member_regcount`, `Member_comcount`, `Member_ch_dist`) VALUES (3, 'blue', '1234', '이파랑', '01011113333', 'blue', 'test.com', '2021-07-10 20:20:36', '2', 0, 0, 0);
+INSERT INTO `BicycleDB`.`Member` (`Member_uid`, `Member_id`, `Member_pw`, `Member_name`, `Member_phone`, `Member_mail_id`, `Member_mail_addr`, `Member_regdate`, `Member_group`, `Member_regcount`, `Member_comcount`, `Member_ch_dist`) VALUES (4, 'black', '1234', '박검정', '01022223333', 'black', 'test.com', '2021-07-11 14:13:00', '3', 0, 0, 0);
+INSERT INTO `BicycleDB`.`Member` (`Member_uid`, `Member_id`, `Member_pw`, `Member_name`, `Member_phone`, `Member_mail_id`, `Member_mail_addr`, `Member_regdate`, `Member_group`, `Member_regcount`, `Member_comcount`, `Member_ch_dist`) VALUES (5, 'white', '1234', '최하양', '01099998888', 'white', 'test.com', '2021-07-12 09:21:12', '4', 0, 0, 0);
 
-/*  데이터 추가   */
-use bicycledb;
-select * from member;
-insert into member (Member_id, Member_pw, Member_name) values ('admin', 1234, '관리자');
-
--------------------------------------------------------------
--- Insert BoardA (지식정보게시판) 데이터 추가
--------------------------------------------------------------
-select * from board;
-update member set Member_group = 5 where Member_uid = 1;
-insert into board (Category_big, Category_small, Board_title, Board_content, Board_writer, B_Member_id) values('지식정보','자전거 종류','로드 바이크','얇은 타이어와 밑쪽으로 구부러진 핸들이 특징인 로드 바이크. 스포츠 바이크 중에서도 특히 고속 주행 성능을 추구하여 설계. 자전거 레이스는 물론 출퇴근에 사용하는 분들도 많다. 바람과 일체가 되서 주행하는 질주감은 로드 바이크 최대의 매력이고 특징이다.','관리자','1');
-insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','자전거 종류','얇은 타이어와 밑쪽으로 구부러진 핸들이 특징인 로드 바이크. 스포츠 바이크 중에서도 특히 고속 주행 성능을 추구하여 설계. 자전거 레이스는 물론 출퇴근에 사용하는 분들도 많다. 바람과 일체가 되서 주행하는 질주감은 로드 바이크 최대의 매력이고 특징이다.','관리자','1');
-insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','유의사항','헬멧 써야함','관리자','1');
-insert into board (Category_big, Category_small, Board_content,Board_writer,B_Member_id) values('지식정보','대처사항','자전거 체인 빠지면 넣어야함','관리자','1');
- 
+COMMIT;
 
