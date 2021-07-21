@@ -134,7 +134,7 @@ public class MarketBoardDao {
 	
 	
 	public boolean updateMarket(int market_id, String market_name, String market_price) {
-		String sql = "update market_board set Market_name = ?, Market_price = ?, Market_addr = ? WHERE market_id = ? ";
+		String sql = "update market_board set Market_name = ?, Market_price = ?, WHERE market_id = ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {

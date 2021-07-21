@@ -176,7 +176,7 @@
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name()%>" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text"><%=boardDto.getCategory_small() %></p>
                         <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
