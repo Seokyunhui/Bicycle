@@ -97,9 +97,9 @@
         <div class="col-lg-8 "></div>
         <div class="col-lg-2">
             <ul class="nav nav-pills justify-content-around display-8">
-                <li><a href="#" class="navbar-link text-dark">삽니다</a></li>
-                <li>|</li>
                 <li><a href="#" class="navbar-link text-dark">팝니다</a></li>
+                <li>|</li>
+                <li><a href="#" class="navbar-link text-dark">삽니다</a></li>
             </ul>
         </div>
         <div class="col-lg-1">
