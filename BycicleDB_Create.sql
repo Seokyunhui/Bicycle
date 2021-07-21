@@ -172,6 +172,14 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- bicycleDBAdmin 계정 및 권한 부여
+-- -----------------------------------------------------
+
+create user 'bicycleDBAdmin'@'%' IDENTIFIED BY '1234';
+grant all privileges on bicycledb.* to 'bicycleDBAdmin' with grant option;
+
+
+-- -----------------------------------------------------
 -- Data for table `BicycleDB`.`Member`
 -- -----------------------------------------------------
 START TRANSACTION;
