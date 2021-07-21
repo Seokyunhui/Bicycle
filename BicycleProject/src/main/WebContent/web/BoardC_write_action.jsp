@@ -23,7 +23,7 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<%
 	 //절대경로 본인껄로 바꿔 쓰세요 J = D
-	MultipartRequest multi = new MultipartRequest(request, "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+	MultipartRequest multi = new MultipartRequest(request, "E:/유창석/구현작업/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 	Enumeration files = multi.getFileNames();
 	
 
@@ -33,7 +33,7 @@ request.setCharacterEncoding("UTF-8");
 	String file_contenttype = multi.getContentType(file);
 	File filesize = multi.getFile(file); 
 	int file_Size = (int) filesize.length();
-	String file_Dir = "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + filename;
+	String file_Dir = "E:/유창석/구현작업/Bicycle/BicycleProject/src/main/WebContent/web/upload" + filename;
 	
 	
 	
@@ -47,7 +47,8 @@ request.setCharacterEncoding("UTF-8");
 	String categorySm = null; // 소분류
 	String market_board_addr = null; // 중고거래 지역
 	String marketName = null; // 중고거래 물품 종류
-
+	
+	//카테고리 콤보박스
 	for (String value : multi.getParameterValues("board_category_sm")) { // 중고거래 소분류 가져오기
 		categorySm = value;
 	}
@@ -55,7 +56,7 @@ request.setCharacterEncoding("UTF-8");
 	for (String value : multi.getParameterValues("market_board_addr")) { // 중고거래 지역 가져오기
 		market_board_addr = value;
 	}
-	for (String value : multi.getParameterValues("market_name")) {
+	for (String value : multi.getParameterValues("market_name")) { // 물품 종류
 		marketName = value;
 	}
 	int market_price = Integer.parseInt(multi.getParameter("market_price"));
