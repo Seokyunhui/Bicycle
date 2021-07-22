@@ -1,5 +1,6 @@
 package database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ public class Add_fileDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
-	
+
 	public Add_fileDto getDto(int id) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from add_file where F_Board_id= ? ";
@@ -29,9 +30,7 @@ public class Add_fileDao {
 				String file_Regdate = rs.getString("File_regdate");
 				String file_Editdate = rs.getString("File_editdate");
 				int F_Member_id = rs.getInt("F_Member_id");
-				
 
-				
 				add_fileDto.setFile_id(file_Id);
 				add_fileDto.setFile_name(file_Name);
 				add_fileDto.setFile_size(file_Size);
@@ -41,7 +40,7 @@ public class Add_fileDao {
 				add_fileDto.setFile_regdate(file_Regdate);
 				add_fileDto.setFile_editdate(file_Editdate);
 				add_fileDto.setF_Member_id(F_Member_id);
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -50,8 +49,8 @@ public class Add_fileDao {
 		return add_fileDto;
 	}
 
-	public boolean insert(String file_name, int file_size , String file_dir, String file_Contenttype,int f_Board_id, int Member_id) 
-			{
+	public boolean insert(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id,
+			int Member_id) {
 		String sql = "insert into add_file (File_name, File_size, File_dir, File_contenttype, F_Board_id, F_Member_id) values(?,?,?,?,?,?)";
 		Connection connection = dbDriver.connDB();
 		boolean check;
@@ -73,5 +72,51 @@ public class Add_fileDao {
 		return check;
 
 	}
+
+	public boolean update(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id
+			) {
+		String sql = "update add_file set File_name= ?, File_size = ?,File_dir = ?, File_contenttype = ?  WHERE F_Board_id = ?";
+		Connection connection = dbDriver.connDB();
+		boolean check;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, file_name);
+			pstmt.setInt(2, file_size);
+			pstmt.setString(3, file_dir);
+			pstmt.setString(4, file_Contenttype);
+			pstmt.setInt(5, f_Board_id);
+			pstmt.executeUpdate();
+			check = true;
+		} catch (SQLException e) {
+			check = false;
+			e.printStackTrace();
+		}
+
+		return check;
+
+	}
 	
+	
+    public void deleteFile(String file) {
+        
+        // 파일의 경로 + 파일명
+        String filePath = "j:/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + file ;
+        
+        File deleteFile = new File(filePath);
+ 
+        // 파일이 존재하는지 체크 존재할경우 true, 존재하지않을경우 false
+        if(deleteFile.exists()) {
+            
+            // 파일을 삭제합니다.
+            deleteFile.delete(); 
+            
+            System.out.println("파일을 삭제하였습니다.");
+            
+        } else {
+            System.out.println("파일이 존재하지 않습니다.");
+        }
+    }
+	
+	
+
 }

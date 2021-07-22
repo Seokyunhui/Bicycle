@@ -1,6 +1,6 @@
 <%@page import="database.Add_fileDto"%>
 <%@page import="database.Add_fileDao"%>
-<%@page import="jdk.internal.net.http.ResponseBodyHandlers.FileDownloadBodyHandler"%>
+<%-- <%@page import="jdk.internal.net.http.ResponseBodyHandlers.FileDownloadBodyHandler"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="database.BoardDto"%>
@@ -136,7 +136,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form action="BoardC_update_action.jsp?market_id=<%= boardDto.getMarketId() %>" method="post">
+		<form action="BoardC_update_action.jsp?market_id=<%= boardDto.getMarketId() %>" method="post" enctype="multipart/form-data">
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
