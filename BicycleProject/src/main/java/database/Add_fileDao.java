@@ -73,8 +73,7 @@ public class Add_fileDao {
 
 	}
 
-	public boolean update(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id
-			) {
+	public boolean update(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id) {
 		String sql = "update add_file set File_name= ?, File_size = ?,File_dir = ?, File_contenttype = ?  WHERE F_Board_id = ?";
 		Connection connection = dbDriver.connDB();
 		boolean check;
@@ -95,28 +94,18 @@ public class Add_fileDao {
 		return check;
 
 	}
-	
-	
-    public void deleteFile(String file) {
-        
-        // 파일의 경로 + 파일명
-        String filePath = "j:/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + file ;
-        
-        File deleteFile = new File(filePath);
- 
-        // 파일이 존재하는지 체크 존재할경우 true, 존재하지않을경우 false
-        if(deleteFile.exists()) {
-            
-            // 파일을 삭제합니다.
-            deleteFile.delete(); 
-            
-            System.out.println("파일을 삭제하였습니다.");
-            
-        } else {
-            System.out.println("파일이 존재하지 않습니다.");
-        }
-    }
-	
-	
+
+	public void deleteFile(String file) {
+
+		String filePath = "D:\\Bicycle\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload\\" + file;
+
+		File deleteFile = new File(filePath);
+
+		if (deleteFile.exists()) {
+
+			deleteFile.delete();
+
+		}
+	}
 
 }
