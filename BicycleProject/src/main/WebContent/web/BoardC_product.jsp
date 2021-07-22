@@ -172,12 +172,12 @@
             	<%
             		if(group != 5){
             	%>
-            	<a href="BoardC_.jsp?Board_id=<%=boardDto.getBoard_id() %>" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
-                <a href="BoardC_update.jsp?Board_id=<%= market_id %>" class="btn btn-primary card text-white bg-dark" style="float: right;">수정</a>
+            	<a href="BoardC_delete_action.jsp?market_id=<%= market_id%>" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
+                <a href="BoardC_update.jsp?market_id=<%= market_id %>" class="btn btn-primary card text-white bg-dark" style="float: right;">수정</a>
                 <%
 				} else {
                 %>
-                <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
+                <a href="BoardC_delete_action.jsp?market_id=<%= market_id%>" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
 				<%
 				}
 				%>

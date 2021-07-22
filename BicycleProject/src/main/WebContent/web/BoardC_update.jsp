@@ -47,10 +47,10 @@ request.setCharacterEncoding("UTF-8");
 	<%@include file="./header.jsp" %>
 
 	<%
-	int boardid = Integer.parseInt(request.getParameter("Board_id"));
+	int market_id = Integer.parseInt(request.getParameter("market_id"));
 	BoardDao boardDao = new BoardDao();
 	MarketBoardDao marketBoardDao = new MarketBoardDao();
-	BoardDto boardDto = marketBoardDao.getDto(boardid);
+	BoardDto boardDto = marketBoardDao.getDto(market_id);
 	%>
 
 	<!-- 배너 타이틀 -->

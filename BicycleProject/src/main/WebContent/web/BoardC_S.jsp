@@ -119,25 +119,23 @@
 
         <!-- 거래,질문 구역 header -->
         <div class="row">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-8 mb-4">
                 <h3><b>중고거래 팝니다 게시판</b></h3>
             </div>
-            <div class="col-lg-4 mb-4">      
-            </div>
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
         </div>
         
         <!-- 글 작성 버튼 -->
         <div class="row">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-8">
                 <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark" style="float: right;">작성</a>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
         </div>
         <!-- 공백구역 -->
