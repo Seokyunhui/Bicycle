@@ -19,6 +19,7 @@ request.setCharacterEncoding("UTF-8");
 </head>
 <body>
 			
+			
 			<% 
 				PrintWriter script = response.getWriter();  //객체확인
 				BoardDao boardDao = new BoardDao();			// DB연결해서 객체를 보내는곳 

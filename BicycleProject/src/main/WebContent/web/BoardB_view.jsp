@@ -29,7 +29,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 
-
+ 
+ 
 		 <!-- 배너 이미지 -->
         <div class="row">
             <div class="col-lg-1">

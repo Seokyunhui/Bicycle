@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<% String  userID = null;
 	PrintWriter script = response.getWriter();
 	int board_id = Integer.parseInt(request.getParameter("board_id"));

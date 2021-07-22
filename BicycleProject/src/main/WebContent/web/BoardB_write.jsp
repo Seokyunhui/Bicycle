@@ -20,8 +20,6 @@
 <body>
 
   <%
-
-
         if (session.getAttribute("userID") == null) {
         	
          %>                      
