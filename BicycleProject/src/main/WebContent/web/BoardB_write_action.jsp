@@ -1,4 +1,5 @@
 
+<%@page import="com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource"%>
 <%@page import="javax.swing.border.Border"%>
 <%@page import="database.MemberDao"%>
 <%@page import="database.BoardDao"%>
@@ -29,25 +30,21 @@ request.setCharacterEncoding("UTF-8");
 				String categoryLg = "소통";
 				String categorySm = null;
 				
-				if(session.getAttribute("userID")!=null){
-					userID =(String)session.getAttribute("userID");
-				}
-				
 				for(String value : request.getParameterValues("board_category_sm")){
 					categorySm = value;
-				}
+					}
 					String boardTitle = request.getParameter("board_title");
-					String boardContent	= request.getParameter("boardContent");
-					String board_regdate = request.getParameter("board_regdate");
-					String writer = request.getParameter("writer");
+					String boardContent	= request.getParameter("board_content");
+					String writer = (String) session.getAttribute("userID");
 					int MemberId 	= memberDao.getMemberUid(writer);
 					
-					
-				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberUid)){
+				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberId)){
 					script.println("<script>");
 					script.println("alert('등록되었습니다.')");
+					script.println("location.href='BoardB_Q.jsp'");
 					script.println("</script>");
-				}else{
+					
+				}else {
 					script.println("<script>");
 					script.println("alert('등록 실패 하였습니다.')");
 					script.println("</script>");

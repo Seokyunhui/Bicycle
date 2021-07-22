@@ -1,3 +1,9 @@
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.List"%>
+<%@page import="database.BoardDao"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="database.DBDriver"%>
+<%@page import="database.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -79,15 +85,17 @@ style>.prpl {
 		<div class="col-lg-1"></div>
 	</div>
 
+	<!-- 소통 탭  -->
 	<div class="row">
 		<div class="col-lg-8"></div>
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
-				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">자유게시판</a></li>
+				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
+
 				<li></li>
-				<li><a href="BoardC_B.jsp" class="navbar-link text-dark">질문게시판</a></li>
+				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
 				<li></li>
-				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
+				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
 		<div class="col-lg-1"></div>
@@ -117,54 +125,74 @@ style>.prpl {
 				</div>
 			</form>
 		</div>
+
 		<!--글등록-->
 		<div class="col-lg-1">
- 
-
 			<div class="col-lg-5"></div>
 			<div class="col-lg-5">
-
-				<a href="btn btn-info"><input type="button"
+				<a href="BoardB_write.jsp"><input type="button"
 					class="btn btn-primary" value="글등록"></a>
 			</div>
-		<div class="col-lg-1"></div>
+			<div class="col-lg-1"></div>
 		</div>
+	</div>
 
 	<!-- 공백 -->
 	<div class="row">
 		<br>
 	</div>
 
+
+
+	<%
+	BoardDao boardDao = new BoardDao();
+	List<BoardDto> arraylist = new ArrayList<BoardDto>();
+	
+	BoardDto boardDto;
+	%>
+
+
+
 	<!-- Table -->
 	<div class="row">
 		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
+		<div class="col-lg-10 text-center">
+
 			<div class="panel panel-default">
-				<!-- Default panel contents -->
 				<table class="table table-hover">
-					<div class="panel-heading">게시판</div>
-					
-					
+					<div class="panel-heading">질문 게시판</div>
 					<thead>
-						<tr style="height: 60%">
-							<th style="width: 10%">번호</th>
+						<tr>
+							<th>번호</th>
 							<th>제목</th>
-							<th>작성자</th>
 							<th>날짜</th>
+							<th>아이디</th>
 							<th>조회수</th>
-							<th>댓글수</th>
 						</tr>
 					</thead>
+					<%
+					arraylist = boardDao.getList();
+					arraylist = arraylist.stream().filter(list -> list.getCategory_small().equals("질문")).collect(Collectors.toList());
+					for (int j = 0; j < arraylist.size(); j++) {
+					%>
+					<%
+					boardDto = arraylist.get(j);
+					%>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>안녕하세요</td>
-							<td>admin</td>
-							<td>2021-07-08</td>
-							<td>3</td>
-							<td>2</td>
+						<tr onclick = "location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
+							<!-- 번호  -->
+							<td><%=boardDto.getBoard_id()%></td>
+							<!-- 제목  -->
+							<td><%=boardDto.getBoard_title()%></td>
+							<!-- 날짜 -->
+							<td><%=boardDto.getBoard_regdate()%></td>
+							<!-- 아이디 -->
+							<td><%=boardDto.getBoard_writer()%></td>
 						</tr>
 					</tbody>
+					<%
+					}
+					%>
 				</table>
 			</div>
 		</div>
@@ -176,8 +204,9 @@ style>.prpl {
 	<div class="row">
 		<div class="col-lg-5"></div>
 		<div class="col-lg-2">
+		
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="#"> < </a></li>
+				<li class="page-item"><a class="page-link" href="BoardB_Q.jsp?pageNumber -1"> < </a></li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -188,9 +217,6 @@ style>.prpl {
 		</div>
 		<div class="col-lg-5"></div>
 	</div>
-
-
-
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
