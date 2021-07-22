@@ -122,7 +122,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form action="BoardC_write_action.jsp" method="post">
+		<form action="BoardC_write_action.jsp" method="post" enctype="multipart/form-data" >
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
@@ -130,13 +130,13 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8 form-group">
                 <div class="select-box select-script">
-                    <select id="selectbox"  name="board_category_sm">
+                    <select id="selectbox"  name="board_category_sm" required >
                         <option selected disabled hidden>선택</option>
                         <option value="삽니다">삽니다</option>
                         <option value="팝니다">팝니다</option>
                     </select>
                     
-                    <select id="selectbox" name="market_board_addr">
+                    <select id="selectbox" name="market_board_addr" required >
                         <option selected="selected">지역</option>
                         <option value="서울">서울</option>
                         <option value="경기도">경기도</option>
@@ -146,7 +146,7 @@ request.setCharacterEncoding("UTF-8");
                         <option value="전라도">전라도</option>
                     </select>
                     
-                    <select id="selectbox" name="market_name">
+                    <select id="selectbox" name="market_name" required >
                         <option selected="selected">종류</option>
                         <option value="자전거">자전거</option>
                         <option value="자전거헬멧">자전거헬멧</option>
@@ -184,7 +184,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title">
+                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -197,7 +197,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="가격" id="price" name="market_price">
+                    <input type="text" class="form-control" placeholder="가격" id="price" name="market_price" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -212,7 +212,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="file" class="form-control-file" neme="uploadFile">
+                    <input type="file" class="form-control-file" name="uploadFile" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -225,7 +225,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="Board_content"></textarea>
+                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="Board_content" required ></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>

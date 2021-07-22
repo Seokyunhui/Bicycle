@@ -100,7 +100,7 @@ public class MemberDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				Member_uid = rs.getInt(1);
+				Member_uid = rs.getInt("member_uid");
 				Member_id = rs.getString("Member_id");
 				Member_pw = rs.getString("Member_pw");
 				Member_name = rs.getString("Member_name");

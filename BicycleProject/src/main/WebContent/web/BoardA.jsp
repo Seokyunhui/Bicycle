@@ -41,59 +41,52 @@
 <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
 <body>
-
 	<%@include file="./header.jsp"%>
-
-
+	
+	
 	<div class="row">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4"></div>
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
-				<li><a href="#section1" class="navbar-link text-dark">자전거
+				<li><a href="BoardA.jsp?categoty_sm=자전거 종류" class="navbar-link text-dark">자전거
 						종류</a></li>
 				<li></li>
-				<li><a href="#section2" class="navbar-link text-dark">유의사항</a></li>
+				<li><a href="BoardA.jsp?categoty_sm=유의사항" class="navbar-link text-dark">유의사항</a></li>
 				<li></li>
-				<li><a href="#section3" class="navbar-link text-dark">대처사항</a></li>
+				<li><a href="BoardA.jsp?categoty_sm=대처사항" class="navbar-link text-dark">대처사항</a></li>
 			</ul>
 		</div>
 	</div>
 
 
 
-	<%!BoardDao boardDao = new BoardDao();
+	<%!
+	BoardDao boardDao = new BoardDao(); 
 	List<BoardDto> arrayList = new ArrayList<>();
-	BoardDto boardDto;%>
+	BoardDto boardDto;
+	%>
 
 
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
 			<%
-			for (int i = 1; i <= 3; i++) {
-			%>
-			<%
-			if (i == 1) {
+				String cetegory_sm = request.getParameter("categoty_sm");
 				arrayList = boardDao.getList();
-				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("자전거 종류"))
+				arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals(cetegory_sm))
 				.collect(Collectors.toList());
 				for (int k = 0; k < arrayList.size(); k++) {
 					boardDto = arrayList.get(k);
 			%>
-			<%
-			if (k == 0) {
-			%>
-			<div id="section<%=i%>" class="container-fluid text-center"
+			<% if(k==0){%>
+			<div class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
 				<h1><%=boardDto.getCategory_small()%></h1>
 			
 			</div>
-
-			<%
-			}
-			%>
+			<%} %>
 			<div class="row justify-content-center">
 				<div class="col-md-4"></div>
 				<div class="col-md-4 text-center">
@@ -112,107 +105,11 @@
 			<%
 			}
 			%>
-
 			<hr>
-
-
-
-
-			<%
-			} else if (i == 2) {
-			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("유의사항")).collect(Collectors.toList());
-			for (int k = 0; k < arrayList.size(); k++) {
-				
-				boardDto = arrayList.get(k);
-			%>
-			<%
-			if (k == 0) {
-			%>
-			<div id="section<%=i%>" class="container-fluid text-center"
-				style="padding-top: 35px; padding-bottom: 35px">
-
-				<h1><%=boardDto.getCategory_small()%></h1>
-			
 			</div>
-
-			<%
-			}
-			%>
-			<div class="row justify-content-center">
-				<div class="col-md-4"></div>
-				<div class="col-md-4 text-center">
-					<h3>
-						<%=boardDto.getBoard_title()%>
-					</h3>
-					<br>
-					<p>
-						<%=boardDto.getBoard_content()%>
-					</p>
-
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-			<br>
-			<%
-			}
-			%>
-
-			<hr>
-
-			<%
-			} else if (i == 3) {
-			arrayList = boardDao.getList();
-			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("대처사항")).collect(Collectors.toList());
-			for (int k = 0; k < arrayList.size(); k++) {
-				boardDto = arrayList.get(k);
-			%>
-			<%
-			if (k == 0) {
-			%>
-			<div id="section<%=i%>" class="container-fluid text-center"
-				style="padding-top: 35px; padding-bottom: 35px">
-
-				<h1><%=boardDto.getCategory_small()%></h1>
-			
-			</div>
-
-			<%
-			}
-			%>
-			<div class="row justify-content-center">
-				<div class="col-md-4"></div>
-				<div class="col-md-4 text-center">
-					<h3>
-						<%=boardDto.getBoard_title()%>
-					</h3>
-					<br>
-					<p>
-						<%=boardDto.getBoard_content()%>
-					</p>
-
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-			<br>
-			<%
-			}
-			%>
-
-			<hr>
-			<%
-			}
-			}
-			%>
-
 		</div>
-		<div class="col-lg-1"></div>
-	</div>
-
-
-
-
-
+		
+		
 	<%@include file="./footer.jsp"%>
 </body>
 </html>
