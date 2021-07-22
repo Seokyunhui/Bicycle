@@ -1,3 +1,6 @@
+<%@page import="database.Add_fileDto"%>
+<%@page import="database.Add_fileDao"%>
+<%@page import="jdk.internal.net.http.ResponseBodyHandlers.FileDownloadBodyHandler"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="database.BoardDto"%>
@@ -51,6 +54,8 @@ request.setCharacterEncoding("UTF-8");
 	BoardDao boardDao = new BoardDao();
 	MarketBoardDao marketBoardDao = new MarketBoardDao();
 	BoardDto boardDto = marketBoardDao.getDto(market_id);
+	Add_fileDao add_fileDao = new Add_fileDao();
+	Add_fileDto add_fileDto = add_fileDao.getDto(boardDto.getBoard_id());
 	%>
 
 	<!-- 배너 타이틀 -->
@@ -140,13 +145,13 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-8 form-group">
                 <div class="select-box select-script">
                     <select id="selectbox"  name="board_category_sm" required >
-                        <option selected disabled hidden>선택</option>
+                        <option selected><%=boardDto.getCategory_small() %></option>
                         <option value="삽니다">삽니다</option>
                         <option value="팝니다">팝니다</option>
                     </select>
                     
                     <select id="selectbox" name="market_board_addr" required >
-                        <option selected="selected">지역</option>
+                        <option selected="selected"><%=boardDto.getMarketAddr() %></option>
                         <option value="서울">서울</option>
                         <option value="경기도">경기도</option>
                         <option value="강원도">강원도</option>
@@ -221,7 +226,8 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="file" class="form-control-file" name="uploadFile" required >
+                	<label for="filename"><%=add_fileDto.getFile_name() %></label>
+                    <input type="file" class="form-control-file" name="uploadFile" id="filename">                 
                 </div>
             </div>
             <div class="col-lg-1"></div>

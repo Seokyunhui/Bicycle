@@ -33,7 +33,7 @@ request.setCharacterEncoding("UTF-8");
 	String file_contenttype = multi.getContentType(file);
 	File filesize = multi.getFile(file); 
 	int file_Size = (int) filesize.length();
-	String file_Dir = "E:/유창석/구현작업/Bicycle/BicycleProject/src/main/WebContent/web/upload" + filename;
+	String file_Dir = "E:/유창석/구현작업/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + filename;
 	
 	
 	
