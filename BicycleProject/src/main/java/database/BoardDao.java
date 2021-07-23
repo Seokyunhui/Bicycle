@@ -53,7 +53,7 @@ public class BoardDao {
 	public ArrayList<BoardDto> getList() {
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
 		Connection connection = dbDriver.connDB();
-		String sql = "select * from Board";
+		String sql = "select * from Board order by Board_regdate desc";
 		try {
 			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -129,7 +129,7 @@ public class BoardDao {
 
 	public BoardDto getDto(int id) {
 		Connection connection = dbDriver.connDB();
-		String sql = "select * from Board where Board_id= ? ";
+		String sql = "select * from Board where Board_id= ?";
 		BoardDto boardDto = new BoardDto();
 		try {
 			pstmt = connection.prepareStatement(sql);
