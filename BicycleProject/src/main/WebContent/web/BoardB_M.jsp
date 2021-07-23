@@ -3,11 +3,26 @@
 <%@page import="java.util.*"%>
 <%@page import="database.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@page import="database.MemberDao"%>
-<%@page import="database.MemberDto"%>
+
+    pageEncoding="UTF-8"%>
+<%@page import= "database.MemberDao" %>
+<%@page import= "database.MemberDto" %>
 <%@page import="database.CommentDao"%>
 <%@page import="database.CommentDto"%>
+<%
+	String pageNum = request.getParameter("pageNum");
+	String pageState = request.getParameter("pageBlock");
+	int currentPage = 1;
+	if(pageNum != null)
+		currentPage = Integer.parseInt(pageNum);
+	int pageDisplayNum = 5;
+
+	int startNum = currentPage;
+	
+	if(pageState == null){}
+	else if(pageState.equals("Next"))	startNum += 1;
+	else if(pageState.equals("Previous"))	startNum = (startNum<=1)? 1:startNum-1;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,9 +115,12 @@ function guest_rep_onclick_delete(action,id){
 			<div class="guestList">
 				<ol class="list-group">
 					<li id="guest_rep_id" class="list-group-item">
-						<!-- 글 시작 --> <% 
-					for(int i = 0; i < arrayList.size(); i++){ 
-						if(arrayList.size() < i) break;
+            
+					<!-- 글 시작 -->
+					<% 
+					for(int i = pageDisplayNum *(currentPage-1); i < (pageDisplayNum * currentPage);i++){ 
+						if(pageDisplayNum *(currentPage-1) >arrayList.size()) break;
+						if(i >= arrayList.size()) break;
 						boardDto = arrayList.get(i);
 					%>
 
@@ -176,6 +194,7 @@ function guest_rep_onclick_delete(action,id){
 								<div class="col-lg-1"></div>
 							</div>
 						<br>
+
 						<% } %><!-- 댓글 끝 -->
 						</div> <br> 
 						<% 	} %> 
@@ -214,7 +233,38 @@ function guest_rep_onclick_delete(action,id){
 		<div class="col-lg-1"></div>
 	</div>
 
+	 <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <nav style="text-align: center;">
+                    <ul class="pagination">
+                        <li >
+                            <a href="./BoardB_M.jsp?pageBlock=Previous&pageNum=<%=currentPage%>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <%for(int i = 0; i < pageDisplayNum ; i++){ %>
+                        <% if((startNum + i) == currentPage){%>
+                        <li class="page-item active"><a href="./BoardB_M.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
+						<%}
+                        else{%>
+                        <li class= "page-item"><a href="./BoardB_M.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>	
+                        <% }
+                        } %>
 
+                        <li>
+                            <a href="./BoardB_M.jsp?pageBlock=Next" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
 
 	<div class="row">
 		<div class="col-lg-1"></div>

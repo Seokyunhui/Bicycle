@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>동행하는 사람들</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>  
@@ -103,7 +103,7 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <select class="form-control" name="board_category_sm">
+                    <select class="form-control" name="board_category_sm" required>
                         <option value="자전거 종류">자전거 종류</option>
                         <option value="대처사항">대처사항</option>
                         <option value="유의사항">유의사항</option>
@@ -120,7 +120,7 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" name="board_title">
+                    <input type="text" class="form-control" placeholder="제목" name="board_title" required>
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -146,7 +146,7 @@
                 <div class="form-group">
 
                     <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." 
-                        name="Board_content"></textarea>
+                        name="Board_content" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>

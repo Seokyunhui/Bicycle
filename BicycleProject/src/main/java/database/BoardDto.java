@@ -100,7 +100,7 @@ public class BoardDto {
 	public String getBoard_writer() {
 		return Board_writer;
 	}
-
+	
 	public void setBoard_writer(String board_writer) {
 		Board_writer = board_writer;
 	}
