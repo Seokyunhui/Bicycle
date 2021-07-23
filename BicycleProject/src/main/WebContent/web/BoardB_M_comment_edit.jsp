@@ -1,5 +1,5 @@
 <%@page import="database.MemberDao"%>
-<%@page import="database.BoardDao"%>
+<%@page import="database.CommentDao"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -13,20 +13,19 @@
 	<%
 	request.setCharacterEncoding("utf-8");
 		PrintWriter script = response.getWriter();
-		BoardDao boardDao = new BoardDao();
+		CommentDao commentDao = new CommentDao();
 		String action = request.getParameter("action");
-		String b_id = request.getParameter("id");
-		int Board_id = Integer.parseInt(b_id);
+		int id = Integer.parseInt(request.getParameter("id"));
+
 		if(action.equals("delete")){
-			boardDao.delete(Board_id);
+			commentDao.delete(id);
 			script.println("<script>");
 			script.println("location.href= './BoardB_M.jsp'");
 			script.println("</script>");
-		}else if(action.equals("edit")){
-			String boardTitle = "-";
-			String boardContent = request.getParameter("BoardB_M_Contents");
+		}else{
+			String commentContent = request.getParameter("BoardB_M_Comment_Contents");
 
-			if (boardDao.update(Board_id, boardTitle, boardContent)) {
+			if (commentDao.update(id, commentContent)) {
 				script.println("<script>");
 				script.println("alert('글쓰기 성공');");
 				script.println("window.close()");
@@ -37,10 +36,7 @@
 				script.println("history.back();");
 				script.println("</script>");
 			}
-		}else if(action.equals("comment")){
-			
 		}
-		
 	%>
 
 </body>

@@ -49,6 +49,5 @@ request.setCharacterEncoding("UTF-8");
 		script.println("</script>");
 	}
 	%>
-
 </body>
 </html>

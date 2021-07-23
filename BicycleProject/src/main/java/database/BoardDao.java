@@ -134,7 +134,7 @@ public class BoardDao {
 		try {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();	
 			while (rs.next()) {
 				String categoryBig = rs.getString("Category_big");
 				String categorySmall = rs.getString("Category_small");
