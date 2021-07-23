@@ -9,7 +9,7 @@ Bycycle portfolio
 
 2021/07/02시작
 
-진행률 40%
+진행률 57%
 
 css: bootstrap4.0.0
 SQL : mysql

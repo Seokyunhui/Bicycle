@@ -8,7 +8,7 @@ public class MemberDto {
 	private int Member_phone;	// 전화번호 	
 	private String Member_mail;	// 메일
 	private String Member_regdate;	// 가입날짜
-	private int Member_group; // 기본 :0 , 카카오 : 1 , 네이버 : 2 , 구글 : 3 ,관리자 : 5
+	private int Member_group; 	//  1 : 기본회원 / 2 : 카카오 / 3: 네이버 / 4 : 구글 / 5 : 관리자
 	private int Member_regcount;	// 글 등록 개수
 	private int Member_comcount;	// 댓글 등록 개수
 	private int Member_ch_dist;	// 챌린지 주행거리 
