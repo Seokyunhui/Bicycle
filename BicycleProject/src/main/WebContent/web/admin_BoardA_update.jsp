@@ -22,9 +22,9 @@
 <!-- 헤더 -->
  <%@include file="./header.jsp"%>
 <%
-int boardid = Integer.parseInt(request.getParameter("Board_id"));
+int boardid = Integer.parseInt(request.getParameter("Board_id"));// 수정 버튼 클릭시 누른 객체의 Board_id 값을 가지고 옴
 BoardDao boardDao = new BoardDao();
-BoardDto boardDto = boardDao.getDto(boardid);
+BoardDto boardDto = boardDao.getDto(boardid);//board 테이블의 기본 값 을 가지고 boardDto 에 객체 반환
 %>
   
         <!-- 배너 이미지 -->
@@ -102,7 +102,8 @@ BoardDto boardDto = boardDao.getDto(boardid);
             <div class="col-lg-1"></div>
         </div>
 
-		<form action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post">
+		<form action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post"> 
+		<!-- Board_id 값에 board id 를 넣어줌 -->
         <!-- 팝,삽 카테고리 -->
         <div class="row">
             <div class="col-lg-1"></div>
@@ -111,6 +112,7 @@ BoardDto boardDto = boardDao.getDto(boardid);
                 <div class="form-group">
                     <select class="form-control" name="board_category_sm">
                         <option value="<%=boardDto.getCategory_small()%>"><%=boardDto.getCategory_small()%></option>
+                        <!-- 소분류 콤보박스 초기값 지정 -->
                     </select>
                 </div>
             </div>
@@ -125,6 +127,7 @@ BoardDto boardDto = boardDao.getDto(boardid);
             <div class="col-lg-8">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="제목" name="board_title" value="<%= boardDto.getBoard_title() %>">
+                    <!-- board_title 값을을 초기값으로 대입 -->
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -151,8 +154,10 @@ BoardDto boardDto = boardDao.getDto(boardid);
 
                     <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." 
                         name="Board_content" ><%=boardDto.getBoard_content()%></textarea>
+                        <!-- Board_Content 값을 초기값으로 대입 -->
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">글 수정</button>
+                <!-- 입력된 값을 가지고 admin_BoardA_update_action.jsp으로 전달 -->
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>

@@ -180,8 +180,8 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		return check;
-
 	}
+	
 
 	public boolean delete(int Board_id) {
 		String sql = "DELETE FROM board WHERE Board_id=?";

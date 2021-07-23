@@ -97,41 +97,57 @@
         <div class="col-lg-8 "></div>
         <div class="col-lg-2">
             <ul class="nav nav-pills justify-content-around display-8">
-                <li><a href="#" class="navbar-link text-dark">삽니다</a></li>
-                <li>|</li>
                 <li><a href="#" class="navbar-link text-dark">팝니다</a></li>
+                <li>|</li>
+                <li><a href="#" class="navbar-link text-dark">삽니다</a></li>
             </ul>
         </div>
         <div class="col-lg-1">
         </div>
+     </div>   
 
-        <!-- 공백 -->
+		<!-- 공백구역 -->
         <div class="row">
             <div class="col-lg-1">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-8">
+                <br>
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-8">
+                <br>
+            </div>
+            <div class="col-lg-1">
             </div>
             <div class="col-lg-1">
             </div>
         </div>
 
-    </div>
-    <!--공백-->
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
-            <br><br>
-        </div>
-        <div class="col-lg-1">
-        </div>
-    </div>
-
-    <!--카드 텍스트-->
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-1">
+        <!-- 거래,질문 구역 header -->
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-8">
+                <h3><b>상세 내용</b></h3>
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            </div>
         </div>
         <%
 			int market_id = Integer.parseInt((String) request.getParameter("Market_id"));
@@ -141,7 +157,57 @@
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.getUserInfo(boardDto.getBoard_writer());
 			
-			%>
+			if(userid != null)
+			if(group == 5 || userid.equals(boardDto.getBoard_writer())) {
+			
+		%>
+       
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            
+            </div>
+            <div class="col-lg-8">
+            	<%
+            		if(group != 5){
+            	%>
+            	<a href="BoardC_delete_action.jsp?market_id=<%= market_id%>" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
+                <a href="BoardC_update.jsp?market_id=<%= market_id %>" class="btn btn-primary card text-white bg-dark" style="float: right;">수정</a>
+                <%
+				} else {
+                %>
+                <a href="BoardC_delete_action.jsp?market_id=<%= market_id%>" class="btn btn-primary card text-white bg-dark" style="float: right;">삭제</a>
+				<%
+				}
+				%>
+            </div>
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+        <%
+        }
+        %>
+        <!-- 공백구역 -->
+        <div class="row">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <br>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+	<!--카드 텍스트-->
+    <div class="row">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-1">
+        </div>
+        
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
