@@ -102,7 +102,7 @@ BoardDto boardDto = boardDao.getDto(boardid);//board 테이블의 기본 값 을
             <div class="col-lg-1"></div>
         </div>
 
-		<form action="admin_BoardA_update_action.jsp?Board_id=<%=boardDto.getBoard_id()%>" method="post"> 
+		<form action="admin_BoardA_update_action.jsp?board_id=<%=boardDto.getBoard_id()%>" method="post"> 
 		<!-- Board_id 값에 board id 를 넣어줌 -->
         <!-- 팝,삽 카테고리 -->
         <div class="row">
