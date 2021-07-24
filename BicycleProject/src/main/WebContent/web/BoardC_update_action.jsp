@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDto"%>
+<%@page import="database.BoardcDao"%>
 <%@page import="database.Add_fileDto"%>
 <%@page import="database.Add_fileDao"%>
 <%@page import="java.io.File"%>
@@ -40,23 +42,19 @@ request.setCharacterEncoding("UTF-8");
 	File filesize = multi.getFile(file);
 	int file_Size = (int) filesize.length();
 	String file_Dir = "D:/Bicycle/BicycleProject/src/main/WebContent/web/upload/" + filename;
- 
-	
-	
-	
-	
 
 	PrintWriter script = response.getWriter();
 
 	BoardDao boardDao = new BoardDao();//게시판 DB 구현부 클래스 선언
+	BoardcDao boardcDao = new BoardcDao();
 	MarketBoardDao marketBoardDao = new MarketBoardDao();
 	Add_fileDao add_fileDao = new Add_fileDao();
 	Add_fileDto add_fileDto;
 
 	int market_id = Integer.parseInt(multi.getParameter("market_id"));//리퀘스트로 받아온 Board_id 값을 int 값으로 변환
-	BoardDto boardDto = marketBoardDao.getDto(market_id);
-	int boardid = boardDto.getBoard_id();
-	
+	BoardcDto boardcDto = boardcDao.getDto(market_id);
+	int boardid = boardcDto.getBoard_Id();
+
 	add_fileDto = add_fileDao.getDto(boardid);
 
 	String market_name = null;
@@ -74,7 +72,8 @@ request.setCharacterEncoding("UTF-8");
 	String filedeletename = add_fileDto.getFile_name();
 
 	if (boardDao.update(boardid, boardTitle, boardContent)) {//메소드 boardDao.update 호출 매개값 boardid, boardTitle, boardContent 을 가져와서 수정
-		if (marketBoardDao.updateMarket(market_id, market_name, market_addr, market_price) && add_fileDao.update(filename, file_Size, file_Dir, file_contenttype, boardid) ){
+		if (marketBoardDao.updateMarket(market_id, market_name, market_addr, market_price)
+		&& add_fileDao.update(filename, file_Size, file_Dir, file_contenttype, boardid)) {
 			add_fileDao.deleteFile(filedeletename);
 			script.println("<script>");
 			script.println("alert('글 수정 성공');");
