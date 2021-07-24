@@ -3,33 +3,63 @@ package database;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class MarketBoardDao {
+public class BoardcDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
 
-	public boolean insert(int Member_id, String market_board_addr, String marketName, int market_price, int board_id) {
+	public ArrayList<BoardcDto> getList(String cetegory_sm, int pagesize) {
 		Connection connection = dbDriver.connDB();
-		boolean check;
+		String sql = "select * from boardc where Category_small = ? ORDER BY Board_id DESC LIMIT ?, 10 ";
+		ArrayList<BoardcDto> arrayList = new ArrayList<>();
 
 		try {
-			String marketSql = "insert into market_board(M_Board_id, Market_price, Market_addr, Market_name) values(?,?,?,?)";
-			pstmt = connection.prepareStatement(marketSql);
-			pstmt.setInt(1, board_id);
-			pstmt.setInt(2, market_price);
-			pstmt.setString(3, market_board_addr);
-			pstmt.setString(4, marketName);
-			pstmt.executeUpdate();
-			dbDriver.closeAll(pstmt, connection);
-			check = true;
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, cetegory_sm);
+			pstmt.setInt(2, pagesize);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int b_Member_Id = rs.getInt("B_Member_id");
+				String member_Id = rs.getString("member_id");
+				String member_Phone = rs.getString("Member_phone");
+				String category_Small = rs.getString("Category_small");
+				int board_Id = rs.getInt("Board_id");
+				String board_Title = rs.getString("Board_title");
+				String board_Content = rs.getString("Board_content");
+				String board_Editdate = rs.getString("Board_editdate").substring(0, 10);
+				String market_Name = rs.getString("Market_name");
+				int market_Price = rs.getInt("Market_price");
+				String market_Addr = rs.getString("Market_addr");
+				int market_Id = rs.getInt("Market_id");
+
+				BoardcDto boardcDto = new BoardcDto();
+
+				boardcDto.setB_Member_Id(b_Member_Id);
+				boardcDto.setMember_Id(member_Id);
+				boardcDto.setMember_Phone(member_Phone);
+				boardcDto.setCategory_Small(category_Small);
+				boardcDto.setBoard_Id(board_Id);
+				boardcDto.setBoard_Title(board_Title);
+				boardcDto.setBoard_Content(board_Content);
+				boardcDto.setBoard_Editdate(board_Editdate);
+				boardcDto.setMarket_Name(market_Name);
+				boardcDto.setMarket_Price(market_Price);
+				boardcDto.setMarket_Addr(market_Addr);
+				boardcDto.setMarket_Id(market_Id);
+
+				arrayList.add(boardcDto);
+
+			}
+
 		} catch (SQLException e) {
-			check = false;
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return check;
+
+		return arrayList;
 
 	}
-
+	
 	public BoardcDto getDto(int Market_id) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from boardc where market_id = ?";
@@ -79,46 +109,4 @@ public class MarketBoardDao {
 		return boardcDto;
 
 	}
-
-	public boolean updateMarket(int market_id, String market_name, String marekt_addr, String market_price) {
-		String sql = "update market_board set Market_name = ?, Market_price = ?, Market_addr = ? WHERE market_id = ? ";
-		Connection connection = dbDriver.connDB();
-		boolean check;
-		try {
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, market_name);
-			pstmt.setString(2, market_price);
-			pstmt.setString(3, marekt_addr);
-			pstmt.setInt(4, market_id);
-			pstmt.executeUpdate();
-			check = true;
-			dbDriver.closeAll(pstmt, connection);
-		} catch (SQLException e) {
-			check = false;
-			e.printStackTrace();
-		}
-
-		return check;
-
-	}
-
-	public boolean deletemarekt(int Board_id, int market_id) {
-		String sql = "DELETE FROM market_board WHERE M_Board_id = ? AND Market_id = ?";
-		Connection connection = dbDriver.connDB();
-		boolean check;
-		try {
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, Board_id);
-			pstmt.setInt(2, market_id);
-			pstmt.executeUpdate();
-			dbDriver.closeAll(pstmt, connection);
-			check = true;
-		} catch (SQLException e) {
-			check = false;
-			e.printStackTrace();
-		}
-		return check;
-
-	}
-
 }

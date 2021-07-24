@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDao"%>
+<%@page import="database.BoardcDto" %>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -148,17 +150,17 @@
             <div class="col-lg-1">
             </div>
         </div>
-        <%       
-        	List<BoardDto> arrayList = new ArrayList<>();
-      		BoardDto boardDto = new BoardDto();
-      		MarketBoardDao marketBoardDao = new MarketBoardDao();
-      		Add_fileDao add_fileDao = new Add_fileDao();
-      		int pagesize = 0;
-      		if(request.getParameter("pagesize")!=null){
-      			pagesize = Integer.parseInt(request.getParameter("pagesize"));
-      		}
-      		arrayList = marketBoardDao.getList("팝니다", pagesize);
-      		   	
+        <%
+        List<BoardcDto> arrayList = new ArrayList<>();
+              		BoardcDto boardcDto = new BoardcDto();
+              		MarketBoardDao marketBoardDao = new MarketBoardDao();
+              		Add_fileDao add_fileDao = new Add_fileDao();
+              		BoardcDao boardCDao = new BoardcDao();
+              		int pagesize = 0;
+              		if(request.getParameter("pagesize")!=null){
+              			pagesize = Integer.parseInt(request.getParameter("pagesize"));
+              		}
+              		arrayList = boardCDao.getList("팝니다", pagesize);
         %>
 
         <!-- 중고거래 상단 썸네일 -->
@@ -170,17 +172,17 @@
 					if(arrayList.size()<=i){
 						break;
 					}	
-					boardDto =  arrayList.get(i);
+					boardcDto =  arrayList.get(i);
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
-                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
-                        <h5 class="card-title "><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
-                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <p class="card-text"><%=boardcDto.getCategory_Small() %></p>
+                        <p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
+                        <h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
+                        <p class="card-text"><%=boardcDto.getMarket_Price() %>원</p>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -211,17 +213,17 @@
 			<%
 				for(int i = 5; i<10; i++){
 				if(arrayList.size()<=i){ break; }
-				boardDto =  arrayList.get(i);
+				boardcDto =  arrayList.get(i);
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
-                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
-                        <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
-                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <p class="card-text"><%=boardcDto.getCategory_Small() %></p>
+                        <p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
+                        <h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
+                        <p class="card-text"><%=boardcDto.getMarket_Price() %>원</p>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>

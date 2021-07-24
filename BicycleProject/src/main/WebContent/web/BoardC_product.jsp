@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDao"%>
+<%@page import="database.BoardcDto"%>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.BoardDto"%>
 <%@page import="database.MarketBoardDao"%>
@@ -151,14 +153,14 @@
         </div>
         <%
 			int market_id = Integer.parseInt((String) request.getParameter("Market_id"));
-			MarketBoardDao marketBoardDao = new MarketBoardDao();
-			BoardDto boardDto = marketBoardDao.getDto(market_id);
+			BoardcDao boardcDao = new BoardcDao();
+			BoardcDto boardcDto = boardcDao.getDto(market_id);
 			Add_fileDao add_fileDao = new Add_fileDao();
 			MemberDao memberDao = new MemberDao();
-			MemberDto memberDto = memberDao.getUserInfo(boardDto.getBoard_writer());
+			MemberDto memberDto = memberDao.getUserInfo(boardcDto.getMember_Id());
 			
 			if(userid != null)
-			if(group == 5 || userid.equals(boardDto.getBoard_writer())) {
+			if(group == 5 || userid.equals(boardcDto.getMember_Id())) {
 			
 		%>
        
@@ -213,18 +215,18 @@
                 <div class="card-body">
                     <div class="row no-gutters">
                         <div class="col-4 w-80%">
-                            <img src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name()%>"
+                            <img src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name()%>"
                                 alt="이미지" class="card-img" />
                         </div>
                         <div class="col-8">
                             <div class="card-body text-center">
-                                <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
-                                <p class="card-text"><%=boardDto.getMarketName() %> </p>
-                                <p class="card-text">가격: <%=boardDto.getMarketPrice() %>원</p>
-                                <p class="card-text">판매자: <%=boardDto.getBoard_writer() %></p>
+                                <h5 class="card-title"><%=boardcDto.getBoard_Title() %></h5>
+                                <p class="card-text"><%=boardcDto.getMarket_Name() %> </p>
+                                <p class="card-text">가격: <%=boardcDto.getMarket_Price() %>원</p>
+                                <p class="card-text">판매자: <%=boardcDto.getMember_Id() %></p>
                                 <p class="card-text">번호: 0<%= memberDto.getMember_phone() %></p>
-                                <p class="card-text">지역: <%=boardDto.getMarketAddr() %></p>
-                                <p class="card-text"><%=boardDto.getBoard_content() %></p>
+                                <p class="card-text">지역: <%=boardcDto.getMarket_Addr() %></p>
+                                <p class="card-text"><%=boardcDto.getBoard_Content() %></p>
                             </div>
                         </div>
                     </div>

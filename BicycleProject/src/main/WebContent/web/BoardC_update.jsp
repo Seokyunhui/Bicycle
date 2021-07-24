@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDto"%>
+<%@page import="database.BoardcDao"%>
 <%@page import="database.Add_fileDto"%>
 <%@page import="database.Add_fileDao"%>
 <%-- <%@page import="jdk.internal.net.http.ResponseBodyHandlers.FileDownloadBodyHandler"%> --%>
@@ -52,10 +54,11 @@ request.setCharacterEncoding("UTF-8");
 	<%
 	int market_id = Integer.parseInt(request.getParameter("market_id"));
 	BoardDao boardDao = new BoardDao();
+	BoardcDao boardcDao = new BoardcDao();
 	MarketBoardDao marketBoardDao = new MarketBoardDao();
-	BoardDto boardDto = marketBoardDao.getDto(market_id);
+	BoardcDto boardcDto = boardcDao.getDto(market_id);
 	Add_fileDao add_fileDao = new Add_fileDao();
-	Add_fileDto add_fileDto = add_fileDao.getDto(boardDto.getBoard_id());
+	Add_fileDto add_fileDto = add_fileDao.getDto(boardcDto.getBoard_Id());
 	%>
 
 	<!-- 배너 타이틀 -->
@@ -136,7 +139,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form action="BoardC_update_action.jsp?market_id=<%= boardDto.getMarketId() %>" method="post" enctype="multipart/form-data">
+		<form action="BoardC_update_action.jsp?market_id=<%= boardcDto.getMarket_Id() %>" method="post" enctype="multipart/form-data">
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
@@ -145,13 +148,13 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-8 form-group">
                 <div class="select-box select-script">
                     <select id="selectbox"  name="board_category_sm" required >
-                        <option selected><%=boardDto.getCategory_small() %></option>
+                        <option selected><%=boardcDto.getCategory_Small() %></option>
                         <option value="삽니다">삽니다</option>
                         <option value="팝니다">팝니다</option>
                     </select>
                     
                     <select id="selectbox" name="market_board_addr" required >
-                        <option selected="selected"><%=boardDto.getMarketAddr() %></option>
+                        <option selected="selected"><%=boardcDto.getMarket_Addr() %></option>
                         <option value="서울">서울</option>
                         <option value="경기도">경기도</option>
                         <option value="강원도">강원도</option>
@@ -198,7 +201,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" name="board_title" value="<%= boardDto.getBoard_title() %>" required >
+                    <input type="text" class="form-control" placeholder="제목" name="board_title" value="<%= boardcDto.getBoard_Title() %>" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -211,7 +214,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="가격" name="market_price" value="<%= boardDto.getMarketPrice() %>" required >
+                    <input type="text" class="form-control" placeholder="가격" name="market_price" value="<%= boardcDto.getMarket_Price() %>" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -234,13 +237,13 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
         </div>
 
-        <!-- 상세 텍스트 구역 -->
+        <!-- 상세 텍스트 구역 -->s
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." maxlength="2048" style="height: 350px;" name="Board_content" required ><%= boardDto.getBoard_content()%></textarea>
+                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." maxlength="2048" style="height: 350px;" name="Board_content" required ><%= boardcDto.getBoard_Content()%></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">글 수정</button>
             </div>

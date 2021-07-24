@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDto"%>
+<%@page import="database.BoardcDao"%>
 <%@page import="database.Add_fileDto"%>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.BoardDto"%>
@@ -25,13 +27,15 @@ request.setCharacterEncoding("UTF-8");
 	PrintWriter script = response.getWriter();
 
 	BoardDao boardDao = new BoardDao();
+	BoardcDao boardcDao = new BoardcDao();
 	MarketBoardDao marketBoardDao = new MarketBoardDao();
-	BoardDto boardDto = marketBoardDao.getDto(market_id);
+	BoardcDto boardcDto = boardcDao.getDto(market_id);
+	int board_id = boardcDto.getBoard_Id();
 	
 	Add_fileDao add_fileDao = new Add_fileDao();
-	Add_fileDto add_fileDto = add_fileDao.getDto(boardDto.getBoard_id());
+	Add_fileDto add_fileDto = add_fileDao.getDto(board_id);
 	
-	int board_id = boardDto.getBoard_id();
+	
 	if (boardDao.delete(board_id)) {
 		add_fileDao.deleteFile(add_fileDto.getFile_name());
 		script.println("<script>");

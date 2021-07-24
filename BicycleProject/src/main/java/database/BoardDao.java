@@ -48,7 +48,7 @@ public class BoardDao {
 		
 	}
 	
-	
+	 
 
 	public ArrayList<BoardDto> getList() {
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
