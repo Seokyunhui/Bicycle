@@ -16,19 +16,21 @@
     </script>
     <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
-	<% if(session.getAttribute("userID")==null){ 
-	%>
-		<script>
-			alert('로그인이 필요합니다.'); window.history.back();
-		</script>
-	<% 
-	}
-	%>
+
 <body>
+
+  <%
+        if (session.getAttribute("userID") == null) {
+        	
+         %>                      
+        	<script>alert('로그인이 필요합니다.'); window.history.back(); </script>
+        <%
+           
+        }
+    %>
 <!-- 헤더 -->
  <%@include file="./header.jsp" %>
 	
-  
         <!-- 배너 이미지 -->
         <div class="row">
             <div class="col-lg-1">
@@ -89,7 +91,7 @@
             </div>
         </div>
 
-		<form action="BoardB_write_action.jsp" method="post">
+		<form action="BoardB_write_action.jsp?Board_ID" method="post">
         <!-- 팝,삽 카테고리 -->
         <div class="row">
             <div class="col-lg-1"></div>
@@ -97,8 +99,8 @@
             <div class="col-lg-8">
                 <div class="form-group">
                     <select class="form-control" name="board_category_sm">
-                        <option value="자전거 종류">자유게시판</option>
-                        <option value="대처사항">질문게시판</option>
+                        <option value="질문">질문게시판</option>
+                        <option value="자유">자유게시판</option>
                    
                     </select>
                 </div>
@@ -115,6 +117,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="제목" name="board_title">
                 </div>
+                     <input type="file" value="fileName">
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
@@ -127,19 +130,6 @@
             </div>
         </div>
 
-	 <!-- 파일 업로드 구역 -->
-        <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-8">
-                <div class="form-group">
-                    <input type="file" class="form-control-file" neme="uploadFile">
-                </div>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-1"></div>
-        </div>
-
         <!-- 상세 텍스트 구역 -->
         <div class="row">
             <div class="col-lg-2"></div>
@@ -147,7 +137,7 @@
                 <div class="form-group">
 
                     <textarea class="form-control" rows="20" placeholder="자유롭게 작성해주세요." 
-                        name="Board_content"></textarea>
+                        name="board_content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
             </div>
