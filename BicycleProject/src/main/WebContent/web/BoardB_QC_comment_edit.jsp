@@ -39,6 +39,5 @@
 			//response.sendRedirect("./BoardB_view.jsp?board_id="+ board_id);
 		}
 	%>
-
 </body>
 </html>

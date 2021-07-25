@@ -183,7 +183,6 @@ style>.prpl {
 	%>
 
 
-
 	<!-- Table -->
 	<div class="row">
 		<div class="col-lg-1"></div>
