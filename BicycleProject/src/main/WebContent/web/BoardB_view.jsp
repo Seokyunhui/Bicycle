@@ -182,7 +182,7 @@
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td colspan="2"><%=boardDto.getBoard_content()%></td>
+						<td colspan="2"><%=boardDto.getBoard_content().replace("\r\n","<br>")%></td>
 					</tr>
 				</thead>
 			</table>
