@@ -19,7 +19,7 @@ USE `BicycleDB` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BicycleDB`.`Member` (
   `Member_uid` INT NOT NULL AUTO_INCREMENT,
-  `Member_id` VARCHAR(10) NOT NULL,
+  `Member_id` VARCHAR(20) NOT NULL,
   `Member_pw` VARCHAR(20) NOT NULL,
   `Member_name` VARCHAR(10) NOT NULL,
   `Member_phone` CHAR(11) NOT NULL DEFAULT 0,
@@ -141,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Challege` (
   `Challenge_id` INT NOT NULL AUTO_INCREMENT,
   `Ch_Member_id` INT NOT NULL,
   `Challenge_dist` INT NOT NULL DEFAULT 0,
+  `Challenge_Contents` VARCHAR(30) NOT NULL,
   `Challenge_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `admin_approval` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Challenge_id`),
@@ -157,7 +158,7 @@ USE `BicycleDB` ;
 -- -----------------------------------------------------
 -- Placeholder table for view `BicycleDB`.`BoardC`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`B_Member_id` INT, `Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_regdate` INT, `Market_name` INT, `Market_price` INT, `Market_addr` INT, `Market_id` INT);
+CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`B_Member_id` INT, `Member_id` INT, `Member_phone` INT, `Category_small` INT, `Board_id` INT, `Board_title` INT, `Board_content` INT, `Board_editdate` INT, `Market_name` INT, `Market_price` INT, `Market_addr` INT, `Market_id` INT);
 
 -- -----------------------------------------------------
 -- View `BicycleDB`.`BoardC`
@@ -165,10 +166,10 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`B_Member_id` INT, `Member_id` 
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
 CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id,a.Member_id, a.Member_phone,
-b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
+b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_editdate,
 c.Market_name,c.Market_price,Market_addr, c.Market_id
 From Member AS a, Board AS b, Market_Board AS c
-where b.Category_big like '중고거래' AND a.Member_uid = b.B_Member_id AND b.Board_id = c.M_Board_id;
+where b.Category_big like '중고거래' AND b.Board_id = c.M_Board_id;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
