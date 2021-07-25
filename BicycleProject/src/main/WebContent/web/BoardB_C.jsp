@@ -1,5 +1,3 @@
-<%@page import="database.CommentDao"%>
-<%@page import="database.CommentDto"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.List"%>
 <%@page import="database.BoardDao"%>
@@ -8,6 +6,24 @@
 <%@page import="database.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+// 페이지네이션
+String pageNum = request.getParameter("pageNum");
+String pageState = request.getParameter("pageBlock");
+//페이지 넘어가는것
+int currentPage = 1;
+if (pageNum != null)
+	currentPage = Integer.parseInt(pageNum);
+int pageDisplayNum = 5;
+
+int startNum = currentPage;
+
+if (pageState == null) {
+} else if (pageState.equals("Next"))
+	startNum += 1;
+else if (pageState.equals("Previous"))
+	startNum = (startNum <= 1) ? 1 : startNum - 1;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,14 +79,16 @@ style>.prpl {
 
 			<div class="carousel-inner">
 				<div class="carousel-item active ">
-					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
+					<img src="./image/배너%20수정본/배너%20복사본.png" alt="First slide"
 						class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
+					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Second slide"
+						class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide"
+						class="w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls"
@@ -101,10 +119,9 @@ style>.prpl {
 
 	<!-- 소통 탭  -->
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-7"></div>
-		<div class="col-lg-3">
-			<ul class="nav nav-pills justify-content-around display-5">
+		<div class="col-lg-8"></div>
+		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
+			<ul class="nav nav-pills justify-content-around display-5 ">
 				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
 				<li>|</li>
 				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
@@ -112,6 +129,7 @@ style>.prpl {
 				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
+		<div class="col-lg-1"></div>
 	</div>
 
 	<!-- 공백 -->
@@ -162,8 +180,6 @@ style>.prpl {
 	List<BoardDto> arraylist = new ArrayList<BoardDto>();
 	
 	BoardDto boardDto;
-	
-	CommentDao commentDao = new CommentDao();
 	%>
 
 
@@ -198,7 +214,7 @@ style>.prpl {
 							<!-- 번호  -->
 							<td><%=boardDto.getBoard_id()%></td>
 							<!-- 제목  -->
-							<td><%=boardDto.getBoard_title()%> [<%=commentDao.countComment(boardDto.getBoard_id())%>]</td>
+							<td><%=boardDto.getBoard_title()%></td>
 							<!-- 날짜 -->
 							<td><%=boardDto.getBoard_regdate()%></td>
 							<!-- 아이디 -->
@@ -215,23 +231,43 @@ style>.prpl {
 	</div>
 
 
-	<!--목록버튼-->
+	<!-- 페이지 네이션  -->
 	<div class="row">
-		<div class="col-lg-5"></div>
-		<div class="col-lg-2">
-		
-			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="BoardB_Q.jsp?pageNumber -1"> < </a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link" href="#">></a></li>
-			</ul>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<nav style="text-align: center;">
+				<ul class="pagination">
+					<li><a
+						href="./BoardB_view.jsp?pageBlock=Previous&pageNum=<%=currentPage%>"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+					<%
+					for (int i = 0; i < pageDisplayNum; i++) {
+					%>
+					<%
+					if ((startNum + i) == currentPage) {
+					%>
+					<li class="page-item active"><a
+						href="./BoardB_view.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
+					<%
+					} else {
+					%>
+					<li class="page-item"><a
+						href="./BoardB_view.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
+					<%
+					}
+					}
+					%>
+
+					<li><a href="./BoardB_view.jsp?pageBlock=Next"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
 		</div>
-		<div class="col-lg-5"></div>
+		<div class="col-lg-1"></div>
 	</div>
+
 
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
