@@ -355,7 +355,6 @@
 		<div class="col-lg-1"></div>
 	</div>
 
-
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
