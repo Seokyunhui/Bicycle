@@ -229,7 +229,6 @@ style>.prpl {
 		<div class="col-lg-1"></div>
 	</div>
 
-
 	<!-- 페이지 네이션  -->
 	<div class="row">
 		<div class="col-lg-1"></div>

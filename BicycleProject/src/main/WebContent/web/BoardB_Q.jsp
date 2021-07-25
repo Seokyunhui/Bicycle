@@ -25,7 +25,6 @@ if (pageState == null) {
 else if (pageState.equals("Previous"))
 	startNum = (startNum <= 1) ? 1 : startNum - 1;
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
