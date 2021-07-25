@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 	<%
 		request.setCharacterEncoding("utf-8");
 		PrintWriter script = response.getWriter();

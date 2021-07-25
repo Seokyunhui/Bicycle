@@ -6,7 +6,6 @@
 <%@page import="database.BoardDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 	<%
 // 페이지네이션
 String pageNum = request.getParameter("pageNum");
