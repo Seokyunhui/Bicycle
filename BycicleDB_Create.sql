@@ -123,6 +123,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Market_Board` (
   `Market_name` CHAR(10) NOT NULL,
   `Market_price` INT NOT NULL,
   `Market_addr` CHAR(10) NOT NULL DEFAULT '-',
+  `Market_state` CHAR(10) NOT NULL DEFAULT '거래가능',
   PRIMARY KEY (`Market_id`),
   INDEX `Board_id_idx` (`M_Board_id` ASC) VISIBLE,
   CONSTRAINT `M_Board_id`
