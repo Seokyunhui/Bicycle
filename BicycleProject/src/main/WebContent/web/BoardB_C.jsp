@@ -210,6 +210,7 @@ style>.prpl {
 					%>
 					<%
 					boardDto = arraylist.get(j);
+					int num = commentDao.countComment(boardDto.getBoard_id());
 					%>
 					<tbody>
 						<tr onclick = "location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
