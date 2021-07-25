@@ -1,3 +1,4 @@
+<%@page import="database.CommentDao"%>
 <%@page import="database.MemberDao"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.List"%>
@@ -157,6 +158,8 @@ style>.prpl {
 	
 	BoardDto boardDto;
 	MemberDao memberDao = new MemberDao();
+	
+	CommentDao commentDao = new CommentDao();
 	%>
 
 
@@ -191,7 +194,7 @@ style>.prpl {
 							<!-- 번호  -->
 							<td><%=boardDto.getBoard_id()%></td>
 							<!-- 제목  -->
-							<td><%=boardDto.getBoard_title()%></td>
+							<td><%=boardDto.getBoard_title()%> [<%=commentDao.countComment(boardDto.getBoard_id())%>]</td>
 							<!-- 날짜 -->
 							<td><%=boardDto.getBoard_regdate()%></td>
 							<!-- 아이디 -->
