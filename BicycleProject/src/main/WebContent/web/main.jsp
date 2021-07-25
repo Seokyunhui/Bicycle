@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="database.BoardcDao"%>
 <%@page import="database.Add_fileDao"%>
@@ -42,6 +43,33 @@
 	crossorigin="anonymous">
 	
 </script>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff(arraylist) {
+        var data = new google.visualization.arrayToDataTable([
+          ['', '주행거리(km)'],
+          ["1등(xxx님)", 44],
+          ["2등(xxx님)", 31],
+          ["3등(xxx님)", 12],
+          ["4등(xxx님)", 10],
+          ['5등(xxx님)', 3]
+        ]);
+
+        var options = {
+          width: '100%',
+          legend: { position: 'none' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
 <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
 <body>
@@ -137,12 +165,9 @@
 					<tr
 						onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
 						<th><%=i + 1%>등</th>
-						<td><%=boardDto.getBoard_title()%>
-						</td>
-						<td>
-						</td>
-						<td>
-						</td>
+						<td><%=boardDto.getBoard_title()%></td>
+						<td></td>
+						<td></td>
 						<td>작성자: <%=boardDto.getBoard_writer()%>
 						</td>
 						<td>조회수: <%=boardDto.getInfo_hit()%>
@@ -162,30 +187,13 @@
 		//다음주 월요일
 		%>
 
+
 		<!-- 챌린지 그래프 -->
+
 		<div class="col-lg-5">
 			<div class="panel panel-info">
-				<!-- Default panel contents -->
 				<div class="panel-heading">챌린지</div>
-
-				<!-- Table -->
-				<table class="table table-hover table-striped table-condensed ">
-					<tr>
-						<th>1등</th>
-					</tr>
-					<tr>
-						<th>2등</th>
-					</tr>
-					<tr>
-						<th>3등</th>
-					</tr>
-					<tr>
-						<th>4등</th>
-					</tr>
-					<tr>
-						<th>5등</th>
-					</tr>
-				</table>
+				   <div id="top_x_div" style="width: auto; height: 400px; margin: 20px"></div>
 			</div>
 		</div>
 	</div>
@@ -351,18 +359,24 @@
 		<div class="col-lg-4 mb-4">
 			<%
 			for (int i = 0; i < 5; i++) {
-				if(arrayList.size() <= i){
+				if (arrayList.size() <= i) {
 					break;
 				}
 				BoardDto boardDto = arrayList.get(i);
 			%>
-			<div class="border border-dark" >
-			<h5 class="m-3"><%= boardDto.getBoard_title() %><span class="badge badge-secondary m-3" style="font-size:large;">작성자: <%=boardDto.getBoard_writer() %></span></h5>
-			<p class="m-3"> <%= boardDto.getBoard_content() %> </p>
-			<button class="btn btn-secondary m-3" onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">보러가기</button>
+			<div class="border border-dark">
+				<h5 class="m-3"><%=boardDto.getBoard_title()%><span
+						class="badge badge-secondary m-3" style="font-size: large;">작성자:
+						<%=boardDto.getBoard_writer()%></span>
+				</h5>
+				<p class="m-3">
+					<%=boardDto.getBoard_content()%>
+				</p>
+				<button class="btn btn-secondary m-3"
+					onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">보러가기</button>
 			</div>
-			
-			
+
+
 			<%
 			}
 			%>

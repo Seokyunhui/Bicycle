@@ -177,7 +177,7 @@
 				for(int i = 0; i<5; i++){
 					if(arrayList.size()<=i){
 						break;
-					}	
+					}
 					boardcDto =  arrayList.get(i);
 			%>			
             <div class="col-lg-2 col-md-4">

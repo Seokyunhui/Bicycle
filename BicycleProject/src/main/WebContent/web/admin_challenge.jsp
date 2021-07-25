@@ -1,5 +1,13 @@
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="database.ChallegeDto"%>
+<%@page import="database.ChallegeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+request.setCharacterEncoding("UTF-8");
+%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,16 +47,14 @@
 
 			<div class="carousel-inner">
 				<div class="carousel-item active ">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="First slide"
+					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
 						class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Second slide"
-						class="w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide"
-						class="w-100">
+					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls"
@@ -103,12 +109,24 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-1"></div>
-		<div class="col-lg-8">
+		<div class="col-lg-6">
 			<h3>
 				<b>챌린지 목록</b>
 			</h3>
 		</div>
-		<div class="col-lg-1"></div>
+		<div class="col-lg-3">
+	
+				<ul class="nav nav-pills justify-content-around display-5">
+					
+					<li><a href="admin_challenge.jsp?check=0" class="navbar-link text-dark">등록보류</a></li>
+					
+					<li>|</li>
+					
+					<li><a href="admin_challenge.jsp?check=1" class="navbar-link text-dark">등록완료</a></li>
+					
+				</ul>
+			
+		</div>
 		<div class="col-lg-1"></div>
 	</div>
 
@@ -122,13 +140,28 @@
 	</div>
 
 	<!-- 목록 테이블 구역 -->
-	<form action="" method="post">
+	<%
+	List<ChallegeDto> arrayList = new ArrayList<>();
+	ChallegeDao challegeDao = new ChallegeDao();
+	ChallegeDto challegeDto;
+	
+	arrayList = challegeDao.getList();
+	int check = Integer.parseInt(request.getParameter("check"));  
+	if(check == 1){
+		arrayList = arrayList.stream().filter(list -> list.getAdmin_approval()==1).collect(Collectors.toList());
+	} else {
+		arrayList = arrayList.stream().filter(list -> list.getAdmin_approval()==0).collect(Collectors.toList());
+	}
+	
+	String km = "km";
+	
+	%>
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-1"></div>
 
 			<div class="col-lg-8">
-
+		
 				<table class="table table-hover" style="text-align: center;">
 					<thead>
 						<tr>
@@ -140,50 +173,31 @@
 						</tr>
 					</thead>
 					<tbody>
+					<%for(int i = 0; i<5; i++){
+						if(arrayList.size()<=i){
+							break;
+						}
+						challegeDto = arrayList.get(i);
+						
+						%>
 						<tr>
-							<td style="vertical-align: middle;">1</td>
-							<td style="vertical-align: middle;">김포에 부산 갔음</td>
-							<td style="vertical-align: middle;">2021.07.04</td>
-							<td style="vertical-align: middle;">400km</td>
-							<td><button type="button" class="btn btn-outline-danger">등록</button></td>
+							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_id() %></td>
+							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_content() %></td>
+							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_regdate() %></td>
+							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_dist() + km %></td>
+							<%if(challegeDto.getAdmin_approval()==1){ %>
+							<td><button type="button" class="btn btn-outline-success disabled">등록완료</button></td>
+							<%} else { %>
+							<td><a class="btn btn-outline-danger" href="admin_challenge_action.jsp?Challenge_id=<%=challegeDto.getChallenge_id() %>">등록</a></td>
+							<%} %>
 						</tr>
-						<tr>
-							<td style="vertical-align: middle;">2</td>
-							<td style="vertical-align: middle;">김포에 부산 갔음</td>
-							<td style="vertical-align: middle;">2021.07.04</td>
-							<td style="vertical-align: middle;">400km</td>
-							<td><button type="button" class="btn btn-outline-danger">등록</button></td>
-
-						</tr>
-						<tr>
-							<td style="vertical-align: middle;">3</td>
-							<td style="vertical-align: middle;">김포에 부산 갔음</td>
-							<td style="vertical-align: middle;">2021.07.04</td>
-							<td style="vertical-align: middle;">400km</td>
-							<td><button type="button" class="btn btn-outline-danger">등록</button></td>
-						</tr>
-
-						<tr>
-							<td style="vertical-align: middle;">4</td>
-							<td style="vertical-align: middle;">김포에 부산 갔음</td>
-							<td style="vertical-align: middle;">2021.07.04</td>
-							<td style="vertical-align: middle;">400km</td>
-							<td><button type="button" class="btn btn-outline-danger">등록</button></td>
-						</tr>
-						<tr>
-							<td style="vertical-align: middle;">5</td>
-							<td style="vertical-align: middle;">김포에 부산 갔음</td>
-							<td style="vertical-align: middle;">2021.07.04</td>
-							<td style="vertical-align: middle;">400km</td>
-							<td><button type="button" class="btn btn-outline-danger">등록</button></td>
-						</tr>
+						<%} %>
 					</tbody>
 				</table>
 			</div>
 			<div class="col-lg-1"></div>
 			<div class="col-lg-1"></div>
 		</div>
-	</form>
 
 	<!-- 공백 구역 -->
 	<div class="row">

@@ -1,3 +1,6 @@
+<%@page import="database.ChallegeDto"%>
+<%@page import="database.ChallegeDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +28,7 @@
 	background-color: cornsilk;
 }
 </style>
-<title>Insert title here</title>
+<title>동행하는 사람들...</title>
 </head>
 <body>
 	<%@include file="./header.jsp"%>
@@ -117,7 +120,7 @@
 	</div>
 
 
-	<form action="" method="post">
+	<form action="challenge_action.jsp" method="post">
 
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -152,7 +155,7 @@
 			<div class="col-lg-8">
 				<div class="form-group">
 					<input type="number" class="form-control"
-						placeholder="주행거리를 입력해주세요.(km)" id="" name="" required>
+						placeholder="주행거리를 입력해주세요.(km)" name="challenge_dist" required>
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
@@ -167,7 +170,7 @@
 			<div class="col-lg-8">
 				<div class="form-group">
 					<textarea class="form-control" rows="10"
-						placeholder="오늘은 어느곳을 다녀오셨나요?.." id="content" name="Board_content"
+						placeholder="오늘은 어느곳을 다녀오셨나요?.." name="Challenge_content"
 						required></textarea>
 				</div>
 			</div>
@@ -221,7 +224,22 @@
 			</div>
 			<div class="col-lg-1"></div>
 		</div>
+		<%
+		MemberDao memberDao = new MemberDao();
+		ChallegeDao challegeDao = new ChallegeDao();
+		ArrayList<ChallegeDto> arrayList = new ArrayList<>();
+		String writer = (String) session.getAttribute("userID"); //글 쓴이
+		int MemberUid = memberDao.getMemberUid(writer); //글 쓴이 기본키
+		arrayList = challegeDao.getList(MemberUid);
+		ChallegeDto challegeDto;
+
+
 		
+		
+		
+		
+		
+		%>
 
 
 		<!-- 목록 테이블 구역 -->
@@ -241,36 +259,26 @@
 							</tr>
 						</thead>
 						<tbody>
+						<%for(int i =0; i<5; i++){
+							if(arrayList.size() <= i){
+								break;
+							}
+							challegeDto = arrayList.get(i);
+							%>
 							<tr>
-								<td>1</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
+							
+								<td><%=challegeDto.getChallenge_id() %></td>
+								<td><%=challegeDto.getChallenge_content() %></td>
+								<td><%=challegeDto.getChallenge_regdate() %></td>
+								<td><%=challegeDto.getChallenge_dist() %></td>
+								<%if(challegeDto.getAdmin_approval() == 1){ %>
 								<td>y</td>
+								<%} else { %>
+								<td>n</td>
+								<%} %>
+								
 							</tr>
-							<tr>
-								<td>2</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-							</tr>
-
-							<tr>
-								<td>4</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-							</tr>
+							<%} %>
 						</tbody>
 					</table>
 				</div>
