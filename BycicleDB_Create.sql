@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`Challege` (
   `Challenge_id` INT NOT NULL AUTO_INCREMENT,
   `Ch_Member_id` INT NOT NULL,
   `Challenge_dist` INT NOT NULL DEFAULT 0,
-  `Challenge_regdate` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Challenge_regdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `admin_approval` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`Challenge_id`),
   INDEX `Member_id_idx` (`Ch_Member_id` ASC) VISIBLE,
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `BicycleDB`.`BoardC` (`B_Member_id` INT, `Member_id` 
 DROP TABLE IF EXISTS `BicycleDB`.`BoardC`;
 USE `BicycleDB`;
 CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id,a.Member_id, a.Member_phone,
-b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_editdate,
+b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_regdate,
 c.Market_name,c.Market_price,Market_addr, c.Market_id
 From Member AS a, Board AS b, Market_Board AS c
 where b.Category_big like '중고거래' AND a.Member_uid = b.B_Member_id AND b.Board_id = c.M_Board_id;
@@ -172,14 +172,6 @@ where b.Category_big like '중고거래' AND a.Member_uid = b.B_Member_id AND b.
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- bicycleDBAdmin 계정 및 권한 부여
--- -----------------------------------------------------
-
-create user 'bicycleDBAdmin'@'%' IDENTIFIED BY '1234';
-grant all privileges on bicycledb.* to 'bicycleDBAdmin' with grant option;
-
 
 -- -----------------------------------------------------
 -- Data for table `BicycleDB`.`Member`
