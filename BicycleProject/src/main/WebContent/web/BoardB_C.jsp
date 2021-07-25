@@ -57,7 +57,6 @@ else if (pageState.equals("Previous"))
 	padding-right: 20px;
 }
 
-
 <
 style>.prpl {
 	padding-left: 20px;
