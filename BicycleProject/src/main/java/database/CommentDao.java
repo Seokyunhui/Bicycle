@@ -198,16 +198,16 @@ public class CommentDao {
 		try {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, Board_id);
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				count_cmt = rs.getInt("Count(*)");
+				count_cmt = rs.getInt(1);
 			}
 			return count_cmt;
 			
 		} catch (Exception e) {
-			
+
+			return 0;
 		}
-		return 0;
 	}
 	
 
