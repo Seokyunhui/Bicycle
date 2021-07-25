@@ -28,7 +28,7 @@ request.setCharacterEncoding("UTF-8");
 	if(challegeDao.update(1, Challenge_id )){
 		script.println("<script>");
 		script.println("alert('등록 완료');");
-		script.println("location.href= './admin_challenge.jsp'");
+		script.println("location.href= './admin_challenge.jsp?check=0'");
 		script.println("</script>");
 	} else{
 		script.println("<script>");

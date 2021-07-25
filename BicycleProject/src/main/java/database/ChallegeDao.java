@@ -14,7 +14,7 @@ public class ChallegeDao {
 
 		Connection con = dbDriver.connDB();
 
-		String sql = "SELECT Ch_Member_id,sum(Challenge_dist) from challege group by Ch_Member_id order by sum(Challenge_dist) desc;";
+		String sql = "SELECT Ch_Member_id,sum(Challenge_dist) from challege where admin_approval = 1 group by Ch_Member_id order by sum(Challenge_dist) desc";
 
 		JSONArray jsonArray = new JSONArray();
 
@@ -64,7 +64,7 @@ public class ChallegeDao {
 		
 		ArrayList<ChallegeDto> arrayList = new ArrayList<>();
 		Connection con = dbDriver.connDB();
-		String sql = "select * from challege";
+		String sql = "select * from challege order by Challenge_regdate desc";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class ChallegeDao {
 		
 		ArrayList<ChallegeDto> arrayList = new ArrayList<>();
 		Connection con = dbDriver.connDB();
-		String sql = "select * from challege where Ch_Member_id = ?";
+		String sql = "select * from challege where Ch_Member_id = ? order by Challenge_regdate desc";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
