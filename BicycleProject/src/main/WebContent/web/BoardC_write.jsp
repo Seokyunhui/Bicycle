@@ -184,7 +184,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title" required >
+                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title" maxlength="14" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>

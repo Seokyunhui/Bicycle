@@ -53,11 +53,11 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10 text-center">
 			<h3>공지사항 겸 (프로젝트 후기)</h3>
-			<p>프론트 백 고민의 길에 서다... 	-유창석</p>
-			<p>고생했다 애두라~			 	-석윤희</p>
-			<p>잉 너무 어려웠쩡			 	-윤란영</p>
-			<p>머리아파..				 	-김동준</p>
-			<p>backend 는 논리적으로...	 	-이범수</p>
+			<p>프론트 백 고민의 길에 서다... -유창석</p>
+			<p>고생했다 윤희야 -석윤희</p>
+			<p>잉 너무 어려웠쩡 -윤란영</p>
+			<p>날 더운데 다들 고생이 많아요 -김동준</p>
+			<p>EZ -이범수</p>
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
@@ -114,13 +114,13 @@
 				<!-- Default panel contents -->
 				<div class="panel-heading">
 					<ul class="nav justify-content-start">
-						<li class="nav-item">
-							<a class="nav-link disabled"><%=rank_category%>게시판 인기글</a>
-						</li>
-						<li class="nav-item">
-						</li>
-						<li class="nav-item text-right"><a class="nav-link" href="main.jsp?rank_category_sm=자유">자유게시판</a></li>
-						<li class="nav-item text-right"><a class="nav-link" href="main.jsp?rank_category_sm=질문">질문</a></li>
+						<li class="nav-item"><a class="nav-link disabled"><%=rank_category%>게시판
+								인기글</a></li>
+						<li class="nav-item"></li>
+						<li class="nav-item text-right"><a class="nav-link"
+							href="main.jsp?rank_category_sm=자유">자유게시판</a></li>
+						<li class="nav-item text-right"><a class="nav-link"
+							href="main.jsp?rank_category_sm=질문">질문</a></li>
 					</ul>
 				</div>
 
@@ -137,7 +137,11 @@
 					<tr
 						onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
 						<th><%=i + 1%>등</th>
-						<td>글제목: <%=boardDto.getBoard_title()%>
+						<td><%=boardDto.getBoard_title()%>
+						</td>
+						<td>
+						</td>
+						<td>
 						</td>
 						<td>작성자: <%=boardDto.getBoard_writer()%>
 						</td>
@@ -296,7 +300,7 @@
 						<div class="card-body">
 							<p class="card-text"><%=boardcDto.getCategory_Small()%></p>
 							<p class="card-text"><%=boardcDto.getBoard_Editdate()%></p>
-							<h5 class="card-title "><%=boardcDto.getBoard_Title()%></h5>
+							<h6 class="card-title "><%=boardcDto.getBoard_Title()%></h6>
 							<p class="card-text"><%=boardcDto.getMarket_Price()%>원
 							</p>
 							<a
@@ -325,7 +329,7 @@
 						<div class="card-body">
 							<p class="card-text"><%=boardcDto.getCategory_Small()%></p>
 							<p class="card-text"><%=boardcDto.getBoard_Editdate()%></p>
-							<h5 class="card-title "><%=boardcDto.getBoard_Title()%></h5>
+							<h6 class="card-title "><%=boardcDto.getBoard_Title()%></h6>
 							<p class="card-text"><%=boardcDto.getMarket_Price()%>원
 							</p>
 							<a
@@ -339,8 +343,28 @@
 				%>
 			</div>
 		</div>
+		<%
+		arrayList = boardDao.getList();
+
+		arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("질문")).collect(Collectors.toList());
+		%>
 		<div class="col-lg-4 mb-4">
-			<p></p>
+			<%
+			for (int i = 0; i < 5; i++) {
+				if(arrayList.size() <= i){
+					break;
+				}
+				BoardDto boardDto = arrayList.get(i);
+			%>
+			<div class="border border-dark">
+			<h5 class="m-3"><%= boardDto.getBoard_title() %><span class="badge badge-secondary m-3" style="font-size:large;">작성자: <%=boardDto.getBoard_writer() %></span></h5>
+			<p class="m-3"> <%= boardDto.getBoard_content() %> </p>
+			</div>
+			
+			
+			<%
+			}
+			%>
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
