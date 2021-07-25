@@ -31,7 +31,7 @@
             background-color: cornsilk;
         }
     </style>
-<title>팝니다</title>
+<title>삽니다</title>
 </head>
 <body>
 	<%@include file="./header.jsp" %>
@@ -130,7 +130,7 @@
             <div class="col-lg-2">
             </div>
             <div class="col-lg-8 mb-4">
-                <h3><b>중고거래 팝니다 게시판</b></h3>
+                <h3><b>중고거래 삽니다 게시판</b></h3>
             </div>
             <div class="col-lg-2">
             </div>

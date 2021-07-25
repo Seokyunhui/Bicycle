@@ -118,7 +118,6 @@ public class BoardDao {
 				boardDto.setBoard_writer(boardWriter);
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
-				boardDto.setMember_uid(member_uid);;
 				boardDto.setMember_uid(member_uid);
 
 
@@ -149,7 +148,6 @@ public class BoardDao {
 				String boardWriter = rs.getString("Board_writer");
 				String boardTitle = rs.getString("Board_title");
 				int boardId = rs.getInt("Board_id");
-				int memberId = rs.getInt("B_member_uid");
 				int member_uid = rs.getInt("B_Member_id");
 
 				boardDto.setCategory_big(categoryBig);
@@ -159,7 +157,6 @@ public class BoardDao {
 				boardDto.setBoard_writer(boardWriter);
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
-				boardDto.setM_Board_Id(memberId);
 				boardDto.setMember_uid(member_uid);				
 
 			}

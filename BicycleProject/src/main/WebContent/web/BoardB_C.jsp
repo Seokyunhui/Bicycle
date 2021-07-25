@@ -4,6 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="database.DBDriver"%>
 <%@page import="database.BoardDto"%>
+<%@page import="database.CommentDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%
@@ -180,6 +181,7 @@ style>.prpl {
 	List<BoardDto> arraylist = new ArrayList<BoardDto>();
 	
 	BoardDto boardDto;
+	CommentDao commentDao = new CommentDao();
 	%>
 
 
@@ -214,7 +216,7 @@ style>.prpl {
 							<!-- 번호  -->
 							<td><%=boardDto.getBoard_id()%></td>
 							<!-- 제목  -->
-							<td><%=boardDto.getBoard_title()%></td>
+							<td><%=boardDto.getBoard_title()%> [<%=commentDao.countComment(boardDto.getBoard_id())%>]</td>
 							<!-- 날짜 -->
 							<td><%=boardDto.getBoard_regdate()%></td>
 							<!-- 아이디 -->
