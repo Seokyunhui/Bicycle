@@ -356,9 +356,10 @@
 				}
 				BoardDto boardDto = arrayList.get(i);
 			%>
-			<div class="border border-dark">
+			<div class="border border-dark" >
 			<h5 class="m-3"><%= boardDto.getBoard_title() %><span class="badge badge-secondary m-3" style="font-size:large;">작성자: <%=boardDto.getBoard_writer() %></span></h5>
 			<p class="m-3"> <%= boardDto.getBoard_content() %> </p>
+			<button class="btn btn-secondary m-3" onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">보러가기</button>
 			</div>
 			
 			

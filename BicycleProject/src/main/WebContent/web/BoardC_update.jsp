@@ -65,26 +65,32 @@ request.setCharacterEncoding("UTF-8");
     <div class="row">
         <div class="col-lg-1">
         </div>
-        <div id="carouselExampleControls" class="col-lg-10 carousel slide text-center w-100" data-ride="Carousel">
-        
-            <div class="carousel-inner">
-                <div class="carousel-item active ">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="First slide" class="w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="Second slide" class="w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide" class="w-100">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span> </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span> </a>
-        </div>
+		<div id="carouselExampleControls"
+			class="col-lg-10 carousel slide text-center w-100"
+			data-ride="Carousel">
+
+			<div class="carousel-inner">
+				<div class="carousel-item active ">
+					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
+						class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselExampleControls"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
 
 
         <div class="col-lg-1">
