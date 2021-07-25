@@ -222,8 +222,6 @@
 
 
 
-	<!-- 삭제부분시작 -->
-	<!-- 삭제부분끝 -->
 	<!-- 댓글 시작 --> 
 						<%
 							 arrayList2 = commentDao.getList(boardDto.getBoard_id());
