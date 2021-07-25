@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글 수정</title>
+
 <%
 	String B_id = request.getParameter("id");
 	int id = Integer.parseInt(B_id);
