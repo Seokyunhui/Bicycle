@@ -148,7 +148,8 @@
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td colspan="2"><%= boardDto.getBoard_content() %></td>
+						<!-- <td colspan="2"></td> -->
+						<td colspan="2"><p><%= boardDto.getBoard_content().replace("\r\n", "<br>")%></p></td>
 					</tr>
 				</thead>
 			</table>

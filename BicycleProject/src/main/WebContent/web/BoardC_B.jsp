@@ -31,7 +31,7 @@
             background-color: cornsilk;
         }
     </style>
-<title>팝니다</title>
+<title>삽니다</title>
 </head>
 <body>
 	<%@include file="./header.jsp" %>
