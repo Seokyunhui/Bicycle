@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>동행하는 사람들...</title>
+<script src= "./js/apiLogin.js"></script>
 </head>
 
 <body>
@@ -28,6 +29,7 @@
 
 				<%
 				String userid = (String) session.getAttribute("userID");
+				MemberDao dao = new MemberDao();
 				if (session.getAttribute("userID") == null) {
 				%>
 				<div class="col-lg-3 align-self-center">
@@ -38,13 +40,14 @@
 				} else if (session.getAttribute("userID") != null) {
 				%>
 				<div class="col-lg-3 col-sm-3 align-self-center">
-					<p><%=userid%>님 반갑습니다~ <a href="logout.jsp"
-							class="btn btn-uni btn-sm">로그아웃</a>
+					<p><%=dao.getUserInfo(userid).getMember_name()%>님 반갑습니다~ <a href="logout.jsp"
+							class="btn btn-uni btn-sm" onclick= "kakaoLogout()">로그아웃</a>
 				</div>
 
 				<%
 				}
 				%>
+
 
 
 
