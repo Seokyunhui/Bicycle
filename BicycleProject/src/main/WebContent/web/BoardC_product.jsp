@@ -2,7 +2,15 @@
 <%@page import="database.BoardcDto"%>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.BoardDto"%>
+<%@page import="database.BoardDao"%>
 <%@page import="database.MarketBoardDao"%>
+<%@page import= "database.MemberDao" %>
+<%@page import= "database.MemberDto" %>
+<%@page import="database.CommentDao"%>
+<%@page import="database.CommentDto"%>
+
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +27,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
-    <style>
+
+	<script type="text/javascript">
+	function guest_rep_onclick_codelete(action, id, m_id) {
+		var s = id;
+		var a = action;
+		var m = m_id;
+		var result = confirm("정말 삭제하시겠습니까 ?");
+		if (result) {
+			var url = 'BoardC_product_update_delete.jsp?action=' + encodeURI(a)
+					+ '&id=' + encodeURI(s) + '&m_id=' + encodeURI(m);
+			window.location.href = url;
+		}
+	}
+	function guest_rep_onclick_coedit(action, id,m_id) {
+		var s = id;
+		var a = action;
+		var m = m_id;
+		window.open("BoardC_product_updateform.jsp?action=" + encodeURI(a)
+				+ "&id=" + encodeURI(s)+ '&m_id=' + encodeURI(m), "댓글수정",
+				"width=400, height=300, left=100, top=50");
+		//window.location.href = url; 
+	}
+	</script>
+	
+	
+	
+	<%
+	String pageNum = request.getParameter("pageNum");
+	String pageState = request.getParameter("pageBlock");
+	int currentPage = 1;
+	if(pageNum != null)
+		currentPage = Integer.parseInt(pageNum);
+	int pageDisplayNum = 5;
+
+	int startNum = currentPage;
+	
+	if(pageState == null){}
+	else if(pageState.equals("Next"))	startNum += 1;
+	else if(pageState.equals("Previous"))	startNum = (startNum<=1)? 1:startNum-1;
+	%>
+
+
+
+
+<style>
         .prpl {
             padding-left: 20px;
             padding-right: 20px;
@@ -158,7 +210,7 @@
             </div>
         </div>
         <%
-			int market_id = Integer.parseInt((String) request.getParameter("Market_id"));
+			int market_id = Integer.parseInt(request.getParameter("Market_id"));
 			BoardcDao boardcDao = new BoardcDao();
 			BoardcDto boardcDto = boardcDao.getDto(market_id);
 			Add_fileDao add_fileDao = new Add_fileDao();
@@ -256,166 +308,135 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-8">
-            <div class="guestList">
-                <ol class="list-group">
-                    <li id="guest_rep_id" class="list-group-item">
-                        <div class="guest_rep_class">
-                            <strong>스펀지밥</strong> <small>(작성 날짜 및 시간)</small> <span class="control"> <a href="#"
-                                    onclick="guest_rep_onclick_edit"
-                                    class="btn btn-default btn-xs">&nbsp;<span>수정</span></a>
-                                <a href="#" onclick="guest_rep_onclick_delete"
-                                    class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> <a href="#"
-                                    onclick="guest_rep_onclick_reply"
-                                    class="btn btn-default btn-xs">&nbsp;<span>리플</span></a>
-                            </span>
-                            <div class="row">
-                                <div class="col-lg-1">
-                                    <img src="./image/스펀지밥.png" alt="..." class="img-thumbnail" width="80" height="50">
-                                </div>
-                                <div class="col-lg-8">
-                                    <p>스펀지에요~</p>
-                                </div>
-                            </div>
+	<%!
+	BoardDto boardDto;
+	MemberDto memberDto;
+	MemberDao m_dao = new MemberDao();
 
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-10">
-                                    <ul class="list-group">
-                                        <li id="guest_rep_id]" class="list-group-item">
-                                            <div class="guest_rep_class">
-                                                <strong>뚱이</strong> <small>(리플 단 날짜 및 시간)</small> <span class="control">
-                                                    <a href="#" onclick="guest_rep_onclick_edit"
-                                                        class="btn btn-default btn-xs">&nbsp;<span>수정</span></a> <a
-                                                        href="#" onclick="guest_rep_onclick_delete"
-                                                        class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a>
-                                                </span>
-                                                <p>스펀지밥~~ 놀자아~</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-1"></div>
-                            </div>
-                        </div> <br>
-                        <br>
+	CommentDao commentDao = new CommentDao();
+	List<CommentDto> arrayList2 = new ArrayList<>();
+	CommentDto CommentDto;
+	%>
+	
 
-                        <div class="guest_rep_class">
-                            <strong>뚱이</strong> <small> (작성 날짜 및 시간)</small> <span class="control"> <a href="#"
-                                    onclick="guest_rep_onclick_edit"
-                                    class="btn btn-default btn-xs">&nbsp;<span>수정</span></a>
-                                <a href="#" onclick="guest_rep_onclick_delete"
-                                    class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> <a href="#"
-                                    onclick="guest_rep_onclick_reply"
-                                    class="btn btn-default btn-xs">&nbsp;<span>리플</span></a>
-                            </span>
-                            <div class="row">
-                                <div class="col-lg-1">
-                                    <img src="./image/뚱이에요.png" alt="..." class="img-thumbnail" width="80" height="50">
-                                </div>
-                                <div class="col-lg-8">
-                                    <p>사랑해요~ 뚱이예요!</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-10">
-                                    <ul class="list-group">
-                                        <li id="guest_rep_id" class="list-group-item">
-                                            <div class="guest_rep_class">
-                                                <strong>스펀지밥</strong> <small>(리플 단 날짜 및 시간)</small> <span
-                                                    class="control"> <a href="#" onclick="guest_rep_onclick_edit"
-                                                        class="btn btn-default btn-xs">&nbsp;<span>수정</span></a> <a
-                                                        href="#" onclick="guest_rep_onclick_delete"
-                                                        class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a>
-                                                </span>
-                                                <p>뚱아~~~~~~ 놀자아~~</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-1"></div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" style="resize: none;" placeholder="내용을 입력하세요"></textarea>
 
-                                <div style="float: right;">
-                                    <input type="submit" value="등록" onclick="guest_onclick_submit">
-                                </div>
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                    </li>
-                </ol>
+					<!-- 글 시작 -->
+								<!-- 댓글 시작 -->
+								<%
+							arrayList2 = commentDao.getList(boardcDto.getBoard_Id());
+							for(int a = 0; a < arrayList2.size(); a++){ 
+								if(arrayList2.size() < a) break;
+									CommentDto = arrayList2.get(a);%>
+
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-1"></div>
+								<div class="col-lg-8">
+									<ul class="list-group">
+										<li id="guest_rep_id" class="list-group-item">
+											<div class="guest_rep_class">
+												<strong><%=CommentDto.getComment_name()%></strong> <small><%=CommentDto.getComment_regdate() %></small>
+												<span class="control"> 
+												<%
+								String c_id = (String)session.getAttribute("userID");
+								int c_uid = 0;
+								if(c_id != null){
+									c_uid = m_dao.getMemberUid(c_id);
+								}
+								if (CommentDto.getMember_uid() == c_uid){ %> 
+								<a href="#"	onclick="guest_rep_onclick_coedit('edit','<%=CommentDto.getComment_id()%>','<%=boardcDto.getMarket_Id() %>')"
+													class="btn btn-default btn-xs"> <span>수정</span></a> 
+													<a
+													href="#"
+													onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>','<%=boardcDto.getMarket_Id() %>')"
+													class="btn btn-default btn-xs"><span>삭제</span></a>
+													 <%} %>
+												</span>
+												<p><%=CommentDto.getComment_content() %></p>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="col-lg-1"></div>
+								<div class="col-lg-1"></div>
+							</div>
+							<br>
+							
+						<% } %><!-- 댓글 끝 -->
+
+	<div class="row">
+		<br>
+	</div>
+	<% 
+	String id = (String)session.getAttribute("userID");
+	if(id != null){
+	%>
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-8">
+			<form action="BoardC_product_process.jsp" method="post">
+			<input type= "hidden" name = "id" value= "<%=boardcDto.getBoard_Id() %>">
+			<input type= "hidden" name = "m_id" value= "<%=boardcDto.getMarket_Id() %>">
+				<textarea name="BoardC_product_Contents" class="form-control"
+					style="resize: none;" placeholder="내용을 입력하세요"></textarea>
+				<p class="text-center"></p>
+				<input type="submit" value="등록" class="btn btn-default submit" />
+			</form>
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+	</div>
+<% } %>
+
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-8"></div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	 <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-8">
+                <nav style="text-align: center;">
+                    <ul class="pagination">
+                        <li >
+                            <a href="./BoardB_M.jsp?pageBlock=Previous&pageNum=<%=currentPage%>" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <%for(int i = 0; i < pageDisplayNum ; i++){ %>
+                        <% if((startNum + i) == currentPage){%>
+                        <li class="page-item active"><a href="./BoardC_product.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
+						<%}
+                        else{%>
+                        <li class= "page-item"><a href="./BoardC_product.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>	
+                        <% } 
+                        } %>
+
+                        <li>
+                            <a href="./BoardC_product.jsp?pageBlock=Next" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </nav>
             </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-1"></div>
         </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-    </div>
 
-    <div class="row">
-        <br>
-    </div>
-    <!-- 공백 -->
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
-        </div>
-        <div class="col-lg-1">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-8">
-            <textarea class="form-control" style="resize: none;" placeholder="내용을 입력하세요"></textarea>
-            <br>
-            <div class="col-lg-1" style="float: right;">
-                <input type="submit" value="등록" onclick="guest_onclick_submit" class="btn btn-default submit" />
-            </div>
-        </div>
-        <div class="col-lg-1"></div>
-    </div>
-    <!-- 공백 -->
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
-            <br>
-        </div>
-        <div class="col-lg-1">
-        </div>
-    </div>
-
-    <!-- 공백 -->
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10"></div>
-        <div class="col-lg-1"></div>
-    </div>
-
-    <!--hr-->
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="col-lg-10">
-            <hr>
-        </div>
-        <div class="col-lg-1">
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<hr>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
 
 
 

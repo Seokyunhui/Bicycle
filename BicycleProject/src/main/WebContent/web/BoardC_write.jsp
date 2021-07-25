@@ -234,6 +234,7 @@ request.setCharacterEncoding("UTF-8");
                     <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="Board_content" required ></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
+                <input type=button class="btn btn-primary mr-5" style="float: right " value="이전" OnClick="javascript:history.back(-1)">
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
