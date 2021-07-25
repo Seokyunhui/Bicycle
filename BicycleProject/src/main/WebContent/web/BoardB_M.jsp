@@ -122,17 +122,17 @@ else if (pageState.equals("Previous"))
 
 
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-7"></div>
-		<div class="col-lg-3">
-			<ul class="nav nav-pills justify-content-around display-5">
-				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
-				<li>|</li>
-				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
-				<li>|</li>
-				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
+		<div class="col-lg-8"></div>
+		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
+			<ul class="nav nav-pills justify-content-around display-5 ">
+				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">자유게시판</a></li>
+				<li></li>
+				<li><a href="BoardC_B.jsp" class="navbar-link text-dark">질문게시판</a></li>
+				<li></li>
+				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
+		<div class="col-lg-1"></div>
 	</div>
 
 	<div class="row">

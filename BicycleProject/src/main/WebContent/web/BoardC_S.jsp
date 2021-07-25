@@ -95,9 +95,9 @@
 
                 <ul class="nav nav-pills justify-content-around display-5">
 
-                    <li><a href="BoardC_S.jsp" class="navbar-link text-dark">팝니다</a></li>
+                    <li><a href="BoardC_B.jsp" class="navbar-link text-dark">팝니다</a></li>
                     <li>|</li>
-                    <li><a href="BoardC_B.jsp" class="navbar-link text-dark">삽니다</a></li>
+                    <li><a href="BoardC_S.jsp" class="navbar-link text-dark">삽니다</a></li>
                 </ul>
             </div>
             <div class="col-lg-1">

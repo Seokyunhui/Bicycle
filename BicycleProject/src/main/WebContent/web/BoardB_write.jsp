@@ -146,6 +146,9 @@
                         name="board_content"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
+             
+                <input type=button class="btn btn-primary mr-5" style="float: right " value="이전" OnClick="javascript:history.back(-1)">
+
             </div>
             <div class="col-lg-2"></div>
         </div>
