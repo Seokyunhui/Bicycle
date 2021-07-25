@@ -156,6 +156,7 @@
             <div class="col-lg-1">
             </div>
         </div>
+
         <%
         List<BoardcDto> arrayList = new ArrayList<>();
               		BoardcDto boardcDto = new BoardcDto();
