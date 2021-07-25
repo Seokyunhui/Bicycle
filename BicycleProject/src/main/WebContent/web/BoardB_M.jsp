@@ -88,7 +88,8 @@ function guest_rep_onclick_delete(action,id){
 								if (boardDto.getMember_uid() == uid){ %>
 								<a href="#"
 								onclick="guest_rep_onclick_edit('edit','<%=boardDto.getBoard_id()%>');" class="btn btn-default btn-xs">&nbsp;<span>수정</span></a>
-								<a href="#" onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id() %>')"
+								<a href="#" onclick="guest_rep_onclick_delete('delet
+								e','<%=boardDto.getBoard_id() %>')"
 								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> 
 								<%} %>
 								<a

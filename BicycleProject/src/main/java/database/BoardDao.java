@@ -143,7 +143,8 @@ public class BoardDao {
 				String boardWriter = rs.getString("Board_writer");
 				String boardTitle = rs.getString("Board_title");
 				int boardId = rs.getInt("Board_id");
-
+				int memberId = rs.getInt("B_member_uid");
+				
 				boardDto.setCategory_big(categoryBig);
 				boardDto.setCategory_small(categorySmall);
 				boardDto.setBoard_regdate(boardRegDate);
@@ -151,9 +152,11 @@ public class BoardDao {
 				boardDto.setBoard_writer(boardWriter);
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
+				boardDto.setM_Board_Id(memberId);
+				
 			}
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return boardDto;
