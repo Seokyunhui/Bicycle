@@ -105,10 +105,9 @@ style>.prpl {
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
 				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
-
-				<li></li>
+				<li>|</li>
 				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
-				<li></li>
+				<li>|</li>
 				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>

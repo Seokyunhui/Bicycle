@@ -217,7 +217,7 @@ style>.prpl {
 		<div class="col-lg-2">
 		
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="BoardB_Q.jsp?pageNumber -1"> < </a></li>
+				<li class="page-item"><a class="page-link" href="#"> < </a></li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>

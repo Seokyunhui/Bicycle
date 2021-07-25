@@ -1,5 +1,3 @@
-
-<%@page import="com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource"%>
 <%@page import="javax.swing.border.Border"%>
 <%@page import="database.MemberDao"%>
 <%@page import="database.BoardDao"%>
@@ -21,9 +19,9 @@ request.setCharacterEncoding("UTF-8");
 			
 			
 			<% 
-				PrintWriter script = response.getWriter();  //객체확인
-				BoardDao boardDao = new BoardDao();			// DB연결해서 객체를 보내는곳 
-				MemberDao memberDao = new MemberDao();		// DB연결
+				PrintWriter script = response.getWriter(); 
+				BoardDao boardDao = new BoardDao();			
+				MemberDao memberDao = new MemberDao();		
 				
 				
 				//로그인 세션 확인 
