@@ -13,6 +13,7 @@
 	CommentDao dao= new CommentDao();
 	CommentDto dto = dao.getcontent(id);
 %>
+
 </head>
 <body>
 	<div id = "wrap">

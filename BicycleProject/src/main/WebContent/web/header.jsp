@@ -77,22 +77,7 @@
 					}
 					%>
 					<li>|</li>
-					<% 
-					if (session.getAttribute("userGroup") != null) {
-						group = (Integer) session.getAttribute("userGroup");
-					}else {
-						group = 0;
-					}
-					if (group != 5) {
-					%>
 					<li><a href="./BoardB_Q.jsp" class="navbar-link text-dark">소통</a></li>
-					<%
-					}else if (group == 5) {
-					%>
-					<li><a href="./BoardB_Q.jsp"  class="navbar-link text-dark">소통</a></li>
-					<%
-					}
-					%>
 					<li>|</li>
 					<%	
 					if (session.getAttribute("userGroup") != null) {

@@ -9,24 +9,7 @@
 <%@page import="database.MemberDto"%>
 <%@page import="database.CommentDao"%>
 <%@page import="database.CommentDto"%>
-<%
-// 페이지네이션
-String pageNum = request.getParameter("pageNum");
-String pageState = request.getParameter("pageBlock");
-//페이지 넘어가는것
-int currentPage = 1;
-if (pageNum != null)
-	currentPage = Integer.parseInt(pageNum);
-int pageDisplayNum = 5;
 
-int startNum = currentPage;
-
-if (pageState == null) {
-} else if (pageState.equals("Next"))
-	startNum += 1;
-else if (pageState.equals("Previous"))
-	startNum = (startNum <= 1) ? 1 : startNum - 1;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -334,42 +317,8 @@ else if (pageState.equals("Previous"))
 		<div class="col-lg-10"></div>
 		<div class="col-lg-1"></div>
 	</div>
-
-	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
-			<nav style="text-align: center;">
-				<ul class="pagination">
-					<li><a
-						href="./BoardB_view.jsp?pageBlock=Previous&pageNum=<%=currentPage%>"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-					</a></li>
-					<%
-					for (int i = 0; i < pageDisplayNum; i++) {
-					%>
-					<%
-					if ((startNum + i) == currentPage) {
-					%>
-					<li class="page-item active"><a
-						href="./BoardB_view.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
-					<%
-					} else {
-					%>
-					<li class="page-item"><a
-						href="./BoardB_view.jsp?pageNum=<%=startNum + i%>"><%=startNum + i%></a></li>
-					<%
-					}
-					}
-					%>
-
-					<li><a href="./BoardB_view.jsp?pageBlock=Next"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-lg-1"></div>
-	</div>
+	
+	
 
 	<div class="row">
 		<div class="col-lg-1"></div>
@@ -400,11 +349,11 @@ else if (pageState.equals("Previous"))
 			<% } else if (group== 5) {
 			%>
 
-			<a href="BoardB_update.jsp?board_id=<%=boardDto.getBoard_id()%>"
-				class="btn btn-primary">수정</a> <a
+			 <a
 				onclick="return confirm('정말로 삭제하시겠습니까?')"
 				href="BoardB_delete.jsp?board_id=<%=boardDto.getBoard_id()%>"
 				class="btn btn-primary ">삭제</a>
+			
 			
 			<% } %>
 		</div>
