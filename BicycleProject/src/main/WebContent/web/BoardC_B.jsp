@@ -159,7 +159,7 @@
       		if(request.getParameter("pagesize")!=null){
       			pagesize = Integer.parseInt(request.getParameter("pagesize"));
       		}
-      		arrayList = marketBoardDao.getList("삽니다", pagesize);
+      		//arrayList = marketBoardDao.getList("삽니다", pagesize);
       		   	
         %>
 
