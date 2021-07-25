@@ -48,12 +48,12 @@ public class BoardDao {
 		
 	}
 	
-	
+	 
 
 	public ArrayList<BoardDto> getList() {
 		ArrayList<BoardDto> arrayList = new ArrayList<>();
 		Connection connection = dbDriver.connDB();
-		String sql = "select * from Board";
+		String sql = "select * from Board order by Board_regdate desc";
 		try {
 			pstmt = connection.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -64,7 +64,9 @@ public class BoardDao {
 				String boardContent = rs.getString("Board_content");
 				String boardWriter = rs.getString("Board_writer");
 				String boardTitle = rs.getString("Board_title");
+				int board_hit = rs.getInt("Board_hit");
 				int boardId = rs.getInt("Board_id");
+				int member_uid = rs.getInt("B_Member_id");
 
 				BoardDto boardDto = new BoardDto();
 				boardDto.setCategory_big(categoryBig);
@@ -74,6 +76,8 @@ public class BoardDao {
 				boardDto.setBoard_writer(boardWriter);
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
+				boardDto.setMember_uid(member_uid);
+				boardDto.setInfo_hit(board_hit);
 
 				arrayList.add(boardDto);
 			}
@@ -115,6 +119,8 @@ public class BoardDao {
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setMember_uid(member_uid);;
+				boardDto.setMember_uid(member_uid);
+
 
 				arrayList.add(boardDto);
 				
@@ -129,12 +135,12 @@ public class BoardDao {
 
 	public BoardDto getDto(int id) {
 		Connection connection = dbDriver.connDB();
-		String sql = "select * from Board where Board_id= ? ";
+		String sql = "select * from Board where Board_id= ?";
 		BoardDto boardDto = new BoardDto();
 		try {
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();	
 			while (rs.next()) {
 				String categoryBig = rs.getString("Category_big");
 				String categorySmall = rs.getString("Category_small");
@@ -144,7 +150,8 @@ public class BoardDao {
 				String boardTitle = rs.getString("Board_title");
 				int boardId = rs.getInt("Board_id");
 				int memberId = rs.getInt("B_member_uid");
-				
+				int member_uid = rs.getInt("B_Member_id");
+
 				boardDto.setCategory_big(categoryBig);
 				boardDto.setCategory_small(categorySmall);
 				boardDto.setBoard_regdate(boardRegDate);
@@ -153,7 +160,8 @@ public class BoardDao {
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setM_Board_Id(memberId);
-				
+				boardDto.setMember_uid(member_uid);				
+
 			}
 			
 		} catch (SQLException e) {
@@ -183,8 +191,8 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 		return check;
-
 	}
+	
 
 	public boolean delete(int Board_id) {
 		String sql = "DELETE FROM board WHERE Board_id=?";

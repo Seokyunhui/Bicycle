@@ -79,7 +79,22 @@
 					}
 					%>
 					<li>|</li>
-					<li><a href="./BoardB_M.jsp" class="navbar-link text-dark">소통</a></li>
+					<% 
+					if (session.getAttribute("userGroup") != null) {
+						group = (Integer) session.getAttribute("userGroup");
+					}else {
+						group = 0;
+					}
+					if (group != 5) {
+					%>
+					<li><a href="./BoardB_Q.jsp" class="navbar-link text-dark">소통</a></li>
+					<%
+					}else if (group == 5) {
+					%>
+					<li><a href="admin_BoardB_Q.jsp?=admin_BoardB_C.jsp" class="navbar-link text-dark">소통</a></li>
+					<%
+					}
+					%>
 					<li>|</li>
 					<%	
 					if (session.getAttribute("userGroup") != null) {

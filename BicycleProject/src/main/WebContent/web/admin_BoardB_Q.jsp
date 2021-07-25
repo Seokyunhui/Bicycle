@@ -1,5 +1,4 @@
-<%@page import="database.CommentDao"%>
-<%@page import="database.CommentDto"%>
+<%@page import="database.MemberDao"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.List"%>
 <%@page import="database.BoardDao"%>
@@ -20,26 +19,21 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
 <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous">
-</script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous">
-</script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"> </script>
-	
+ <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
 <style>
 .prpl {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
 <
 style>.prpl {
 	padding-left: 20px;
@@ -101,17 +95,27 @@ style>.prpl {
 
 	<!-- 소통 탭  -->
 	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-7"></div>
-		<div class="col-lg-3">
-			<ul class="nav nav-pills justify-content-around display-5">
-				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
+		<div class="col-lg-8"></div>
+		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
+			<ul class="nav nav-pills justify-content-around display-5 ">
+				<% 
+				int group = 0;
+				if (session.getAttribute("userGroup") != null) {
+					group = (Integer) session.getAttribute("userGroup");
+				}else {
+					group = 0;
+				}if (group != 5) {
+				%>
+				<%  }else if (group == 5) { %>
+				<li><a href="admin_BoardB_Q.jsp?categoty_sm=소통" class="navbar-link text-dark">질문게시판</a></li>
 				<li>|</li>
-				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
+				<li><a href="admin_BoardB_C.jsp?categoty_sm=소통" class="navbar-link text-dark">자유게시판</a></li>
+				<% } %>
 				<li>|</li>
 				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
+		<div class="col-lg-1"></div>
 	</div>
 
 	<!-- 공백 -->
@@ -158,12 +162,12 @@ style>.prpl {
 
 
 	<%
-	BoardDao boardDao = new BoardDao();
-	List<BoardDto> arraylist = new ArrayList<BoardDto>();
+		BoardDao boardDao = new BoardDao();
+		List<BoardDto> arraylist = new ArrayList<BoardDto>();
+		MemberDao memberDao = new MemberDao();
+		BoardDto boardDto;
+		
 	
-	BoardDto boardDto;
-	
-	CommentDao commentDao = new CommentDao();
 	%>
 
 
@@ -175,7 +179,7 @@ style>.prpl {
 
 			<div class="panel panel-default">
 				<table class="table table-hover">
-					<div class="panel-heading">자유 게시판</div>
+					<div class="panel-heading">질문 게시판</div>
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -187,18 +191,18 @@ style>.prpl {
 					</thead>
 					<%
 					arraylist = boardDao.getList();
-					arraylist = arraylist.stream().filter(list -> list.getCategory_small().equals("자유")).collect(Collectors.toList());
+					arraylist = arraylist.stream().filter(list -> list.getCategory_small().equals("질문")).collect(Collectors.toList());
 					for (int j = 0; j < arraylist.size(); j++) {
 					%>
 					<%
 					boardDto = arraylist.get(j);
 					%>
 					<tbody>
-						<tr onclick = "location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
+						<tr onclick = "location.href ='admin_BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
 							<!-- 번호  -->
 							<td><%=boardDto.getBoard_id()%></td>
 							<!-- 제목  -->
-							<td><%=boardDto.getBoard_title()%> [<%=commentDao.countComment(boardDto.getBoard_id())%>]</td>
+							<td><%=boardDto.getBoard_title()%></td>
 							<!-- 날짜 -->
 							<td><%=boardDto.getBoard_regdate()%></td>
 							<!-- 아이디 -->
@@ -221,7 +225,7 @@ style>.prpl {
 		<div class="col-lg-2">
 		
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="BoardB_Q.jsp?pageNumber -1"> < </a></li>
+				<li class="page-item"><a class="page-link" href="#"> < </a></li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -232,7 +236,6 @@ style>.prpl {
 		</div>
 		<div class="col-lg-5"></div>
 	</div>
-
 	<!-- footer -->
 	<jsp:include page="footer.jsp" />
 </body>

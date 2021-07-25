@@ -16,7 +16,6 @@
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
 .footer {
 	background-color: cornsilk;
 }
@@ -82,13 +81,13 @@
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1>지식정보</h1>
-				<div class="text-right">
+				<h1>자전거 종류</h1>
+				<div class="row justify-content-end">
+					<div class="col-md-1">
 					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
 						쓰기</a>
+					</div>
 				</div>
-
-
 			</div>
 
 
@@ -97,27 +96,9 @@
 				boardDto = arrayList.get(k);
 			%>
 
-			<div class="row justify-content-end">
-
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
-					</form>
-				</div>
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3"
-							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
-					</form>
-				</div>
-			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-4"></div>
-				<div class="col-md-4 text-center">
+				<div class="col-md-4 text-center mb-5">
 					<h3>
 						<%=boardDto.getBoard_title()%>
 					</h3>
@@ -127,7 +108,24 @@
 					</p>
 
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-2">
+				</div>	
+				<div class="col-md-1">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1">	
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm" 
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
+					</form>
+				</div>
+				
 			</div>
 			<%
 			}
@@ -146,10 +144,12 @@
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1>대처사항</h1>
-				<div class="text-right">
+				<h1>유의사항</h1>
+				<div class="row justify-content-end">
+					<div class="col-md-1">
 					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
 						쓰기</a>
+					</div>
 				</div>
 
 
@@ -157,34 +157,15 @@
 
 			<%
 			for (int k = 0; k < arrayList.size(); k++) {
-
 				boardDto = arrayList.get(k);
 			%>
 
 
 
 
-			<div class="row justify-content-end">
-
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
-					</form>
-				</div>
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3"
-							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
-					</form>
-				</div>
-			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-4"></div>
-				<div class="col-md-4 text-center">
+				<div class="col-md-4 text-center mb-5">
 					<h3>
 						<%=boardDto.getBoard_title()%>
 					</h3>
@@ -194,7 +175,24 @@
 					</p>
 
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-2">
+				</div>	
+				<div class="col-md-1">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1">	
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm" 
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
+					</form>
+				</div>
+				
 			</div>
 			<%
 			}
@@ -210,10 +208,12 @@
 			<div id="section<%=i%>" class="container-fluid text-center"
 				style="padding-top: 35px; padding-bottom: 35px">
 
-				<h1>유의사항</h1>
-				<div class="text-right">
+				<h1>대처사항</h1>
+				<div class="row justify-content-end">
+					<div class="col-md-1">
 					<a href="admin_BoardA_write.jsp" class="btn btn-uni btn-sm">글
 						쓰기</a>
+					</div>
 				</div>
 
 
@@ -223,28 +223,9 @@
 			for (int k = 0; k < arrayList.size(); k++) {
 				boardDto = arrayList.get(k);
 			%>
-
-			<div class="row justify-content-end">
-
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
-					</form>
-				</div>
-				<div class="col-md-1 text-right">
-					<form
-						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
-						method="post">
-						<button type="submit" class="btn btn-uni btn-sm mr-3"
-							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
-					</form>
-				</div>
-			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-4"></div>
-				<div class="col-md-4 text-center">
+				<div class="col-md-4 text-center mb-5">
 					<h3>
 						<%=boardDto.getBoard_title()%>
 					</h3>
@@ -254,7 +235,24 @@
 					</p>
 
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-2">
+				</div>	
+				<div class="col-md-1">
+					<form
+						action="admin_BoardA_update.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm">글 수정</button>
+					</form>
+				</div>
+				<div class="col-md-1">	
+					<form
+						action="admin_BoardA_delete_action.jsp?Board_id=<%=boardDto.getBoard_id()%>"
+						method="post">
+						<button type="submit" class="btn btn-uni btn-sm" 
+							onclick="return confirm('정말로 삭제하시겠습니까?')">글 삭제</button>
+					</form>
+				</div>
+				
 			</div>
 			<%
 			}

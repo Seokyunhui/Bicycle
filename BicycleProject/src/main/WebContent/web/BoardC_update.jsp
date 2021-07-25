@@ -1,5 +1,12 @@
+<%@page import="database.BoardcDto"%>
+<%@page import="database.BoardcDao"%>
+<%@page import="database.Add_fileDto"%>
+<%@page import="database.Add_fileDao"%>
+<%-- <%@page import="jdk.internal.net.http.ResponseBodyHandlers.FileDownloadBodyHandler"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-
+<%@page import="database.MarketBoardDao"%>
+<%@page import="database.BoardDto"%>
+<%@page import="database.BoardDao"%>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -43,7 +50,17 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	
 	<%@include file="./header.jsp" %>
-	
+
+	<%
+	int market_id = Integer.parseInt(request.getParameter("market_id"));
+	BoardDao boardDao = new BoardDao();
+	BoardcDao boardcDao = new BoardcDao();
+	MarketBoardDao marketBoardDao = new MarketBoardDao();
+	BoardcDto boardcDto = boardcDao.getDto(market_id);
+	Add_fileDao add_fileDao = new Add_fileDao();
+	Add_fileDto add_fileDto = add_fileDao.getDto(boardcDto.getBoard_Id());
+	%>
+
 	<!-- 배너 타이틀 -->
     <div class="row">
         <div class="col-lg-1">
@@ -119,7 +136,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
-                <h3>게시글 등록</h3><br>
+                <h3>게시글 수정</h3><br>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
@@ -128,7 +145,7 @@ request.setCharacterEncoding("UTF-8");
 
 
 
-		<form action="BoardC_write_action.jsp" method="post" enctype="multipart/form-data" >
+		<form action="BoardC_update_action.jsp?market_id=<%= boardcDto.getMarket_Id() %>" method="post" enctype="multipart/form-data">
 		
         <!-- 팝,삽니다 /지역 카테고리 -->
         <div class="row">
@@ -137,13 +154,13 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-8 form-group">
                 <div class="select-box select-script">
                     <select id="selectbox"  name="board_category_sm" required >
-                        <option selected disabled hidden>선택</option>
+                        <option selected><%=boardcDto.getCategory_Small() %></option>
                         <option value="삽니다">삽니다</option>
                         <option value="팝니다">팝니다</option>
                     </select>
                     
                     <select id="selectbox" name="market_board_addr" required >
-                        <option selected="selected">지역</option>
+                        <option selected="selected"><%=boardcDto.getMarket_Addr() %></option>
                         <option value="서울">서울</option>
                         <option value="경기도">경기도</option>
                         <option value="강원도">강원도</option>
@@ -190,7 +207,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="제목" id="title" name="board_title" maxlength="14" required >
+                    <input type="text" class="form-control" placeholder="제목" name="board_title" value="<%= boardcDto.getBoard_Title() %>" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -203,7 +220,7 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="가격" id="price" name="market_price" required >
+                    <input type="text" class="form-control" placeholder="가격" name="market_price" value="<%= boardcDto.getMarket_Price() %>" required >
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -218,23 +235,23 @@ request.setCharacterEncoding("UTF-8");
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <input type="file" class="form-control-file" name="uploadFile" required >
+                	<label for="filename"><%=add_fileDto.getFile_name() %></label>
+                    <input type="file" class="form-control-file" name="uploadFile" id="filename">                 
                 </div>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
         </div>
 
-        <!-- 상세 텍스트 구역 -->
+        <!-- 상세 텍스트 구역 -->s
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
             <div class="col-lg-8">
                 <div class="form-group">
-                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." id="content" name="Board_content" required ></textarea>
+                    <textarea class="form-control" rows="20" placeholder="내용을 작성해주세요." maxlength="2048" style="height: 350px;" name="Board_content" required ><%= boardcDto.getBoard_Content()%></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
-                <input type=button class="btn btn-primary mr-5" style="float: right " value="이전" OnClick="javascript:history.back(-1)">
+                <button type="submit" class="btn btn-primary" style="float: right;">글 수정</button>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
