@@ -1,6 +1,3 @@
-
-<%@page import="com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane.ScalableIconUIResource"%>
-<%@page import="javax.swing.border.Border"%>
 <%@page import="database.MemberDao"%>
 <%@page import="database.BoardDao"%>
 <%@page import="java.io.PrintWriter"%>
