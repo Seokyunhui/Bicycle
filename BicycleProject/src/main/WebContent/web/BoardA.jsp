@@ -51,9 +51,9 @@
 			<ul class="nav nav-pills justify-content-around display-5 ">
 				<li><a href="BoardA.jsp?categoty_sm=자전거 종류" class="navbar-link text-dark">자전거
 						종류</a></li>
-				<li></li>
+				<li>|</li>
 				<li><a href="BoardA.jsp?categoty_sm=유의사항" class="navbar-link text-dark">유의사항</a></li>
-				<li></li>
+				<li>|</li>
 				<li><a href="BoardA.jsp?categoty_sm=대처사항" class="navbar-link text-dark">대처사항</a></li>
 			</ul>
 		</div>

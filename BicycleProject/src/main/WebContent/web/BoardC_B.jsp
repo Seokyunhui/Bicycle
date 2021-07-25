@@ -1,3 +1,5 @@
+<%@page import="database.BoardcDao"%>
+<%@page import="database.BoardcDto" %>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -29,7 +31,7 @@
             background-color: cornsilk;
         }
     </style>
-<title>삽니다</title>
+<title>팝니다</title>
 </head>
 <body>
 	<%@include file="./header.jsp" %>
@@ -38,26 +40,32 @@
     <div class="row">
         <div class="col-lg-1">
         </div>
-        <div id="carouselExampleControls" class="col-lg-10 carousel slide text-center w-100" data-ride="Carousel">
-        
-            <div class="carousel-inner">
-                <div class="carousel-item active ">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="First slide" class="w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="Second slide" class="w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide" class="w-100">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span> </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span> </a>
-        </div>
+		<div id="carouselExampleControls"
+			class="col-lg-10 carousel slide text-center w-100"
+			data-ride="Carousel">
+
+			<div class="carousel-inner">
+				<div class="carousel-item active ">
+					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
+						class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselExampleControls"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
 
 
         <div class="col-lg-1">
@@ -119,25 +127,23 @@
 
         <!-- 거래,질문 구역 header -->
         <div class="row">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-8 mb-4">
                 <h3><b>중고거래 팝니다 게시판</b></h3>
             </div>
-            <div class="col-lg-4 mb-4">      
-            </div>
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
         </div>
         
         <!-- 글 작성 버튼 -->
         <div class="row">
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-8">
                 <a href="BoardC_write.jsp" class="btn btn-primary card text-white bg-dark" style="float: right;">작성</a>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-2">
             </div>
         </div>
         <!-- 공백구역 -->
@@ -150,17 +156,17 @@
             <div class="col-lg-1">
             </div>
         </div>
-        <%       
-        	List<BoardDto> arrayList = new ArrayList<>();
-      		BoardDto boardDto = new BoardDto();
-      		MarketBoardDao marketBoardDao = new MarketBoardDao();
-      		Add_fileDao add_fileDao = new Add_fileDao();
-      		int pagesize = 0;
-      		if(request.getParameter("pagesize")!=null){
-      			pagesize = Integer.parseInt(request.getParameter("pagesize"));
-      		}
-      		arrayList = marketBoardDao.getList("삽니다", pagesize);
-      		   	
+        <%
+        List<BoardcDto> arrayList = new ArrayList<>();
+              		BoardcDto boardcDto = new BoardcDto();
+              		MarketBoardDao marketBoardDao = new MarketBoardDao();
+              		Add_fileDao add_fileDao = new Add_fileDao();
+              		BoardcDao boardCDao = new BoardcDao();
+              		int pagesize = 0;
+              		if(request.getParameter("pagesize")!=null){
+              			pagesize = Integer.parseInt(request.getParameter("pagesize"));
+              		}
+              		arrayList = boardCDao.getList("삽니다", pagesize);
         %>
 
         <!-- 중고거래 상단 썸네일 -->
@@ -172,17 +178,17 @@
 					if(arrayList.size()<=i){
 						break;
 					}	
-					boardDto =  arrayList.get(i);
+					boardcDto =  arrayList.get(i);
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
-                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
-                        <h5 class="card-title "><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
-                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <p class="card-text"><%=boardcDto.getCategory_Small() %></p>
+                        <p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
+                        <h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
+                        <p class="card-text"><%=boardcDto.getMarket_Price() %>원</p>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -213,17 +219,17 @@
 			<%
 				for(int i = 5; i<10; i++){
 				if(arrayList.size()<=i){ break; }
-				boardDto =  arrayList.get(i);
+				boardcDto =  arrayList.get(i);
 			%>			
             <div class="col-lg-2 col-md-4">
                 <div class="card text-center w-100" style="width: 15rem;">
-                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardDto.getBoard_id()).getFile_name() %>" alt="Card image cap">
+                    <img class="card-img-top" src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-text"><%=boardDto.getCategory_small() %></p>
-                        <p class="card-text"><%=boardDto.getBoard_regdate() %></p>
-                        <h5 class="card-title"><%=boardDto.getBoard_title() %></h5>
-                        <p class="card-text"><%=boardDto.getMarketPrice() %>원</p>
-                        <a href="BoardC_product.jsp?Market_id=<%=boardDto.getMarketId()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
+                        <p class="card-text"><%=boardcDto.getCategory_Small() %></p>
+                        <p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
+                        <h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
+                        <p class="card-text"><%=boardcDto.getMarket_Price() %>원</p>
+                        <a href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>" class="btn btn-primary card text-white bg-dark">상세내용</a>
                     </div>
                 </div>
             </div>
@@ -266,11 +272,11 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="BoardC_B.jsp?pagesize=0" >1</a></li>
-                        <li><a href="BoardC_B.jsp?pagesize=10">2</a></li>
-                        <li><a href="BoardC_B.jsp?pagesize=20">3</a></li>
-                        <li><a href="BoardC_B.jsp?pagesize=30">4</a></li>
-                        <li><a href="BoardC_B.jsp?pagesize=40">5</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=0" >1</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
+                        <li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>

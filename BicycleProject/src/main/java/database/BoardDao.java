@@ -64,6 +64,7 @@ public class BoardDao {
 				String boardContent = rs.getString("Board_content");
 				String boardWriter = rs.getString("Board_writer");
 				String boardTitle = rs.getString("Board_title");
+				int board_hit = rs.getInt("Board_hit");
 				int boardId = rs.getInt("Board_id");
 				int member_uid = rs.getInt("B_Member_id");
 
@@ -76,6 +77,7 @@ public class BoardDao {
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setMember_uid(member_uid);
+				boardDto.setInfo_hit(board_hit);
 
 				arrayList.add(boardDto);
 			}

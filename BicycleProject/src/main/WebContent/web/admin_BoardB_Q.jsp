@@ -57,16 +57,14 @@ style>.prpl {
 
 			<div class="carousel-inner">
 				<div class="carousel-item active ">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="First slide"
+					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
 						class="w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Second slide"
-						class="w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너%20복사본.png" alt="Third slide"
-						class="w-100">
+					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleControls"
