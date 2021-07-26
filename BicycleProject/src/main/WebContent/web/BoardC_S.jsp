@@ -31,7 +31,7 @@
             background-color: cornsilk;
         }
     </style>
-<title>삽니다</title>
+<title>팝니다</title>
 </head>
 <body>
 	<%@include file="./header.jsp" %>
@@ -95,9 +95,9 @@
 
                 <ul class="nav nav-pills justify-content-around display-5">
 
-                    <li><a href="BoardC_B.jsp" class="navbar-link text-dark">팝니다</a></li>
+                    <li><a href="BoardC_S.jsp" class="navbar-link text-dark">팝니다</a></li>
                     <li>|</li>
-                    <li><a href="BoardC_S.jsp" class="navbar-link text-dark">삽니다</a></li>
+                    <li><a href="BoardC_B.jsp" class="navbar-link text-dark">삽니다</a></li>
                 </ul>
             </div>
             <div class="col-lg-1">
@@ -130,7 +130,7 @@
             <div class="col-lg-2">
             </div>
             <div class="col-lg-8 mb-4">
-                <h3><b>중고거래 삽니다 게시판</b></h3>
+                <h3><b>중고거래 팝니다 게시판</b></h3>
             </div>
             <div class="col-lg-2">
             </div>
