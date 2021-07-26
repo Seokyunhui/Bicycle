@@ -273,11 +273,11 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="BoardC_S.jsp?pagesize=0" >1</a></li>
-                        <li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
-                        <li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
-                        <li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
-                        <li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
+                        <li><a href="BoardC_B.jsp?pagesize=0" >1</a></li>
+                        <li><a href="BoardC_B.jsp?pagesize=10">2</a></li>
+                        <li><a href="BoardC_B.jsp?pagesize=20">3</a></li>
+                        <li><a href="BoardC_B.jsp?pagesize=30">4</a></li>
+                        <li><a href="BoardC_B.jsp?pagesize=40">5</a></li>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>

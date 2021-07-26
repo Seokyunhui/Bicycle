@@ -125,10 +125,10 @@ else if (pageState.equals("Previous"))
 		<div class="col-lg-8"></div>
 		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
 			<ul class="nav nav-pills justify-content-around display-5 ">
-				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">자유게시판</a></li>
-				<li></li>
-				<li><a href="BoardC_B.jsp" class="navbar-link text-dark">질문게시판</a></li>
-				<li></li>
+				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
+				<li>|</li>
+				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
+				<li>|</li>
 				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
@@ -183,7 +183,11 @@ else if (pageState.equals("Previous"))
 								href="#"
 								onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id()%>')"
 								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> <%
- }
+ }else if (id != null && m_dao.getUserGroup(id).equals("5")){ %>
+						<a href="#"	onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id()%>')"
+								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a>
+<%  
+}
  %> <!--if 문 추가 !--> <%
  if (id != null) {
  %> <a href="#"
@@ -213,21 +217,25 @@ else if (pageState.equals("Previous"))
 										<li id="guest_rep_id" class="list-group-item">
 											<div class="guest_rep_class">
 												<strong><%=CommentDto.getComment_name()%></strong> <small><%=CommentDto.getComment_regdate()%></small>
-												<span class="control"> <%
- String c_id = (String) session.getAttribute("userID");
- int c_uid = 0;
- if (id != null) {
- 	c_uid = m_dao.getMemberUid(c_id);
- }
- if (CommentDto.getMember_uid() == c_uid) {
- %> <a href="#"
+												<span class="control">
+											<% String c_id = (String) session.getAttribute("userID");
+												 int c_uid = 0;
+												 if (id != null) {
+												 	c_uid = m_dao.getMemberUid(c_id);
+												 }
+												 if (CommentDto.getMember_uid() == c_uid) {
+												 %> <a href="#"
 													onclick="guest_rep_onclick_coedit('edit','<%=CommentDto.getComment_id()%>')"
 													class="btn btn-default btn-xs"> <span>수정</span></a> <a
 													href="#"
 													onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>')"
 													class="btn btn-default btn-xs"><span>삭제</span></a> <%
- }
- %>
+												 }else if (c_id != null && m_dao.getUserGroup(c_id).equals("5")){ %>
+													<a href="#" onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>')"
+													class="btn btn-default btn-xs"><span>삭제</span></a>
+												<%  
+												}
+												%>
 												</span>
 												<p><%=CommentDto.getComment_content()%></p>
 											</div>
