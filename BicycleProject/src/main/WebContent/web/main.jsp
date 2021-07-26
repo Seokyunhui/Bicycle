@@ -1,4 +1,5 @@
 <%@page import="database.MarketBoardDao"%>
+<%@page import="database.BoardcDto"%>
 <%@page import="database.BoardcDao"%>
 <%@page import="database.Add_fileDao"%>
 <%@page import="database.BoardcDto"%>
@@ -6,6 +7,7 @@
 <%@page import="database.BoardDto"%>
 <%@page import="java.util.*"%>
 <%@page import="database.BoardDao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
