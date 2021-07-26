@@ -28,8 +28,8 @@
 
 			<!--상단 로고 구역-->
 			<div class="social-icons">
-				<img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png" alt="Kakao" onclick ="kakaoLogin();"> 
-		
+				<img src="./image/Loginpage image/카카오톡 로그인폼.png" style = width:80%; alt="Kakao" onclick ="kakaoLogin();"> 
+			
 			</div>
 
 			<!--로그인-->
