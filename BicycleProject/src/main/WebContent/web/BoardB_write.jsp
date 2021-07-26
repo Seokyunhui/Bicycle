@@ -123,7 +123,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="제목" name="board_title">
                 </div>
-                     <input type="file" value="fileName">
+                    
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-1"></div>
