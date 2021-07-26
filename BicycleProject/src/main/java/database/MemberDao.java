@@ -122,6 +122,48 @@ public class MemberDao {
 
 		return dto;
 	}
+	
+	public MemberDto getUserInfo(int id) {
+		DBDriver dbDriver = new DBDriver();
+		Connection conn = dbDriver.connDB();
+		String strQuery = "SELECT * FROM member WHERE Member_Uid = ?";
+		int Member_uid, Member_phone, Member_group, Member_regcount, Member_comcount, Member_ch_dist = 0;
+		String Member_id, Member_pw, Member_name, Member_mail, Member_regdate = null; // 아이디
+		MemberDto dto = null;
+		try {
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Member_uid = rs.getInt("member_uid");
+				Member_id = rs.getString("Member_id");
+				Member_pw = rs.getString("Member_pw");
+				Member_name = rs.getString("Member_name");
+				Member_mail = rs.getString("Member_mail_id") + rs.getString("Member_mail_addr");
+				Member_regdate = rs.getString("Member_regdate");
+				Member_phone = rs.getInt("Member_phone");
+				Member_group = rs.getInt("Member_group");
+				Member_regcount = rs.getInt("Member_regcount");
+				Member_comcount = rs.getInt("Member_comcount");
+				Member_ch_dist = rs.getInt("Member_ch_dist");
+				dto = new MemberDto(Member_uid, Member_id, Member_pw, Member_name, Member_phone, Member_mail,
+						Member_regdate, Member_group, Member_regcount, Member_comcount, Member_ch_dist);
+			}
+			dbDriver.closeAll(rs, pstmt, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return dto;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	public int getMemberUid(String id) {
 		DBDriver dbDriver = new DBDriver();

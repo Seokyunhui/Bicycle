@@ -9,18 +9,25 @@ public class ChallegeDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
+	MemberDao memberDao = new MemberDao();
 
-	public JSONArray getCountAddress() {
+	public JSONArray getdistrank() {
 
 		Connection con = dbDriver.connDB();
 
-		String sql = "SELECT Ch_Member_id,sum(Challenge_dist) from challege where admin_approval = 1 group by Ch_Member_id order by sum(Challenge_dist) desc";
+		String sql = "SELECT Ch_Member_id,sum(Challenge_dist) from challege where admin_approval = 1 group by Ch_Member_id order by sum(Challenge_dist) desc Limit 5";
 
 		JSONArray jsonArray = new JSONArray();
 
 		JSONArray colNameArray = new JSONArray(); // 컬 타이틀 설정
+		
+		int i = 1;
 
+		colNameArray.add("단위(km)");
 
+		colNameArray.add("주행거리");
+		
+		jsonArray.add(colNameArray);
 
 		try {
 
@@ -32,19 +39,19 @@ public class ChallegeDao {
 
 				JSONArray rowArray = new JSONArray();
 				
-				colNameArray.add("주소");
+				
+				
+				String Member_name = i+"등" + " )" +memberDao.getUserInfo(rs.getInt("Ch_Member_id")).getMember_id() + "님";
+				
+				rowArray.add(Member_name);
 
-				colNameArray.add("인원수");
-
-				jsonArray.add(colNameArray);
-
-				rowArray.add(rs.getString("address"));
-
-				rowArray.add(rs.getInt("cnt"));
+				rowArray.add(rs.getInt("sum(Challenge_dist)"));
 
 				jsonArray.add(rowArray);
-
-			} // while
+				
+				i++;
+				
+			} 
 
 		} catch (Exception e) {
 
@@ -58,7 +65,7 @@ public class ChallegeDao {
 
 		return jsonArray;
 
-	}// getCountAddress
+	}
 	
 	public ArrayList<ChallegeDto> getList(){
 		

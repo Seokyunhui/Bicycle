@@ -97,7 +97,7 @@ public class Add_fileDao {
 
 	public void deleteFile(String file) {
 
-		String filePath = "d:\\Bicycle\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload\\" + file;
+		String filePath = "J:\\Bicycle\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload\\" + file;
 
 		File deleteFile = new File(filePath);
 

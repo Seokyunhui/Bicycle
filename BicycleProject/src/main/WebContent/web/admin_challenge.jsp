@@ -33,7 +33,7 @@ request.setCharacterEncoding("UTF-8");
 	background-color: cornsilk;
 }
 </style>
-<title>Insert title here</title>
+<title>동행하는 사람들...</title>
 </head>
 <body>
 	<%@include file="./header.jsp"%>
