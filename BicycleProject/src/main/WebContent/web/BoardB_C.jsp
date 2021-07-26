@@ -144,18 +144,7 @@ style>.prpl {
 	<div class="row">
 		<div class="col-lg-9"></div>
 		<div class="col-lg-1">
-			<!--검색-->
-			<form action="">
-				<div class="input-group">
-					<input type="search" placeholder="search"
-						aria-describedby="button-addon5" class="form-control">
-					<div class="input-group-append">
-						<button id="button-addon5" type="submit" class="btn btn-primary">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</div>
-				</div>
-			</form>
+		
 		</div>
 
 		<!--글등록-->
