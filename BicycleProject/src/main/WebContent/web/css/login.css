@@ -15,7 +15,7 @@
     height: 400px;
     position: relative;
     margin: 12% auto;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255,0.8);
     border-radius: 40px;
     padding: 5px;
     overflow: hidden;

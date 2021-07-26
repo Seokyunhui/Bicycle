@@ -76,7 +76,6 @@ request.setCharacterEncoding("UTF-8");
 			</a>
 		</div>
 
-
 		<div class="col-lg-1"></div>
 	</div>
 

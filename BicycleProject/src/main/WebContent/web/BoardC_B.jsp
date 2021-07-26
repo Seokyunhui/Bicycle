@@ -12,27 +12,26 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./css/bootstrap4.0.0.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
-<style>
-.prpl {
-	padding-left: 20px;
-	padding-right: 20px;
-}
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/0b8394fc8a.js"></script>
+    <style>
+        .prpl {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
 
-.footer {
-	background-color: cornsilk;
-}
-</style>
+        .footer {
+            background-color: cornsilk;
+        }
+    </style>
+
 <title>삽니다</title>
 </head>
 <body>
@@ -67,6 +66,7 @@
 				class="sr-only">Next</span>
 			</a>
 		</div>
+
 
 
 		<div class="col-lg-1"></div>
@@ -147,6 +147,8 @@
 	</div>
 
 	<%
+
+
         List<BoardcDto> arrayList = new ArrayList<>();
               		BoardcDto boardcDto = new BoardcDto();
               		MarketBoardDao marketBoardDao = new MarketBoardDao();
@@ -297,6 +299,8 @@
 
 	<!-- js -->
 	<script>
+
+		
             $('.carousel').carousel({
                 interval: 10000
             })
