@@ -1,3 +1,6 @@
+<%@page import="database.ChallegeDto"%>
+<%@page import="database.ChallegeDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +28,17 @@
 	background-color: cornsilk;
 }
 </style>
-<title>Insert title here</title>
+<%
+if (session.getAttribute("userID") == null) {
+%>
+<script>
+	alert('로그인이 필요합니다.');
+	window.history.back();
+</script>
+<%
+}
+%>
+<title>동행하는 사람들...</title>
 </head>
 <body>
 	<%@include file="./header.jsp"%>
@@ -117,7 +130,7 @@
 	</div>
 
 
-	<form action="" method="post">
+	<form action="challenge_action.jsp" method="post">
 
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -152,7 +165,7 @@
 			<div class="col-lg-8">
 				<div class="form-group">
 					<input type="number" class="form-control"
-						placeholder="주행거리를 입력해주세요.(km)" id="" name="" required>
+						placeholder="주행거리를 입력해주세요.(km)" name="challenge_dist" required>
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
@@ -167,169 +180,173 @@
 			<div class="col-lg-8">
 				<div class="form-group">
 					<textarea class="form-control" rows="10"
-						placeholder="오늘은 어느곳을 다녀오셨나요?.." id="content" name="Board_content"
-						required></textarea>
+						placeholder="오늘은 어느곳을 다녀오셨나요?.." name="Challenge_content" required></textarea>
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
 			<div class="col-lg-1"></div>
 		</div>
-		</form>
+	</form>
 
 
-		<!-- hr 구역 -->
+	<!-- hr 구역 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-8">
+			<hr>
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<!-- 공백구역 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<br> <br> <br> <br>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<!-- 구역 header -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-8">
+			<h3>
+				<b>글 목록</b>
+			</h3>
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-1"></div>
+	</div>
+
+	<!-- 공백구역 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<br> <br>
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+	<%
+	MemberDao memberDao = new MemberDao();
+	ChallegeDao challegeDao = new ChallegeDao();
+	ArrayList<ChallegeDto> arrayList = new ArrayList<>();
+	String writer = (String) session.getAttribute("userID"); //글 쓴이
+	int MemberUid = memberDao.getMemberUid(writer); //글 쓴이 기본키
+	arrayList = challegeDao.getList(MemberUid);
+	ChallegeDto challegeDto;
+	%>
+
+
+	<!-- 목록 테이블 구역 -->
+	<form action="" method="post">
 		<div class="row">
 			<div class="col-lg-1"></div>
 			<div class="col-lg-1"></div>
 			<div class="col-lg-8">
-				<hr>
+				<table class="table table-hover" style="text-align: center;">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>내용</th>
+							<th>등록일</th>
+							<th>주행거리</th>
+							<th>승인여부</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (int i = 0; i < 5; i++) {
+							if (arrayList.size() <= i) {
+								break;
+							}
+							challegeDto = arrayList.get(i);
+						%>
+						<tr>
+
+							<td><%=challegeDto.getChallenge_id()%></td>
+							<td><%=challegeDto.getChallenge_content()%></td>
+							<td><%=challegeDto.getChallenge_regdate()%></td>
+							<td><%=challegeDto.getChallenge_dist()%></td>
+							<%
+							if (challegeDto.getAdmin_approval() == 1) {
+							%>
+							<td>y</td>
+							<%
+							} else {
+							%>
+							<td>n</td>
+							<%
+							}
+							%>
+
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
 			</div>
 			<div class="col-lg-1"></div>
 			<div class="col-lg-1"></div>
 		</div>
+	</form>
 
-		<!-- 공백구역 -->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10">
-				<br>
-				<br> <br>
-				<br>
-			</div>
-			<div class="col-lg-1"></div>
+
+	<!-- 공백 구역 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<br>
+			<br> <br>
+			<br>
 		</div>
+		<div class="col-lg-1"></div>
+	</div>
 
-		<!-- 구역 header -->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-1"></div>
-			<div class="col-lg-8">
-				<h3>
-					<b>글 목록</b>
-				</h3>
-			</div>
-			<div class="col-lg-1"></div>
-			<div class="col-lg-1"></div>
+	<!--네이션구역-->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<nav style="text-align: center;">
+				<ul class="pagination">
+					<li><a href="#" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=0">1</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
+					<li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
+
 		</div>
+		<div class="col-lg-1"></div>
+	</div>
 
-		<!-- 공백구역 -->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10">
-				<br>
-				<br>
-			</div>
-			<div class="col-lg-1"></div>
+	<!-- hr 구역 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10">
+			<hr>
 		</div>
-		
+		<div class="col-lg-1"></div>
+	</div>
 
 
-		<!-- 목록 테이블 구역 -->
-		<form action="" method="post">
-			<div class="row">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-1"></div>
-				<div class="col-lg-8">
-					<table class="table table-hover" style="text-align: center;">
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>내용</th>
-								<th>등록일</th>
-								<th>주행거리</th>
-								<th>승인여부</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-							</tr>
-
-							<tr>
-								<td>4</td>
-								<td>김포에 부산 갔음</td>
-								<td>2021.07.04</td>
-								<td>400km</td>
-								<td>y</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-lg-1"></div>
-				<div class="col-lg-1"></div>
-			</div>
-		</form>
-
-
-		<!-- 공백 구역 -->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10">
-				<br><br>
-				<br><br>
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-
-		<!--네이션구역-->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10">
-				<nav style="text-align: center;">
-					<ul class="pagination">
-						<li><a href="#" aria-label="Previous"> <span
-								aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li><a href="BoardC_S.jsp?pagesize=0">1</a></li>
-						<li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
-						<li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
-						<li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
-						<li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
-						<li><a href="#" aria-label="Next"> <span
-								aria-hidden="true">&raquo;</span>
-						</a></li>
-					</ul>
-				</nav>
-
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-
-		<!-- hr 구역 -->
-		<div class="row">
-			<div class="col-lg-1"></div>
-			<div class="col-lg-10">
-				<hr>
-			</div>
-			<div class="col-lg-1"></div>
-		</div>
-
-
-		<!-- js -->
-		<script>
-            $('.carousel').carousel({
-                interval: 10000
-            })
-        </script>
-		<%@include file="./footer.jsp"%>
+	<!-- js -->
+	<script>
+		$('.carousel').carousel({
+			interval : 10000
+		})
+	</script>
+	<%@include file="./footer.jsp"%>
 </body>
 </html>

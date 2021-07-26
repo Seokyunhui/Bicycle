@@ -1,3 +1,6 @@
+<%@page import="org.json.simple.JSONArray"%>
+<%@page import="database.ChallegeDao"%>
+<%@page import="java.io.PrintWriter"%>
 <%@page import="database.MarketBoardDao"%>
 <%@page import="database.BoardcDto"%>
 <%@page import="database.BoardcDao"%>
@@ -44,6 +47,42 @@
 	crossorigin="anonymous">
 	
 </script>
+<%
+ChallegeDao challegeDao = new ChallegeDao();
+
+JSONArray jsonArray = challegeDao.getdistrank();
+%>
+
+
+
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	google.charts.load('current', {
+		'packages' : [ 'bar' ]
+	});
+	google.charts.setOnLoadCallback(drawStuff);
+
+	function drawStuff(jsonArray) {
+		var data = new google.visualization.arrayToDataTable(
+<%=jsonArray%>
+	);
+
+		var options = {
+			width : '100%',
+			legend : {
+				position : 'none'
+			},
+			bars : 'horizontal', // Required for Material Bar Charts.
+			bar : {
+				groupWidth : "90%"
+			}
+		};
+
+		var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+		chart.draw(data, options);
+	};
+</script>
 <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 </head>
 <body>
@@ -59,7 +98,7 @@
 			<p>고생했다 윤희야 -석윤희</p>
 			<p>잉 너무 어려웠쩡 -윤란영</p>
 			<p>날 더운데 다들 고생이 많아요 -김동준</p>
-			<p>EZ -이범수</p>
+			<p>쉬운게 하나도 없다. -이범수</p>
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
@@ -111,7 +150,7 @@
 
 
 		<!-- 인기글 목록 -->
-		<div class="col-lg-5">
+		<div class="col-lg-6">
 			<div class="panel panel-info">
 				<!-- Default panel contents -->
 				<div class="panel-heading">
@@ -139,12 +178,9 @@
 					<tr
 						onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">
 						<th><%=i + 1%>등</th>
-						<td><%=boardDto.getBoard_title()%>
-						</td>
-						<td>
-						</td>
-						<td>
-						</td>
+						<td><%=boardDto.getBoard_title()%></td>
+						<td></td>
+						<td></td>
 						<td>작성자: <%=boardDto.getBoard_writer()%>
 						</td>
 						<td>조회수: <%=boardDto.getInfo_hit()%>
@@ -164,30 +200,13 @@
 		//다음주 월요일
 		%>
 
-		<!-- 챌린지 그래프 -->
-		<div class="col-lg-5">
-			<div class="panel panel-info">
-				<!-- Default panel contents -->
-				<div class="panel-heading">챌린지</div>
 
-				<!-- Table -->
-				<table class="table table-hover table-striped table-condensed ">
-					<tr>
-						<th>1등</th>
-					</tr>
-					<tr>
-						<th>2등</th>
-					</tr>
-					<tr>
-						<th>3등</th>
-					</tr>
-					<tr>
-						<th>4등</th>
-					</tr>
-					<tr>
-						<th>5등</th>
-					</tr>
-				</table>
+		<!-- 챌린지 그래프 -->
+
+		<div class="col-lg-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">챌린지</div>
+				<div id="top_x_div" style="width: auto; height: 400px; margin: 20px"></div>
 			</div>
 		</div>
 	</div>
@@ -295,21 +314,24 @@
 					boardcDto = tradeList.get(i);
 				%>
 				<div class="col-lg-4 col-md-4">
-					<div class="card text-center" style="width: 15rem;">
+					<div class="card text-center w-100"
+						style="width: 15rem; border-radius: 20px;">
 						<img class="card-img-top"
 							src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name()%>"
-							width="286px" height="180px" alt="Card image cap">
+							alt="Card image cap" style="border-radius: 20px;">
 						<div class="card-body">
 							<p class="card-text"><%=boardcDto.getCategory_Small()%></p>
 							<p class="card-text"><%=boardcDto.getBoard_Editdate()%></p>
-							<h6 class="card-title "><%=boardcDto.getBoard_Title()%></h6>
+							<h5 class="card-title "><%=boardcDto.getBoard_Title()%></h5>
 							<p class="card-text"><%=boardcDto.getMarket_Price()%>원
 							</p>
 							<a
 								href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>"
-								class="btn btn-primary card text-white bg-dark">상세내용</a>
+								class="btn btn-outline-primary card text-dark"
+								style="border-radius: 20px;">상세내용</a>
 						</div>
 					</div>
+
 				</div>
 				<%
 				}
@@ -324,74 +346,81 @@
 					boardcDto = tradeList.get(i);
 				%>
 				<div class="col-lg-4 col-md-4">
-					<div class="card text-center" style="width: 15rem;">
+					<div class="card text-center w-100"
+						style="width: 15rem; border-radius: 20px;">
 						<img class="card-img-top"
 							src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name()%>"
-							width="286px" height="180px" alt="Card image cap">
+							alt="Card image cap" style="border-radius: 20px;">
 						<div class="card-body">
 							<p class="card-text"><%=boardcDto.getCategory_Small()%></p>
 							<p class="card-text"><%=boardcDto.getBoard_Editdate()%></p>
-							<h6 class="card-title "><%=boardcDto.getBoard_Title()%></h6>
+							<h5 class="card-title "><%=boardcDto.getBoard_Title()%></h5>
 							<p class="card-text"><%=boardcDto.getMarket_Price()%>원
 							</p>
 							<a
 								href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>"
-								class="btn btn-primary card text-white bg-dark">상세내용</a>
+								class="btn btn-outline-primary card text-dark"
+								style="border-radius: 20px;">상세내용</a>
 						</div>
 					</div>
+					<%
+					}
+					%>
 				</div>
+			</div>
+			<%
+			arrayList = boardDao.getList();
+
+			arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("질문")).collect(Collectors.toList());
+			%>
+			<div class="col-lg-4 mb-4">
+				<%
+				for (int i = 0; i < 5; i++) {
+					if (arrayList.size() <= i) {
+						break;
+					}
+					BoardDto boardDto = arrayList.get(i);
+				%>
+				<div class="border border-dark">
+					<h5 class="m-3"><%=boardDto.getBoard_title()%><span
+							class="badge badge-secondary m-3" style="font-size: large;">작성자:
+							<%=boardDto.getBoard_writer()%></span>
+					</h5>
+					<p class="m-3">
+						<%=boardDto.getBoard_content()%>
+					</p>
+					<button class="btn btn-secondary m-3"
+						onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">보러가기</button>
+				</div>
+
+
 				<%
 				}
 				%>
 			</div>
+			<div class="col-lg-1"></div>
 		</div>
-		<%
-		arrayList = boardDao.getList();
+	</div>
 
-		arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("질문")).collect(Collectors.toList());
-		%>
-		<div class="col-lg-4 mb-4">
-			<%
-			for (int i = 0; i < 5; i++) {
-				if(arrayList.size() <= i){
-					break;
-				}
-				BoardDto boardDto = arrayList.get(i);
-			%>
-			<div class="border border-dark" >
-			<h5 class="m-3"><%= boardDto.getBoard_title() %><span class="badge badge-secondary m-3" style="font-size:large;">작성자: <%=boardDto.getBoard_writer() %></span></h5>
-			<p class="m-3"> <%= boardDto.getBoard_content() %> </p>
-			<button class="btn btn-secondary m-3" onclick="location.href ='BoardB_view.jsp?board_id=<%=boardDto.getBoard_id()%>'">보러가기</button>
+
+
+
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10">
+				<hr>
 			</div>
-			
-			
-			<%
-			}
-			%>
+			<div class="col-lg-1"></div>
 		</div>
-		<div class="col-lg-1"></div>
-	</div>
 
 
 
+		<script>
+			$('.carousel').carousel({
+				interval : 3500
+			})
+		</script>
 
-
-	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
-			<hr>
-		</div>
-		<div class="col-lg-1"></div>
-	</div>
-
-
-
-	<script>
-		$('.carousel').carousel({
-			interval : 3500
-		})
-	</script>
-
-	<%@include file="./footer.jsp"%>
+		<%@include file="./footer.jsp"%>
 </body>
 </html>

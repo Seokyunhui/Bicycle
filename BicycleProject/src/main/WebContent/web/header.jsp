@@ -99,7 +99,22 @@
 					}
 					%>
 					<li>|</li>
-					<li><a href="#" class="navbar-link text-dark">챌린지</a></li>
+					<% 
+					if (session.getAttribute("userGroup") != null) {
+						group = (Integer) session.getAttribute("userGroup");
+					}else {
+						group = 0;
+					}
+					if (group != 5) {
+					%>
+					<li><a href="challenge.jsp" class="navbar-link text-dark">챌린지</a></li>
+					<%
+					}else if (group == 5) {
+					%>
+					<li><a href="admin_challenge.jsp?check=0" class="navbar-link text-dark">챌린지</a></li>
+					<%
+					}
+					%>
 				</ul>
 			</div>
 

@@ -30,8 +30,7 @@ request.setCharacterEncoding("UTF-8");
 
 	<%
 	//파일 경로 수정
-	MultipartRequest multi = new MultipartRequest(request,
-			"E:/유창석/bicycleproject/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8",
+	MultipartRequest multi = new MultipartRequest(request,"E:/유창석/bicycleproject/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8",
 			new DefaultFileRenamePolicy());
 	Enumeration files = multi.getFileNames();
 
@@ -42,6 +41,7 @@ request.setCharacterEncoding("UTF-8");
 	File filesize = multi.getFile(file);
 	int file_Size = (int) filesize.length();
 	String file_Dir = "E:/유창석/bicycleproject/Bicycle/BicycleProject/src/main/WebContent/web/upload" + filename;
+
 
 	PrintWriter script = response.getWriter();
 
