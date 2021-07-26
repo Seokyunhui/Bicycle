@@ -190,5 +190,25 @@ public class CommentDao {
 		return check;
 
 	}
+	
+	public int countComment(int Board_id) {
+		String sql = "select count(*) from comment where C_Board_id = ?";
+		Connection connection = dbDriver.connDB();
+		int count_cmt = 0;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, Board_id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count_cmt = rs.getInt(1);
+			}
+			return count_cmt;
+			
+		} catch (Exception e) {
+
+			return 0;
+		}
+	}
+	
 
 }

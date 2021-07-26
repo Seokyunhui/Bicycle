@@ -37,7 +37,6 @@ request.setCharacterEncoding("UTF-8");
 					int MemberId 	= memberDao.getMemberUid(writer);
 					
 					
-					
 				if(boardDao.insert(categoryLg,categorySm, boardTitle, boardContent ,writer,MemberId)){
 					if(categorySm.equals("질문")){
 					script.println("<script>");
