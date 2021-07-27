@@ -7,8 +7,7 @@ public class BoardcDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
-	
-	//BoardC 테이블 리스트 리턴 처리 페이지네이션 처리?
+
 	public ArrayList<BoardcDto> getList(String cetegory_sm, int pagesize) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from boardc where Category_small = ? ORDER BY Board_id DESC LIMIT ?, 10 ";
@@ -61,7 +60,6 @@ public class BoardcDao {
 
 	}
 	
-	//BoardC 테이블 리스트 리턴 처리
 	public ArrayList<BoardcDto> getList(String cetegory_sm) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from boardc where Category_small = ? ORDER BY Board_id DESC";
@@ -113,7 +111,6 @@ public class BoardcDao {
 
 	}
 	
-	//BoardcDto를 market_id 값으로 객체 리턴 처리
 	public BoardcDto getDto(int Market_id) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from boardc where market_id = ?";

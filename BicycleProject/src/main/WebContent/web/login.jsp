@@ -9,6 +9,10 @@
 <meta charset="UTF-16">
 <link rel="stylesheet" href="./css/login.css">
 <title>로그인</title>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src= "./js/apiLogin.js"></script>
+
 </head>
 <body>
 	<!--전체 구역-->
@@ -24,9 +28,8 @@
 
 			<!--상단 로고 구역-->
 			<div class="social-icons">
-				<img src="image/카카오톡로고.png" alt="Kakao"> <img
-					src="image/네이버로고.png" alt="Naver"> <img src="image/구글로고.png"
-					alt="Google">
+				<img src="./image/Loginpage image/카카오톡 로그인폼.png" style = width:80%; alt="Kakao" onclick ="kakaoLogin();"> 
+			
 			</div>
 
 			<!--로그인-->
@@ -47,8 +50,6 @@
 
 		</div>
 	</div>
-	<script>
-		
-	</script>
+	
 </body>
 </html>

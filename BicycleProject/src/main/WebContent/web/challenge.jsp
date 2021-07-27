@@ -130,7 +130,7 @@ if (session.getAttribute("userID") == null) {
 	</div>
 
 
-	<form action="challenge_action.jsp" method="post" enctype="multipart/form-data">
+	<form action="challenge_action.jsp" method="post">
 
 		<div class="row">
 			<div class="col-lg-1"></div>

@@ -1,8 +1,3 @@
-<%@page import="database.Add_fileDao"%>
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="java.io.File"%>
-<%@page import="java.util.Enumeration"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="database.ChallegeDao"%>
 <%@page import="database.MemberDao"%>
@@ -10,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 request.setCharacterEncoding("UTF-8");
-%>
+%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,36 +17,30 @@ request.setCharacterEncoding("UTF-8");
 <title>동행하는 사람들...</title>
 </head>
 <body>
-	<%
-	String writer = (String) session.getAttribute("userID"); //글 쓴이
+<%
+MemberDao memberDao = new MemberDao();
+ChallegeDao challegeDao = new ChallegeDao();
+PrintWriter script = response.getWriter();
 
-	String Dir = "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/Challenge/" + writer;
-	Add_fileDao add_fileDao = new Add_fileDao();
+String writer = (String) session.getAttribute("userID"); //글 쓴이
+int MemberUid = memberDao.getMemberUid(writer); //글 쓴이 기본키
+int Challenge_dist = Integer.parseInt(request.getParameter("challenge_dist"));
+String Challenge_content = request.getParameter("Challenge_content");
 
-	add_fileDao.createFolder(Dir);
 
-	MultipartRequest multi = new MultipartRequest(request, Dir, 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 
-	MemberDao memberDao = new MemberDao();
-	ChallegeDao challegeDao = new ChallegeDao();
-	PrintWriter script = response.getWriter();
-
-	int MemberUid = memberDao.getMemberUid(writer); //글 쓴이 기본키
-	int Challenge_dist = Integer.parseInt(multi.getParameter("challenge_dist"));
-	String Challenge_content = multi.getParameter("Challenge_content");
-
-	if (challegeDao.insert(MemberUid, Challenge_content, Challenge_dist)) {
-		script.println("<script>");
-		script.println("alert('글쓰기 성공');");
-		script.println("location.href= './challenge.jsp'");
-		script.println("</script>");
-	} else {
-		script.println("<script>");
-		script.println("alert('글쓰기 실패');");
-		script.println("history.back();");
-		script.println("</script>");
-	}
-	%>
+if(challegeDao.insert(MemberUid,Challenge_content ,Challenge_dist)){
+	script.println("<script>");
+	script.println("alert('글쓰기 성공');");
+	script.println("location.href= './challenge.jsp'");
+	script.println("</script>");
+} else {
+	script.println("<script>");
+	script.println("alert('글쓰기 실패');");
+	script.println("history.back();");
+	script.println("</script>");
+}
+%>
 
 
 </body>
