@@ -169,7 +169,7 @@ CREATE  OR REPLACE VIEW `BoardC` AS Select b.B_Member_id,a.Member_id, a.Member_p
 b.Category_small,b.Board_id,b.Board_title,b.Board_content,b.Board_editdate,
 c.Market_name,c.Market_price,Market_addr, c.Market_id
 From Member AS a, Board AS b, Market_Board AS c
-where b.Category_big like '중고거래' AND b.Board_id = c.M_Board_id;
+where b.Category_big like '중고거래' AND b.Board_id = c.M_Board_id AND a.Member_uid = b.B_Member_id;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
