@@ -24,8 +24,9 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<%
 	String writer = (String) session.getAttribute("userID"); //글 쓴이
-
-	String Dir = "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/Challenge/" + writer;
+	ServletContext context = request.getSession().getServletContext();
+	String saveDir = context.getRealPath("web/Challenge");
+	String Dir = saveDir + writer;
 	Add_fileDao add_fileDao = new Add_fileDao();
 
 	add_fileDao.createFolder(Dir);

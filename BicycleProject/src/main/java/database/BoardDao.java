@@ -149,7 +149,8 @@ public class BoardDao {
 				String boardTitle = rs.getString("Board_title");
 				int boardId = rs.getInt("Board_id");
 				int member_uid = rs.getInt("B_Member_id");
-
+				int board_hit = rs.getInt("Board_hit");
+				
 				boardDto.setCategory_big(categoryBig);
 				boardDto.setCategory_small(categorySmall);
 				boardDto.setBoard_regdate(boardRegDate);
@@ -158,7 +159,7 @@ public class BoardDao {
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setMember_uid(member_uid);				
-
+				boardDto.setInfo_hit(board_hit);
 			}
 			
 		} catch (SQLException e) {
@@ -208,6 +209,7 @@ public class BoardDao {
 		return check;
 
 	}
+	// 데이터 베이스 수정
 	public boolean update(int Board_id, String title, String content) {
 		String sql = "update board set Board_title= ?, Board_content = ?  WHERE Board_id = ? ";
 		Connection connection = dbDriver.connDB();
@@ -229,7 +231,7 @@ public class BoardDao {
 
 	}
 
-
+	// 데이터 베이스 수정 오버로딩
 	public boolean update(int Board_id, String title, String content, String category_sm) {
 		String sql = "update board set Board_title= ?, Board_content = ? , Category_small = ? WHERE Board_id = ? ";
 		Connection connection = dbDriver.connDB();
@@ -247,9 +249,31 @@ public class BoardDao {
 			check = false;
 			e.printStackTrace();
 		}
-
 		return check;
-
 	}
+	// 조회수 증가 메소드
+	public void readBoardHit(int boardid) {
+		String sql = "SELECT Board_hit FROM Board WHERE Board_id = ?";
+		Connection connection = dbDriver.connDB();
+		int boardHit = 0;
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1,boardid);
+			rs = pstmt.executeQuery();	
+			while(rs.next()) {
+				boardHit = rs.getInt("Board_hit");
+			}
+			boardHit += 1;
+			sql = "UPDATE board SET Board_Hit = ? WHERE Board_id=?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1,boardHit);
+			pstmt.setInt(2, boardid);
+			pstmt.executeUpdate();	
+			dbDriver.closeAll(rs,pstmt,connection);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
 
 }

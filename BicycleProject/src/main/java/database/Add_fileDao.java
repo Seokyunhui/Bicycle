@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 
 public class Add_fileDao {
 	private PreparedStatement pstmt;
@@ -98,19 +100,17 @@ public class Add_fileDao {
 	}
 	
 	//글 수정,삭제 이미지파일 제거
-	public void deleteFile(String file) {
-
-		String filePath = "j:\\Bicycle\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload\\" + file;
+	public void deleteFile(String file, HttpServletRequest request) {
+		ServletContext context = request.getSession().getServletContext();
+		String saveDir = context.getRealPath("web/upload");
+		String filePath = saveDir + file;
 
 		File deleteFile = new File(filePath);
 
 		if (deleteFile.exists()) {
-
 			deleteFile.delete();
-
 		}
 	}
-	
 	//회원 챌린지 등록시 아이디값으로 폴더 생성
 	public void createFolder (String Dir) {
 		

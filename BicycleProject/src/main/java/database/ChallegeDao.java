@@ -77,7 +77,7 @@ public class ChallegeDao {
 			while(rs.next()) {
 			int challebge_id = rs.getInt("Challenge_id");
 			int ch_Member_Id = rs.getInt("Ch_Member_id");
-			String Challenge_content = rs.getString("Challenge_content");
+			String Challenge_content = rs.getString("Challenge_contents");
 			int challenge_Dist = rs.getInt("Challenge_dist");
 			String challenge_regdate = rs.getString("Challenge_regdate").substring(0, 10);
 			int admin_approval = rs.getInt("admin_approval");
@@ -122,7 +122,7 @@ public class ChallegeDao {
 			while(rs.next()) {
 			int challebge_id = rs.getInt("Challenge_id");
 			int ch_Member_Id = rs.getInt("Ch_Member_id");
-			String Challenge_content = rs.getString("Challenge_content");
+			String Challenge_content = rs.getString("Challenge_contents");
 			int challenge_Dist = rs.getInt("Challenge_dist");
 			String challenge_regdate = rs.getString("Challenge_regdate").substring(0, 10);
 			int admin_approval = rs.getInt("admin_approval");
@@ -160,7 +160,7 @@ public class ChallegeDao {
 	
 	public boolean insert(int member_id,String Challenge_content,int Challenge_dist) {
 		Connection con = dbDriver.connDB();
-		String sql = "insert into challege (Ch_Member_id,Challenge_content,Challenge_dist) values (?,?,?)";
+		String sql = "insert into challege (Ch_Member_id,Challenge_contents,Challenge_dist) values (?,?,?)";
 		boolean check;
 		check = true;
 		try {

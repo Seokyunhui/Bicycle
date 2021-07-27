@@ -13,8 +13,8 @@
 
 <body>
 	<!-- 헤더 -->
-	<div class="container-fluid">
-		<div class="jumbotron" style="padding-top: 0px; padding-bottom: 0px;">
+	<div class="container-fluid" style="padding-top: 0px; padding-bottom: 0px; margin-left: 0px; margin-right: 0px;">
+		<div class="jumbotron" style="padding-top: 0px; padding-bottom: 0px; margin-left: 0px; margin-right: 0px;">
 
 			<div class="row justify-content-between">
 				<div class="col-lg-4">

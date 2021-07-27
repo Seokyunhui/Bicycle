@@ -155,11 +155,13 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('유효하지 않는 글입니다.')");
-		script.println("location.href=BoardB_jsp");
+		script.println("history.back()");
 		script.println("</script>");
 	}
 	// 게시글이 있는지 확인 문단 
-	BoardDto boardDto = new BoardDao().getDto(board_id);
+	BoardDao boardDao = new BoardDao();
+	BoardDto boardDto = boardDao.getDto(board_id);
+	boardDao.readBoardHit(board_id);
 	%>
 
 	<div class="row">

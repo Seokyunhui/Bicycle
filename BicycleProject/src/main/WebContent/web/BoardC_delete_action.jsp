@@ -37,7 +37,7 @@ request.setCharacterEncoding("UTF-8");
 	
 	
 	if (boardDao.delete(board_id)) {
-		add_fileDao.deleteFile(add_fileDto.getFile_name());
+		add_fileDao.deleteFile(add_fileDto.getFile_name(),request);
 		script.println("<script>");
 		script.println("alert('글삭제 성공');");
 		script.println("location.href= './BoardC_S.jsp'");

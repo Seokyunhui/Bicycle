@@ -208,6 +208,8 @@ style>.prpl {
 							<td><%=boardDto.getBoard_regdate()%></td>
 							<!-- 아이디 -->
 							<td><%=boardDto.getBoard_writer()%></td>
+							<!-- 조회수 -->
+							<td><%=boardDto.getInfo_hit()%></td>
 						</tr>
 					</tbody>
 					<%

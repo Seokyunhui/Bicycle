@@ -252,8 +252,8 @@ if (session.getAttribute("userID") == null) {
 						<tr>
 							<th>번호</th>
 							<th>내용</th>
-							<th>등록일</th>
 							<th>주행거리</th>
+							<th>등록일</th>
 							<th>승인여부</th>
 						</tr>
 					</thead>
@@ -269,16 +269,16 @@ if (session.getAttribute("userID") == null) {
 
 							<td><%=challegeDto.getChallenge_id()%></td>
 							<td><%=challegeDto.getChallenge_content()%></td>
-							<td><%=challegeDto.getChallenge_regdate()%></td>
 							<td><%=challegeDto.getChallenge_dist()%></td>
+							<td><%=challegeDto.getChallenge_regdate()%></td>
 							<%
 							if (challegeDto.getAdmin_approval() == 1) {
 							%>
-							<td>y</td>
+							<td>Y</td>
 							<%
 							} else {
 							%>
-							<td>n</td>
+							<td>N</td>
 							<%
 							}
 							%>
@@ -303,30 +303,6 @@ if (session.getAttribute("userID") == null) {
 			<br>
 			<br> <br>
 			<br>
-		</div>
-		<div class="col-lg-1"></div>
-	</div>
-
-	<!--네이션구역-->
-	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
-			<nav style="text-align: center;">
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
-				</ul>
-			</nav>
-
 		</div>
 		<div class="col-lg-1"></div>
 	</div>

@@ -23,7 +23,9 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<%
 	 /*절대경로 본인껄로 바꿔 쓰세요 J = D J:\Bicycle\Bicycle\BicycleProject\src\main\WebContent\web\\upload*/
-	MultipartRequest multi = new MultipartRequest(request, "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+	ServletContext context = request.getSession().getServletContext();
+	String saveDir = context.getRealPath("web/upload");
+	MultipartRequest multi = new MultipartRequest(request,saveDir, 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 	Enumeration files = multi.getFileNames();
 	
 
@@ -33,7 +35,7 @@ request.setCharacterEncoding("UTF-8");
 	String file_contenttype = multi.getContentType(file);
 	File filesize = multi.getFile(file); 
 	int file_Size = (int) filesize.length();
-	String file_Dir = "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload" + filename;
+	String file_Dir = saveDir + filename;
 	
 	
 	
