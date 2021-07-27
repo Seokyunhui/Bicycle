@@ -12,35 +12,23 @@
 }
 .form-wrap {
     width: 380px;
-    height: 580px;
+    height: 480px;
     position: relative;
     margin: 12% auto;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 40px;
+    border: 1px solid gray;
     padding: 5px;
     overflow: hidden;
 }
-.register{
-    border-radius: 50px;
-    background: linear-gradient(to right, #5B5967, #fff);
-    height: 30px;
-    width: 100px;
-    margin: 35px auto;
-    position: relative;
-    border-radius: 30px;
-    text-align: center;
-}
 
-.social-icons {
-    margin: 30px auto;
-    text-align: center;
-}
+
+
 .social-icons img {
     width: 30px ;
     cursor: pointer;
 }
 .input-group {
-    top: 180px;
     position: absolute;
     width: 280px;
     transition: .5s;
@@ -50,21 +38,41 @@
     padding: 10px 0;
     margin: 5px 0;
     border: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid gray;
+    color: black; 
     outline: none;
     background: transparent;
 }
 .submit {
-    width: 85%;
+     width: 85%;
     padding: 10px 30px;
     cursor: pointer;
     display: block;
     margin: auto;
-    background: linear-gradient(to right, #5B5967, #fff);
     border: 0;
     outline: none;
     border-radius: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid gray;
 }
+
+.button {
+     width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid gray;
+}
+
+
+
+
+
 .submit-1{
     padding: 25px;
 }

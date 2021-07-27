@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="./css/signup.css">
 
 </head>
-<script type = "text/javascript">
+<script type="text/javascript">
 	function checkMember(){
 		var regExpId = /^[a-z|A-Z|]/;
 		var regExpName = /^[가-힣]*$/;
@@ -59,41 +59,38 @@
 
 </script>
 <body>
-        <!--전체 구역-->  
-        <div class="wrap" style="background-image: url('image/backimage.jpg');">
-            <!--로그인 폼 구역-->  
-            <div class="form-wrap">
-                <!--상단 로그인 텍스트-->  
-                <div class="register">
-                    <div>
-                        <span>회원가입</span>        
-                    </div>
-                </div>
-    
-                <!--상단 로고 구역-->
-                <div class="social-icons">
-                    <img src="image/카카오톡로고.png" alt="Kakao">
-                    <img src="image/네이버로고.png" alt="Naver">
-                    <img src="image/구글로고.png" alt="Google">
-                </div>
+	<!--전체 구역-->
+	<div class="wrap" style="background-image: url('image/로그인6.jpg');">
+		<!--로그인 폼 구역-->
+		<div class="form-wrap">
+			<!--상단 로그인 텍스트-->
+			<div>
+				<br>
+				<br>
+				<br>
+			</div>
 
-                <!--회원가입 폼 구역-->
-                <form name = "register" id="register" action="signup_process.jsp" class="input-group">
-                  <input type="text" name = "id" class="input-field" placeholder="아이디" required>
-                    <input type="password" name = "passwd" class="input-field" placeholder="비밀번호" required>
-                    <input type="password" name = "passwdck" class="input-field" placeholder="비밀번호 확인" required>
-                    <input type="text" name = "name" class="input-field" placeholder="이름" required>
-                    <input type="text" name = "phonenum" class="input-field" placeholder="전화번호(숫자만 입력해주세요)" required>
-                    <input type="text" name = "email" class="input-field" placeholder="이메일(xxx@xxx.xxx)" required>
-                    <div class="submit-1">
-                        <input type = "button" onclick = "checkMember()" value = "전송"><span>회원가입</span>
-                    </div>
-                </form>
-                
-            </div>
-        </div>
-        <script>
+			<!--회원가입 폼 구역-->
+			<form name="register" id="register" action="signup_process.jsp"
+				class="input-group">
+				<input type="text" name="id" class="input-field" placeholder="아이디" required> 
+				<input type="password" name="passwd" class="input-field" placeholder="비밀번호" required> 
+				<input type="password" name="passwdck" class="input-field" placeholder="비밀번호 확인" required> 
+				<input type="text" name="name" class="input-field" placeholder="이름" required>
+				<input type="text" name="phonenum" class="input-field" placeholder="전화번호(숫자만 입력해주세요)" required> 
+				<input type="text" name="email" class="input-field" placeholder="이메일(xxx@xxx.xxx)" required> <br>
+				<div class="submit-1">
+					<input type = "button" class="submit submit-outline-primary"
+						onclick="checkMember()" value="회원가입">
+				
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+	<script>
         
         </script>
-   
+
 </body>
