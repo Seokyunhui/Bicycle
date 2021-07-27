@@ -1,3 +1,4 @@
+<%@page import="database.MarketBoardDto"%>
 <%@page import="database.BoardcDao"%>
 <%@page import="database.BoardcDto"%>
 <%@page import="database.Add_fileDao"%>
@@ -170,6 +171,7 @@
 						break;
 					}	
 					boardcDto =  arrayList.get(i);
+					MarketBoardDto  marketBoardDto = marketBoardDao.getMarketDto(boardcDto.getMarket_Id());
 			%>
 		<div class="col-lg-2 col-md-4">
 			<div class="card text-center w-100"
@@ -178,6 +180,7 @@
 					src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>"
 					alt="Card image cap" style="border-radius: 20px;">
 				<div class="card-body">
+					<p class="card-text"><%=marketBoardDto.getmarketState() %></p>
 					<p class="card-text"><%=boardcDto.getCategory_Small() %></p>
 					<p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
 					<h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
@@ -212,6 +215,7 @@
 				for(int i = 5; i<10; i++){
 				if(arrayList.size()<=i){ break; }
 				boardcDto =  arrayList.get(i);
+				MarketBoardDto  marketBoardDto = marketBoardDao.getMarketDto(boardcDto.getMarket_Id());
 			%>
 		<div class="col-lg-2 col-md-4">
 			<div class="card text-center w-100"
@@ -220,6 +224,7 @@
 					src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>"
 					alt="Card image cap" style="border-radius: 20px;">
 				<div class="card-body">
+					<p class="card-text"><%=marketBoardDto.getmarketState() %></p>
 					<p class="card-text"><%=boardcDto.getCategory_Small() %></p>
 					<p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
 					<h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>

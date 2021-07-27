@@ -1,3 +1,4 @@
+<%@page import="database.MarketBoardDto"%>
 <%@page import="database.BoardcDao"%>
 <%@page import="database.BoardcDto"%>
 <%@page import="database.Add_fileDao"%>
@@ -161,12 +162,13 @@
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<%
-		for (int i = 0; i < 5; i++) {
-			if (arrayList.size() <= i) {
-				break;
-			}
-			boardcDto = arrayList.get(i);
-		%>
+				for(int i = 0; i<5; i++){
+					if(arrayList.size()<=i){
+						break;
+					}	
+					boardcDto =  arrayList.get(i);
+					MarketBoardDto  marketBoardDto = marketBoardDao.getMarketDto(boardcDto.getMarket_Id());
+			%>
 		<div class="col-lg-2 col-md-4">
 			<div class="card text-center w-100"
 				style="width: 15rem; border-radius: 20px;">
@@ -174,22 +176,23 @@
 					src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>"
 					alt="Card image cap" style="border-radius: 20px;">
 				<div class="card-body">
+					<p class="card-text"><%=marketBoardDto.getmarketState() %></p>
 					<p class="card-text"><%=boardcDto.getCategory_Small() %></p>
 					<p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
 					<h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
 					<p class="card-text"><%=boardcDto.getMarket_Price() %>원
 					</p>
-					<div class="shadow-lg"><a
+					<a
 						href="BoardC_product.jsp?Market_id=<%=boardcDto.getMarket_Id()%>"
 						class="btn btn-outline-primary card text-dark"
-						style="border-radius: 20px;">상세내용</a></div>
+						style="border-radius: 20px;">상세내용</a>
 				</div>
 			</div>
 		</div>
 		<%} %>
 		<div class="col-lg-1"></div>
-
 	</div>
+
 
 	<!--공백-->
 	<div class="row">
@@ -206,12 +209,11 @@
 		<div class="col-lg-1"></div>
 
 		<%
-		for (int i = 5; i < 10; i++) {
-			if (arrayList.size() <= i) {
-				break;
-			}
-			boardcDto = arrayList.get(i);
-		%>
+				for(int i = 5; i<10; i++){
+				if(arrayList.size()<=i){ break; }
+				boardcDto =  arrayList.get(i);
+				MarketBoardDto  marketBoardDto = marketBoardDao.getMarketDto(boardcDto.getMarket_Id());
+			%>
 		<div class="col-lg-2 col-md-4">
 			<div class="card text-center w-100"
 				style="width: 15rem; border-radius: 20px;">
@@ -219,6 +221,7 @@
 					src="./upload/<%=add_fileDao.getDto(boardcDto.getBoard_Id()).getFile_name() %>"
 					alt="Card image cap" style="border-radius: 20px;">
 				<div class="card-body">
+					<p class="card-text"><%=marketBoardDto.getmarketState() %></p>
 					<p class="card-text"><%=boardcDto.getCategory_Small() %></p>
 					<p class="card-text"><%=boardcDto.getBoard_Editdate() %></p>
 					<h5 class="card-title "><%=boardcDto.getBoard_Title() %></h5>
@@ -233,7 +236,6 @@
 		</div>
 		<%} %>
 		<div class="col-lg-1"></div>
-
 	</div>
 
 	<!--공백-->

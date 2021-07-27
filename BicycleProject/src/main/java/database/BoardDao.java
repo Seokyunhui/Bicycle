@@ -209,7 +209,7 @@ public class BoardDao {
 
 	}
 	public boolean update(int Board_id, String title, String content) {
-		String sql = "update board set Board_title= ?, Board_content = ? , Category_small = ? WHERE Board_id = ? ";
+		String sql = "update board set Board_title= ?, Board_content = ?  WHERE Board_id = ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {
