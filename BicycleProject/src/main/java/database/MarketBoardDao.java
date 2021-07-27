@@ -53,7 +53,6 @@ public class MarketBoardDao {
 				String market_Addr = rs.getString("Market_addr");
 				int market_Id = rs.getInt("Market_id");
 
-
 				boardcDto.setB_Member_Id(b_Member_Id);
 				boardcDto.setMember_Id(member_Id);
 				boardcDto.setMember_Phone(member_Phone);
@@ -67,8 +66,6 @@ public class MarketBoardDao {
 				boardcDto.setMarket_Addr(market_Addr);
 				boardcDto.setMarket_Id(market_Id);
 
-				
-
 			}
 
 		} catch (SQLException e) {
@@ -80,8 +77,37 @@ public class MarketBoardDao {
 
 	}
 
-	public boolean updateMarket(int market_id, String market_name, String marekt_addr, String market_price) {
-		String sql = "update market_board set Market_name = ?, Market_price = ?, Market_addr = ? WHERE market_id = ? ";
+	public MarketBoardDto getMarketDto(int Market_id) {
+		Connection connection = dbDriver.connDB();
+		String sql = "select * from market_board where market_id = ?";
+		MarketBoardDto marBoardDto = new MarketBoardDto();
+
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, Market_id); 
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				marBoardDto.setMarketId(rs.getInt("Market_id"));
+				marBoardDto.setM_Board_Id(rs.getInt("M_Board_id"));
+				marBoardDto.setMarketName(rs.getString("market_name"));
+				marBoardDto.setMarketPrice(rs.getInt("Market_price"));
+				marBoardDto.setMarketAddr(rs.getString("Market_addr"));
+				marBoardDto.setMarketState(rs.getString("Market_state"));
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return marBoardDto;
+
+	}
+
+	public boolean updateMarket(int market_id, String market_name, String marekt_addr, String market_price, String market_State) {
+		String sql = "update market_board set Market_name = ?, Market_price = ?, Market_addr = ?, Market_state = ? WHERE market_id = ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {
@@ -89,7 +115,9 @@ public class MarketBoardDao {
 			pstmt.setString(1, market_name);
 			pstmt.setString(2, market_price);
 			pstmt.setString(3, marekt_addr);
-			pstmt.setInt(4, market_id);
+			pstmt.setString(4, market_State);
+			pstmt.setInt(5, market_id);
+			
 			pstmt.executeUpdate();
 			check = true;
 			dbDriver.closeAll(pstmt, connection);

@@ -31,16 +31,15 @@ request.setCharacterEncoding("UTF-8");
 
 <title>중고거래 글등록 페이지</title>
 <%
-
-
-        if (session.getAttribute("userID") == null) {
-        	
-         %>
-<script>alert('로그인이 필요합니다.'); window.history.back(); </script>
+if (session.getAttribute("userID") == null) {
+%>
+<script>
+	alert('로그인이 필요합니다.');
+	window.history.back();
+</script>
 <%
-           
-        }
-    %>
+}
+%>
 </head>
 <body>
 
@@ -137,10 +136,6 @@ request.setCharacterEncoding("UTF-8");
 				<div class="select-box select-script">
 
 					<select id="selectbox" name="board_category_sm" required>
-						<option selected disabled hidden>선택</option>
-						<option value="거래가능">거래가능</option>
-						<option value="거래완료">거래완료</option>
-					</select> <select id="selectbox" name="board_category_sm" required>
 						<option selected disabled hidden>선택</option>
 						<option value="삽니다">삽니다</option>
 						<option value="팝니다">팝니다</option>
@@ -298,18 +293,18 @@ request.setCharacterEncoding("UTF-8");
 
 	<!-- js -->
 	<script>
-            $('.carousel').carousel({
-                interval: 10000
-            })
+		$('.carousel').carousel({
+			interval : 10000
+		})
 
-            $(document).ready(function () {
-                var select = $('.select-script select');
-                select.change(function () {
-                    var select_name = $(this).children('option:selected').text();
-                    $(this).siblings("label").text(select_name);
-                });
-            });
-		</script>
+		$(document).ready(function() {
+			var select = $('.select-script select');
+			select.change(function() {
+				var select_name = $(this).children('option:selected').text();
+				$(this).siblings("label").text(select_name);
+			});
+		});
+	</script>
 
 	<%@include file="./footer.jsp"%>
 </body>

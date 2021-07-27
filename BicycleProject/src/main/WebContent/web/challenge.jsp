@@ -259,7 +259,7 @@ if (session.getAttribute("userID") == null) {
 					</thead>
 					<tbody>
 						<%
-						for (int i = 0; i < 5; i++) {
+						for (int i = 0; i < arrayList.size(); i++) {
 							if (arrayList.size() <= i) {
 								break;
 							}
@@ -316,11 +316,11 @@ if (session.getAttribute("userID") == null) {
 					<li><a href="#" aria-label="Previous"> <span
 							aria-hidden="true">&laquo;</span>
 					</a></li>
-					<li><a href="BoardC_S.jsp?pagesize=0">1</a></li>
-					<li><a href="BoardC_S.jsp?pagesize=10">2</a></li>
-					<li><a href="BoardC_S.jsp?pagesize=20">3</a></li>
-					<li><a href="BoardC_S.jsp?pagesize=30">4</a></li>
-					<li><a href="BoardC_S.jsp?pagesize=40">5</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
 					<li><a href="#" aria-label="Next"> <span
 							aria-hidden="true">&raquo;</span>
 					</a></li>
