@@ -155,6 +155,8 @@ request.setCharacterEncoding("UTF-8");
 	
 	String km = "km";
 	
+
+	
 	%>
 		<div class="row">
 			<div class="col-lg-1"></div>
@@ -167,24 +169,31 @@ request.setCharacterEncoding("UTF-8");
 						<tr>
 							<th>번호</th>
 							<th>내용</th>
-							<th>등록일</th>
 							<th>주행거리</th>
+							<th>작성자</th>
+							<th>등록일</th>
 							<th>승인여부</th>
 						</tr>
 					</thead>
 					<tbody>
-					<%for(int i = 0; i<arrayList.size(); i++){
+					<%
+					
+					for(int i = 0; i<arrayList.size(); i++){
 						if(arrayList.size()<=i){
 							break;
 						}
 						challegeDto = arrayList.get(i);
+						MemberDao memberDao = new MemberDao();
+						MemberDto memberDto = memberDao.getUserInfo(challegeDto.getCh_Member_id());
+						
 						
 						%>
 						<tr>
 							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_id() %></td>
 							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_content() %></td>
-							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_regdate() %></td>
 							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_dist() + km %></td>
+							<td style="vertical-align: middle;"><%=memberDto.getMember_id() %></td>
+							<td style="vertical-align: middle;"><%=challegeDto.getChallenge_regdate() %></td>
 							<%if(challegeDto.getAdmin_approval()==1){ %>
 							<td><button type="button" class="btn btn-outline-success disabled">등록완료</button></td>
 							<%} else { %>
@@ -209,29 +218,7 @@ request.setCharacterEncoding("UTF-8");
 		<div class="col-lg-1"></div>
 	</div>
 
-	<!--네이션구역-->
-	<div class="row">
-		<div class="col-lg-1"></div>
-		<div class="col-lg-10">
-			<nav style="text-align: center;">
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
-				</ul>
-			</nav>
 
-		</div>
-		<div class="col-lg-1"></div>
-	</div>
 
 	<!-- hr 구역 -->
 	<div class="row">

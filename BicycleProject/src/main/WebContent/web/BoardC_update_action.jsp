@@ -30,8 +30,10 @@ request.setCharacterEncoding("UTF-8");
 
 	<%
 	//파일 경로 수정
-		MultipartRequest multi = new MultipartRequest(request,"j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload", 5 * 1024 * 1024, "utf-8",
-		new DefaultFileRenamePolicy());
+		ServletContext context = request.getSession().getServletContext();
+		String saveDir = context.getRealPath("web/upload");
+	
+		MultipartRequest multi = new MultipartRequest(request,saveDir, 5 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 		Enumeration files = multi.getFileNames();
 		String file = (String) files.nextElement();
 		
@@ -41,7 +43,7 @@ request.setCharacterEncoding("UTF-8");
 		String file_contenttype = multi.getContentType(file);
 		File filesize = multi.getFile(file);
 		int file_Size = (int) filesize.length();
-		String file_Dir = "j:/Bicycle/Bicycle/BicycleProject/src/main/WebContent/web/upload" + filename;
+		String file_Dir = saveDir + filename;
 
 		PrintWriter script = response.getWriter();
 
@@ -78,7 +80,7 @@ request.setCharacterEncoding("UTF-8");
 		if (boardDao.update(boardid, boardTitle, boardContent)) {//메소드 boardDao.update 호출 매개값 boardid, boardTitle, boardContent 을 가져와서 수정
 			if (marketBoardDao.updateMarket(market_id, market_name, market_addr, market_price, market_state)
 			&& add_fileDao.update(filename, file_Size, file_Dir, file_contenttype, boardid)) {
-		add_fileDao.deleteFile(filedeletename);
+		add_fileDao.deleteFile(filedeletename,request);
 		script.println("<script>");
 		script.println("alert('파일 글 수정 성공');");
 		script.println("location.href= './BoardC_S.jsp'");
@@ -127,7 +129,7 @@ request.setCharacterEncoding("UTF-8");
 			if (marketBoardDao.updateMarket(market_id, market_name, market_addr, market_price, market_state)
 			&& add_fileDao.update(add_fileDto.getFile_name(), add_fileDto.getFile_size(), add_fileDto.getFile_dir(),
 					add_fileDto.getFile_contenttype(), boardid)) {
-		add_fileDao.deleteFile(filedeletename);
+		add_fileDao.deleteFile(filedeletename,request);
 		script.println("<script>");
 		script.println("alert('글 수정 성공');");
 		script.println("location.href= './BoardC_S.jsp'");

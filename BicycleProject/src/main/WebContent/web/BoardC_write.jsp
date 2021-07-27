@@ -137,8 +137,8 @@ if (session.getAttribute("userID") == null) {
 
 					<select id="selectbox" name="board_category_sm" required>
 						<option selected disabled hidden>선택</option>
-						<option value="삽니다">삽니다</option>
 						<option value="팝니다">팝니다</option>
+						<option value="삽니다">삽니다</option>
 					</select> <select id="selectbox" name="market_board_addr" required>
 						<option selected="selected">지역</option>
 						<option value="서울">서울</option>
