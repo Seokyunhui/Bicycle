@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Add_fileDao {
-
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	DBDriver dbDriver = new DBDriver();
-
+	
+	//Add_fileDto 를 F_Board_id 값으로 객체 리턴 처리
 	public Add_fileDto getDto(int id) {
 		Connection connection = dbDriver.connDB();
 		String sql = "select * from add_file where F_Board_id= ? ";
@@ -48,7 +48,8 @@ public class Add_fileDao {
 		}
 		return add_fileDto;
 	}
-
+	
+	//add_file 테이블 insert 처리
 	public boolean insert(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id,
 			int Member_id) {
 		String sql = "insert into add_file (File_name, File_size, File_dir, File_contenttype, F_Board_id, F_Member_id) values(?,?,?,?,?,?)";
@@ -72,7 +73,8 @@ public class Add_fileDao {
 		return check;
 
 	}
-
+	
+	//add_file 테이블 update 처리
 	public boolean update(String file_name, int file_size, String file_dir, String file_Contenttype, int f_Board_id) {
 		String sql = "update add_file set File_name= ?, File_size = ?,File_dir = ?, File_contenttype = ?  WHERE F_Board_id = ?";
 		Connection connection = dbDriver.connDB();
@@ -94,9 +96,11 @@ public class Add_fileDao {
 		return check;
 
 	}
-
+	
+	//글 수정,삭제 이미지파일 제거
 	public void deleteFile(String file) {
-		String filePath = "E:\\유창석\\bicycleproject\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload" + file;
+
+		String filePath = "j:\\Bicycle\\Bicycle\\BicycleProject\\src\\main\\WebContent\\web\\upload\\" + file;
 
 		File deleteFile = new File(filePath);
 
@@ -106,5 +110,25 @@ public class Add_fileDao {
 
 		}
 	}
+	
+	//회원 챌린지 등록시 아이디값으로 폴더 생성
+	public void createFolder (String Dir) {
+		
+		File Folder = new File(Dir);
+
+		
+		if (!Folder.exists()) {
+			try{
+			    Folder.mkdir();
+			   
+		        } 
+		        catch(Exception e){
+			    e.getStackTrace();
+			}        
+	         }else {
+			
+		}
+	    }
+	
 
 }

@@ -1,13 +1,13 @@
+<%@page import="database.BoardDto"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.*"%>
-<%@page import="database.BoardDto"%>
 <%@page import="database.BoardDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="database.MemberDao"%>
 <%@page import="database.MemberDto"%>
 <%@page import="database.CommentDao"%>
 <%@page import="database.CommentDto"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%
 String pageNum = request.getParameter("pageNum");
 String pageState = request.getParameter("pageBlock");
@@ -31,7 +31,6 @@ else if (pageState.equals("Previous"))
 <link rel="stylesheet" href="./css/bootstrap4.0.0.css">
 
 </head>
-<!--대댓글 삭제 스크립트-->
 <script type="text/javascript">
 	function guest_rep_onclick_codelete(action, id) {
 		var s = id;
@@ -43,16 +42,14 @@ else if (pageState.equals("Previous"))
 			window.location.href = url;
 		}
 	}
-<!--대댓글 수정 스크립트-->
 	function guest_rep_onclick_coedit(action, id) {
 		var s = id;
 		var a = action;
 		window.open("BoardB_M_comment_editform.jsp?action=" + encodeURI(a)
 				+ "&id=" + encodeURI(s), "댓글수정",
 				"width=400, height=300, left=100, top=50");
-
+		//window.location.href = url; 
 	}
-<!--대댓글 스크립트-->
 	function guest_rep_onclick_reply(action, id) {
 		var s = id;
 		var a = action;
@@ -61,15 +58,14 @@ else if (pageState.equals("Previous"))
 						+ "&id=" + encodeURI(s), "댓글",
 						"width=400, height=300, left=100, top=50");
 	}
-<!--댓글 수정 스크립트-->
 	function guest_rep_onclick_edit(action, id) {
 		var s = id;
 		var a = action;
 		window.open("BoardB_M_editform.jsp?action=" + encodeURI(a) + "&id="
 				+ encodeURI(s), "댓글수정",
 				"width=400, height=300, left=100, top=50");
+		//window.location.href = url; 
 	}
-<!--댓글 삭제 스크립트-->
 	function guest_rep_onclick_delete(action, id) {
 		var s = id;
 		var a = action;
@@ -79,6 +75,7 @@ else if (pageState.equals("Previous"))
 					+ encodeURI(s);
 			window.location.href = url;
 		}
+
 	}
 </script>
 <body>
@@ -123,26 +120,24 @@ else if (pageState.equals("Previous"))
 		<div class="col-lg-1"></div>
 	</div>
 
-	<!-- 소제목 -->
+
 	<div class="row">
-		<div class="col-lg-8"></div>
-		<div class="col-lg-3" data-spy="scroll" data-target=".navbar">
-			<ul class="nav nav-pills justify-content-around display-5 ">
+		<div class="col-lg-1"></div>
+		<div class="col-lg-7"></div>
+		<div class="col-lg-3">
+			<ul class="nav nav-pills justify-content-around display-5">
 				<li><a href="BoardB_Q.jsp" class="navbar-link text-dark">질문게시판</a></li>
 				<li>|</li>
 				<li><a href="BoardB_C.jsp" class="navbar-link text-dark">자유게시판</a></li>
 				<li>|</li>
-				<li><a href="#section3" class="navbar-link text-dark">모이자!</a></li>
+				<li><a href="BoardB_M.jsp" class="navbar-link text-dark">모이자!</a></li>
 			</ul>
 		</div>
-		<div class="col-lg-1"></div>
 	</div>
-	
-	
+
 	<div class="row">
 		<br>
 	</div>
-
 	<%!BoardDao boardDao = new BoardDao();
 	List<BoardDto> arrayList = new ArrayList<>();
 	BoardDto boardDto;
@@ -156,14 +151,14 @@ else if (pageState.equals("Previous"))
 	arrayList = boardDao.getList();
 	arrayList = arrayList.stream().filter(list -> list.getCategory_small().equals("모이자")).collect(Collectors.toList());
 	%>
-	<!--댓글 시작-->
+
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
 			<div class="guestList">
 				<ol class="list-group">
 					<li id="guest_rep_id" class="list-group-item">
-<%
+						<!-- 글 시작 --> <%
  for (int i = pageDisplayNum * (currentPage - 1); i < (pageDisplayNum * currentPage); i++) {
  	if (pageDisplayNum * (currentPage - 1) > arrayList.size())
  		break;
@@ -171,13 +166,10 @@ else if (pageState.equals("Previous"))
  		break;
  	boardDto = arrayList.get(i);
  %>
-						<!-- 댓글 작성자, 작성 시간 -->
+
 						<div class="guest_rep_class">
-							<strong><%=boardDto.getBoard_writer()%></strong> 
-							<small><%=boardDto.getBoard_regdate()%></small> 
-							<span class="control">
-<!-- 자신의 댓글에 대한 권한 주기 --> 
-<%
+							<strong><%=boardDto.getBoard_writer()%></strong> <small>
+								<%=boardDto.getBoard_regdate()%></small> <span class="control"> <%
  String id = (String) session.getAttribute("userID");
  int uid = 0;
  if (id != null) {
@@ -185,37 +177,28 @@ else if (pageState.equals("Previous"))
  }
  int b_m_uid = boardDto.getMember_uid();
  if (boardDto.getMember_uid() == uid) {
- %> 
- 								<!-- 댓글 수정 및 삭제 -->
- 								<a href="#" onclick="guest_rep_onclick_edit('edit','<%=boardDto.getBoard_id()%>');"
-								class="btn btn-default btn-xs">&nbsp;<span>수정</span></a> 
-								<a href="#" onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id()%>')"
-								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> 
-<!-- 관리자 권한 -->
-<%
- } else if (id != null && m_dao.getUserGroup(id).equals("5")) {
-%> 	
-								<a href="#" onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id()%>')"
-								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> 
-								<%}%>
-<!-- 비회원이 아니면 리플 가능 --> 
-<%
+ %> <a href="#"
+								onclick="guest_rep_onclick_edit('edit','<%=boardDto.getBoard_id()%>');"
+								class="btn btn-default btn-xs">&nbsp;<span>수정</span></a> <a
+								href="#"
+								onclick="guest_rep_onclick_delete('delete','<%=boardDto.getBoard_id()%>')"
+								class="btn btn-default btn-xs">&nbsp;<span>삭제</span></a> <%
+ }
+ %> <!--if 문 추가 !--> <%
  if (id != null) {
-%> 								<a href="#" onclick="guest_rep_onclick_reply('comment','<%=boardDto.getBoard_id()%>')"
+ %> <a href="#"
+								onclick="guest_rep_onclick_reply('comment','<%=boardDto.getBoard_id()%>')"
 								class="btn btn-default btn-xs">&nbsp;<span>댓글</span></a>
 							</span>
 							<%}%>
-							
-							<!-- 댓글 내용 -->
 							<div class="row">
 
 								<div class="col-lg-10">
 									<p><%=boardDto.getBoard_content()%></p>
 								</div>
 							</div>
-							
-							
-							<!-- 대댓글 시작 -->
+							<!-- 댓글 시작 -->
+
 							<%
 							arrayList2 = commentDao.getList(boardDto.getBoard_id());
 							for (int a = 0; a < arrayList2.size(); a++) {
@@ -226,37 +209,26 @@ else if (pageState.equals("Previous"))
 							<div class="row">
 								<div class="col-lg-1"></div>
 								<div class="col-lg-10">
-									<!-- 대댓글 구분 -->
 									<ul class="list-group">
 										<li id="guest_rep_id" class="list-group-item">
 											<div class="guest_rep_class">
-												<strong><%=CommentDto.getComment_name()%></strong> 
-												<small><%=CommentDto.getComment_regdate()%></small>
-												<span class="control"> 
-<!-- 자신의 대댓글에 대한 권한주기 -->
-<%							
+												<strong><%=CommentDto.getComment_name()%></strong> <small><%=CommentDto.getComment_regdate()%></small>
+												<span class="control"> <%
  String c_id = (String) session.getAttribute("userID");
  int c_uid = 0;
  if (id != null) {
  	c_uid = m_dao.getMemberUid(c_id);
  }
  if (CommentDto.getMember_uid() == c_uid) {
- %>
- 													<a href="#" onclick="guest_rep_onclick_coedit('edit','<%=CommentDto.getComment_id()%>')"
-													class="btn btn-default btn-xs"> <span>수정</span></a> 
-													<a href="#" onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>')"
-													class="btn btn-default btn-xs"><span>삭제</span></a> 								
-<!-- 관리자 권한 -->
-<%
- } else if (c_id != null && m_dao.getUserGroup(c_id).equals("5")) {
- %> 												
- 
- 													<a href="#" onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>')"
-													 class="btn btn-default btn-xs"><span>삭제</span></a> <%
+ %> <a href="#"
+													onclick="guest_rep_onclick_coedit('edit','<%=CommentDto.getComment_id()%>')"
+													class="btn btn-default btn-xs"> <span>수정</span></a> <a
+													href="#"
+													onclick="guest_rep_onclick_codelete('delete','<%=CommentDto.getComment_id()%>')"
+													class="btn btn-default btn-xs"><span>삭제</span></a> <%
  }
  %>
 												</span>
-												<!-- 대댓글 내용 -->
 												<p><%=CommentDto.getComment_content()%></p>
 											</div>
 										</li>
@@ -279,7 +251,6 @@ else if (pageState.equals("Previous"))
 		<div class="col-lg-1"></div>
 	</div>
 
-	<!-- 댓글 등록 창 -->
 	<div class="row">
 		<br>
 	</div>
@@ -302,15 +273,13 @@ else if (pageState.equals("Previous"))
 	<%
 	}
 	%>
-	
-	<!-- 한줄 공백 -->
+
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10"></div>
 		<div class="col-lg-1"></div>
 	</div>
 
-	<!-- 페이지 넘버 -->
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">

@@ -121,7 +121,7 @@
 				<div class="form-group">
 
 					<select class="form-control" name="board_category_sm">
-						<option value="자유">자유게시판</option>
+						<option value="<%=boardDto.getCategory_small()%>">자유게시판</option>
 						<option value="질문">질문게시판</option>
 
 					</select>

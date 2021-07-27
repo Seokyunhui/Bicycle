@@ -120,7 +120,6 @@ public class BoardDao {
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setMember_uid(member_uid);
 
-
 				arrayList.add(boardDto);
 				
 			}
@@ -158,10 +157,9 @@ public class BoardDao {
 				boardDto.setBoard_id(boardId);
 				boardDto.setBoard_title(boardTitle);
 				boardDto.setMember_uid(member_uid);				
-
 			}
-			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return boardDto;
@@ -208,8 +206,9 @@ public class BoardDao {
 		return check;
 
 	}
+
 	public boolean update(int Board_id, String title, String content) {
-		String sql = "update board set Board_title= ?, Board_content = ? , Category_small = ? WHERE Board_id = ? ";
+		String sql = "update board set Board_title= ?, Board_content = ? WHERE Board_id = ? ";
 		Connection connection = dbDriver.connDB();
 		boolean check;
 		try {
@@ -217,29 +216,6 @@ public class BoardDao {
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setInt(3, Board_id);
-			pstmt.executeUpdate();
-			check = true;
-			dbDriver.closeAll(pstmt, connection);
-		} catch (SQLException e) {
-			check = false;
-			e.printStackTrace();
-		}
-
-		return check;
-
-	}
-
-
-	public boolean update(int Board_id, String title, String content, String category_sm) {
-		String sql = "update board set Board_title= ?, Board_content = ? , Category_small = ? WHERE Board_id = ? ";
-		Connection connection = dbDriver.connDB();
-		boolean check;
-		try {
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, title);
-			pstmt.setString(2, content);
-			pstmt.setString(3, category_sm);
-			pstmt.setInt(4, Board_id);
 			pstmt.executeUpdate();
 			check = true;
 			dbDriver.closeAll(pstmt, connection);

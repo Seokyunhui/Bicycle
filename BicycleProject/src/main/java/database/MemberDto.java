@@ -25,13 +25,12 @@ public class MemberDto {
 		this.Member_group = Member_group;
 	}
 	// 회원가입 생성자
-	public MemberDto(String Member_id, String Member_pw, String Member_name,int Member_phone,String Member_mail,int Member_group) {
+	public MemberDto(String Member_id, String Member_pw, String Member_name,int Member_phone,String Member_mail) {
 		this.Member_id = Member_id;
 		this.Member_pw = Member_pw;
 		this.Member_name = Member_name;
 		this.Member_phone = Member_phone;
 		this.Member_mail = Member_mail;
-		this.Member_group = Member_group;
 	}
 	//userInfo 생성자
 	public MemberDto(int Member_uid,String Member_id,String Member_pw,String Member_name,int Member_phone,String Member_mail,String Member_regdate,int Member_group,int Member_regcount,int Member_comcount,int Member_ch_dist) {

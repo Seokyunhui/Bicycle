@@ -38,13 +38,11 @@ public class ChallegeDao {
 			while (rs.next()) {
 
 				JSONArray rowArray = new JSONArray();
-				
-				
-				
-				String Member_name = i+"등" + " )" +memberDao.getUserInfo(rs.getInt("Ch_Member_id")).getMember_id() + "님";
+				String rank = i + "등 )";
+				String Member_name = String.format("%s %s님", rank, memberDao.getUserInfo(rs.getInt("Ch_Member_id")).getMember_id() );
 				
 				rowArray.add(Member_name);
-
+				
 				rowArray.add(rs.getInt("sum(Challenge_dist)"));
 
 				jsonArray.add(rowArray);

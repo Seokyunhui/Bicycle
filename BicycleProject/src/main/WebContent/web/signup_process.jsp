@@ -18,7 +18,7 @@
 		
 		int phonenum = Integer.parseInt(phone);
 		
-		MemberDto new_mem = new MemberDto(id,pw,name,phonenum,email,1);
+		MemberDto new_mem = new MemberDto(id,pw,name,phonenum,email);
 		MemberDao dao = new MemberDao();
 		
 		int state = dao.Mem_register(new_mem);

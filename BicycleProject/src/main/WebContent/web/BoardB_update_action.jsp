@@ -25,8 +25,7 @@ request.setCharacterEncoding("utf-8");
 		BoardDto boardDto = new BoardDao().getDto(boardid);
 		String boardTitle = request.getParameter("board_title");
 		String boardContent = request.getParameter("board_content");
-		String boardCategory_sm = request.getParameter("board_category_sm");
-		boolean board = boardDao.update(boardid, boardTitle, boardContent,boardCategory_sm);
+		boolean board = boardDao.update(boardid, boardTitle, boardContent);
 		if (board == true) {
 			script.println("<script>");
 			script.println("alert('글 수정 성공');");
