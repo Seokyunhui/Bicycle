@@ -17,13 +17,17 @@
 		<div class="jumbotron" style="padding-top: 0px; padding-bottom: 0px; margin-left: 0px; margin-right: 0px;">
 
 			<div class="row justify-content-between">
-				<div class="col-lg-4">
-					<img alt="ㅁㄴㅇ" src="./image/headerlogo/로고이미지.gif">
+				<div class="col-lg-2 text-center">
+					<img alt="로고이미지" src="./image/headerlogo/로고이미지.png">
 				</div>
+				<div class="col-lg-2 text-center">
+					
+				</div>
+				
 				<!-- 로고 텍스트 이미지 직사각형 수정 요망 넓이 크게 -->
 				<div class="col-lg-4 text-center">
-					<a href="./main.jsp"><img src="./image/headerlogo/로고텍스트.gif"
-						alt="ㅁㄴㅇ"></a>
+					<a href="./main.jsp"><img src="./image/로고2.png"
+						alt="로고텍스트"></a>
 				</div>
 				<div class="col-lg-1"></div>
 

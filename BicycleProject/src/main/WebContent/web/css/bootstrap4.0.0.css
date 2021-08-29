@@ -639,8 +639,8 @@ pre code {
 
 .container-fluid {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 0px;
+    padding-left: 0px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -2834,7 +2834,7 @@ fieldset:disabled a.btn {
 }
 .btn-uni {
     color: #fff;
-    background-color: #5b5967;
+    background-color: #A6C2CE;
 }
 
 .btn-primary:hover {
@@ -5403,7 +5403,7 @@ tbody.collapse.show {
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 10px;
-    background-color: #e9ecef;
+    background-color: #6B799E;
     border-radius: 0.3rem;
 }
 

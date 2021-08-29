@@ -88,17 +88,45 @@ JSONArray jsonArray = challegeDao.getdistrank();
 <body>
 
 	<%@include file="./header.jsp"%>
+		<!-- 배너 타이틀 -->
+	<div class="row">
+		<div class="col-lg-1"></div>
+		<div id="carouselExampleControls"
+			class="col-lg-10 carousel slide text-center w-100 mb-3"
+			data-ride="Carousel">
 
+			<div class="carousel-inner">
+				<div class="carousel-item active ">
+					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
+						class="w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleControls"
+				role="button" data-slide="prev"> <span
+				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+				class="sr-only">Previous</span>
+			</a> <a class="carousel-control-next" href="#carouselExampleControls"
+				role="button" data-slide="next"> <span
+				class="carousel-control-next-icon" aria-hidden="true"></span> <span
+				class="sr-only">Next</span>
+			</a>
+		</div>
+
+
+		<div class="col-lg-1"></div>
+	</div>
 	<!-- 공지사항 -->
 	<div class="row">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10 text-center">
-			<h3>공지사항 겸 (프로젝트 후기)</h3>
-			<p>프론트 백 고민의 길에 서다... -유창석</p>
-			<p>고생했다 윤희야 -석윤희</p>
-			<p>잉 너무 어려웠쩡 -윤란영</p>
-			<p>날 더운데 다들 고생이 많아요 -김동준</p>
-			<p>쉬운게 하나도 없다. -이범수</p>
+			<h3>공지사항</h3>
+			
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
@@ -221,43 +249,11 @@ JSONArray jsonArray = challegeDao.getdistrank();
 			<br>
 		</div>
 		<div class="col-lg-1"></div>
+
 	</div>
 
 
-	<!-- 배너 타이틀 -->
-	<div class="row">
-		<div class="col-lg-1"></div>
-		<div id="carouselExampleControls"
-			class="col-lg-10 carousel slide text-center w-100 mb-3"
-			data-ride="Carousel">
-
-			<div class="carousel-inner">
-				<div class="carousel-item active ">
-					<img src="./image/배너%20수정본/배너1.png" alt="First slide" class="w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너2.png" alt="Second slide"
-						class="w-100">
-				</div>
-				<div class="carousel-item">
-					<img src="./image/배너%20수정본/배너3.jpg" alt="Third slide" class="w-100">
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleControls"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleControls"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
-		</div>
-
-
-		<div class="col-lg-1"></div>
-	</div>
-
+<!--  -->
 
 
 	<!-- 배너 -->
